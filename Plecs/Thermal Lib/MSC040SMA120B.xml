@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SemiconductorLibrary xmlns="http://www.plexim.com/xml/semiconductors/" version="1.1">
+    <Package class="MOSFET" vendor="Microchip" partnumber="MSC040SMA120B">
+        <Variables>
+            <Variable>
+                <Name>Rdson_max</Name>
+                <Description>Enter 0 for nominal Rds(on), 1 for maximum Rds(on)</Description>
+            </Variable>
+            <Variable>
+                <Name>Rg_on</Name>
+                <Description>External gate resistance (turn-on)</Description>
+            </Variable>
+            <Variable>
+                <Name>Rg_off</Name>
+                <Description>External gate resistance (turn-off)</Description>
+            </Variable>
+        </Variables>
+        <CustomTables>
+            <Table1D>
+                <Name>Gate Resistance Eoff Scaler</Name>
+                <XAxis> 0 2 4 8 16</XAxis>
+                <FunctionValues scale="1"> 0.6007 0.6007 0.6813 1 1.8548</FunctionValues>
+            </Table1D>
+            <Table1D>
+                <Name>Gate Resistance Eon Scaler</Name>
+                <XAxis> 0 2 4 8 16</XAxis>
+                <FunctionValues scale="1"> 0.7283 0.7283 0.8734 1 1.185</FunctionValues>
+            </Table1D>
+            <Table1D>
+                <Name>Temperature Eon Scaler</Name>
+                <XAxis> -55 25 75 100 125 150</XAxis>
+                <FunctionValues scale="1"> 1 1 1.1155 1.1654 1.252 1.3428</FunctionValues>
+            </Table1D>
+            <Table1D>
+                <Name>Temperature Eoff Scaler</Name>
+                <XAxis> -55 25 75 100 125 150</XAxis>
+                <FunctionValues scale="1"> 1 1 1.0122 1.0584 1.0185 0.962</FunctionValues>
+            </Table1D>
+            <Table1D>
+                <Name>Rds(on) Scaler</Name>
+                <XAxis> 0 1</XAxis>
+                <FunctionValues scale="1"> 1 1.25</FunctionValues>
+            </Table1D>
+        </CustomTables>
+        <SemiconductorData type="MOSFET">
+            <TurnOnLoss>
+                <ComputationMethod>Table and formula</ComputationMethod>
+                <Formula>E*lookup('Gate Resistance Eon Scaler',Rg_on)*lookup('Temperature Eon Scaler',T)</Formula>
+                <CurrentAxis> -10 0 15 30 45</CurrentAxis>
+                <VoltageAxis> -100 0 600 700 850 960</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1e-06">
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 295 693 1283</Voltage>
+                        <Voltage> 0 0 359 830 1565</Voltage>
+                        <Voltage> 0 0 488 1082 1948</Voltage>
+                        <Voltage> 0 0 546 1246 2198</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOnLoss>
+            <TurnOffLoss>
+                <ComputationMethod>Table and formula</ComputationMethod>
+                <Formula>E*lookup('Gate Resistance Eoff Scaler',Rg_off)*lookup('Temperature Eoff Scaler',T)</Formula>
+                <CurrentAxis> -10 0 15 30 45</CurrentAxis>
+                <VoltageAxis> -100 0 600 700 850 960</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1e-06">
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 64 138 311</Voltage>
+                        <Voltage> 0 0 82 164 356</Voltage>
+                        <Voltage> 0 0 104 203 449</Voltage>
+                        <Voltage> 0 0 125 259 479</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOffLoss>
+            <ConductionLoss>
+                <ComputationMethod>Table and formula</ComputationMethod>
+                <Formula>v*lookup('Rds(on) Scaler',Rdson_max)</Formula>
+                <CurrentAxis> -105 -86 -66 -30 -10 -1 0 1 10 30 66 86 105</CurrentAxis>
+                <TemperatureAxis> -55 25 125 175</TemperatureAxis>
+                <VoltageDrop scale="1">
+                    <Temperature> -3.656168 -3.142762 -2.475902 -1.102117 -0.3555525 -0.03411096 0 0.03413635 0.3563859 1.109946 2.566936 3.43179 4.292081</Temperature>
+                    <Temperature> -3.305982 -2.850678 -2.247583 -0.9855408 -0.311271 -0.02932065 0 0.02935399 0.3119762 0.9921824 2.344057 3.159772 3.977476</Temperature>
+                    <Temperature> -3.505103 -3.13342 -2.634664 -1.261793 -0.4024312 -0.03842961 0 0.03852197 0.4041417 1.282153 3.048845 4.133718 5.237133</Temperature>
+                    <Temperature> -3.6498 -3.310285 -2.869188 -1.520103 -0.4907766 -0.04701411 0 0.04717336 0.4939676 1.571776 3.774873 5.153824 6.578362</Temperature>
+                </VoltageDrop>
+            </ConductionLoss>
+        </SemiconductorData>
+        <ThermalModel>
+            <Branch type="Foster">
+                <RTauElement R="0.12701" Tau="0.005011815"/>
+                <RTauElement R="0.08522" Tau="0.011231996"/>
+                <RTauElement R="0.05349" Tau="0.010355129"/>
+                <RTauElement R="0.01933" Tau="0.00013415"/>
+            </Branch>
+        </ThermalModel>
+        <Comment>
+          <Line>Release Date:  October 12, 2020</Line>
+          <Line></Line>
+          <Line>Note:  The turn-on and turn-off switching loss data was measured using a double-pulse test with 40nH parasitic power loop inductance.</Line>
+        </Comment>
+    </Package>
+</SemiconductorLibrary>

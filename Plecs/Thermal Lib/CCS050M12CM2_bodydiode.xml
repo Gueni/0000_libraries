@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SemiconductorLibrary xmlns="http://www.plexim.com/xml/semiconductors/" version="1.1">
+    <Package class="Diode" vendor="Wolfspeed" partnumber="CCS050M12CM2">
+        <Variables/>
+        <SemiconductorData type="Diode">
+            <TurnOnLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0</CurrentAxis>
+                <VoltageAxis> 0</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1">
+                    <Temperature>
+                        <Voltage> 0</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOnLoss>
+            <TurnOffLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0</CurrentAxis>
+                <VoltageAxis> 0</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1">
+                    <Temperature>
+                        <Voltage> 0</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOffLoss>
+            <ConductionLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0 0.12 0.68 2.16 10 20 30 40 50 80 100</CurrentAxis>
+                <TemperatureAxis> -25 25 150 900 1000</TemperatureAxis>
+                <VoltageDrop scale="1">
+                    <Temperature> 0 0.13 0.9 0.978 1.08 1.184 1.278 1.373 1.4671 1.74 1.92</Temperature>
+                    <Temperature> 0 0.452 0.85 0.92 1.038 1.16 1.28 1.39 1.495 1.83 2.05</Temperature>
+                    <Temperature> 0 0.504 0.7 0.776 1 1.24 1.48 1.72 1.93 2.57 2.83</Temperature>
+                    <Temperature> 0 0.4788 0.665 0.7372 0.95 1.302 1.554 1.806 2.026 2.699 2.971</Temperature>
+                    <Temperature> 0 0.4788 0.665 0.7372 0.95 1.302 1.554 1.806 2.026 2.699 2.971</Temperature>
+                </VoltageDrop>
+            </ConductionLoss>
+        </SemiconductorData>
+        <ThermalModel>
+            <Branch type="Cauer">
+                <RCElement R="0.0324" C="0.00773"/>
+                <RCElement R="0.124" C="0.0271"/>
+                <RCElement R="0.158" C="0.0977"/>
+                <RCElement R="0.103" C="1.76"/>
+            </Branch>
+        </ThermalModel>
+        <Comment>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>DISCLAIMER</Line>
+            <Line>This model is provided as is, where is, and with no warranty of any kind either</Line>
+            <Line>expressed or implied, including but not limited to any implied warranties of</Line>
+            <Line>merchantability and fitness for a particular purpose.</Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line></Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>Cree SiC Module PLECS Library</Line>
+            <Line></Line>
+            <Line>	CCS050M12CM2</Line>
+            <Line>	Six Pack Module - Body Diode Model</Line>
+            <Line>	Version  1.4	 Date: 11-12-2020</Line>
+            <Line>	Version  1.5	 Date: 12-15-2020</Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line></Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>To find other WOLFSPEED SiC models, please visit: </Line>
+            <Line>https://www.wolfspeed.com/power/tools-and-support/all-models</Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+        </Comment>
+    </Package>
+</SemiconductorLibrary>

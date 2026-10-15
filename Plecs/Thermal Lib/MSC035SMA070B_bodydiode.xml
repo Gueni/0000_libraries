@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SemiconductorLibrary xmlns="http://www.plexim.com/xml/semiconductors/" version="1.1">
+    <Package class="Diode" vendor="Microchip" partnumber="MSC035SMA070B_bodydiode">
+        <Variables/>
+        <SemiconductorData type="Diode">
+            <TurnOnLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0</CurrentAxis>
+                <VoltageAxis> 0</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1">
+                    <Temperature>
+                        <Voltage> 0</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOnLoss>
+            <TurnOffLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0</CurrentAxis>
+                <VoltageAxis> 0</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1">
+                    <Temperature>
+                        <Voltage> 0</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOffLoss>
+            <ConductionLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> -10 0 1 10 20 60 120 192</CurrentAxis>
+                <TemperatureAxis> -55 25 125 175</TemperatureAxis>
+                <VoltageDrop scale="1">
+                    <Temperature> 0 0 1.830112 3.316463 3.914263 5.215143 6.35567 7.346358</Temperature>
+                    <Temperature> 0 0 1.516604 2.906987 3.425288 4.539442 5.623427 6.651713</Temperature>
+                    <Temperature> 0 0 1.26356 2.623211 3.134742 4.236451 5.332154 6.409337</Temperature>
+                    <Temperature> 0 0 1.177355 2.526691 3.040176 4.154754 5.272959 6.379573</Temperature>
+                </VoltageDrop>
+            </ConductionLoss>
+        </SemiconductorData>
+        <ThermalModel>
+            <Branch type="Foster">
+                <RTauElement R="0.1767" Tau="0.004970571"/>
+                <RTauElement R="0.11856" Tau="0.011141083"/>
+                <RTauElement R="0.07442" Tau="0.010271448"/>
+                <RTauElement R="0.0269" Tau="0.000133155"/>
+            </Branch>
+        </ThermalModel>
+        <Comment>
+            <Line>Release Date:  October 12, 2020</Line>
+        </Comment>
+    </Package>
+</SemiconductorLibrary>

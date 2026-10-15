@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SemiconductorLibrary xmlns="http://www.plexim.com/xml/semiconductors/" version="1.1">
+    <Package class="MOSFET" vendor="Infineon" partnumber="AIMDQ75R063M1H">
+        <Variables>
+            <Variable>
+                <Name>TCR</Name>
+                <Description>Rdson Factor</Description>
+            </Variable>
+        </Variables>
+        <SemiconductorData type="MOSFET">
+            <TurnOnLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0 2 5 10 20 40 200</CurrentAxis>
+                <VoltageAxis> -100 -10 0 460 750</VoltageAxis>
+                <TemperatureAxis> -55 25 175</TemperatureAxis>
+                <Energy scale="1e-06">
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 19.4 21.7 27.8 36.5 55.6 73.8 73.8</Voltage>
+                        <Voltage> 19.4 21.7 27.8 36.5 55.6 73.8 73.8</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 22.3 25 32 42 64 85 85</Voltage>
+                        <Voltage> 22.3 25 32 42 64 85 85</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 27.8 31.2 39.9 52.4 79.8 106 106</Voltage>
+                        <Voltage> 27.8 31.2 39.9 52.4 79.8 106 106</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOnLoss>
+            <TurnOffLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0 2 5 10 20 40 200</CurrentAxis>
+                <VoltageAxis> -100 -10 0 460 750</VoltageAxis>
+                <TemperatureAxis> -55 25 175</TemperatureAxis>
+                <Energy scale="1e-06">
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0.4 0.9 2.6 5.2 11.3 16.5 16.5</Voltage>
+                        <Voltage> 0.4 0.9 2.6 5.2 11.3 16.5 16.5</Voltage>
+                        <Voltage> 0.4 0.9 2.6 5.2 11.3 16.5 16.5</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0.5 1 3 6 13 19 19</Voltage>
+                        <Voltage> 0.5 1 3 6 13 19 19</Voltage>
+                        <Voltage> 0.5 1 3 6 13 19 19</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0.6 1.2 3.7 7.5 16.2 23.7 23.7</Voltage>
+                        <Voltage> 0.6 1.2 3.7 7.5 16.2 23.7 23.7</Voltage>
+                        <Voltage> 0.6 1.2 3.7 7.5 16.2 23.7 23.7</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOffLoss>
+            <ConductionLoss>
+                <ComputationMethod>Table and formula</ComputationMethod>
+                <Formula>v*TCR</Formula>
+                <CurrentAxis> -200 0 200</CurrentAxis>
+                <TemperatureAxis> -1000 -40 0 25 50 76 100 125.7 150 175 1000</TemperatureAxis>
+                <VoltageDrop scale="1">
+                    <Temperature> -11.486 0 11.486</Temperature>
+                    <Temperature> -11.486 0 11.486</Temperature>
+                    <Temperature> -11.998 0 11.998</Temperature>
+                    <Temperature> -12.592 0 12.592</Temperature>
+                    <Temperature> -13.96 0 13.96</Temperature>
+                    <Temperature> -15.376 0 15.376</Temperature>
+                    <Temperature> -16.712 0 16.712</Temperature>
+                    <Temperature> -19.25 0 19.25</Temperature>
+                    <Temperature> -21.602 0 21.602</Temperature>
+                    <Temperature> -24.138 0 24.138</Temperature>
+                    <Temperature> -24.138 0 24.138</Temperature>
+                </VoltageDrop>
+            </ConductionLoss>
+        </SemiconductorData>
+        <ThermalModel>
+            <Branch type="Cauer">
+                <RCElement R="1" C="1e-05"/>
+            </Branch>
+        </ThermalModel>
+        <Comment>
+            <Line>Version 2021-05-11 </Line>
+            <Line>by Infineon Technologies (AE Villach SM&amp;SK) </Line>
+            <Line>  </Line>
+            <Line>Disclaimer: </Line>
+            <Line>  </Line>
+            <Line>The provided values depend strongly on the measurement setup. Especially the influence of the parasitic elements of the measurement setup, the substrate and the gate-drive settings have a big influence on the results. Therefore, this model only reflects the typical behavior of the device in the specific Infineon setup. </Line>
+            <Line>Also, these values were measured on very early samples or interpolated between different measurements. All parameters are subject to change as the development of these products progresses. </Line>
+            <Line>  </Line>
+            <Line>What is modeled? </Line>
+            <Line>1.      Rdson as a function of temperature </Line>
+            <Line>2.      Eon/Eoff (comprising body diode reverse recovery, MOSFET output capacitance and voltage/current overlap during commutation) as a function of voltage, current and temperature derived for a half-bridge configuration with inductive load </Line>
+            <Line>  </Line>
+            <Line>  </Line>
+            <Line>What is NOT modeled? </Line>
+            <Line>1.      The body-diode static behavior is therefore not included. This model assuming Rdson behavior in 1st and 3rd quadrant </Line>
+            <Line>2.      Saturation effects are not included. The device operates in 1st and 3rd quadrant in linear (Rdson-only) behavior. </Line>
+            <Line>3.      The dependency of the gate driver resistors is not included. The provided values were taken with the lowest recommended gate resistor settings. </Line>
+            <Line>4.      A precise thermal model with transient thermal behavior is not included: the model only contains the dominant thermal time constant (Rth and Cth). </Line>
+            <Line>  </Line>
+            <Line>  </Line>
+            <Line>  </Line>
+            <Line>  </Line>
+        </Comment>
+    </Package>
+</SemiconductorLibrary>

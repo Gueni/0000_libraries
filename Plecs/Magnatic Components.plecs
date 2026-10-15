@@ -1,0 +1,4981 @@
+Plecs {
+  Name          "Magnatic Components"
+  Version       "4.9"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "1.0"
+  Timeout       ""
+  Solver        "auto"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "2"
+  DatatypeInheritanceConflictMsg "1"
+  ContSampleTimeConflictMsg "1"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands ""
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "1"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [0, 23; 1920, 989]
+    ZoomFactor    1.49863
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          ConfigurableSubsystem
+      Name          "Tr"
+      Show          on
+      Position      [255, 105]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Frame         [-10, -20; 10, 20]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskType      "Transformer"
+      MaskDescription "Models a configurable trafo.\n"
+"\n"
+"This subsystem contains a transformer model, designed for use in power conver"
+"sion and signal isolation applications. \n"
+      MaskDisplay   "local config = Dialog:get('Configuration')\n"
+"\n"
+"Icon:color(0, 0, 0)\n"
+"Icon:line({10, 10, 8, 6, 5, 5, 6, 8, 10, 8, 6, 5, 5, 6, 8, 10, 8, 6, 5, 5, 6,"
+" 8, 10, 8, 6, 5, 5, 6, 8, 10, 10} ,    {-15, -14, -14, -13, -11, -10,  -8,  -"
+"7,  -7,  -7,  -6,  -4,  -3,  -1,   0,   0,   0,   1,   3,   4,   6,   7,   7,"
+"   7,   8,  10,  11,  13,  14,  14,  15})\n"
+"Icon:line({-10, -10, -8, -6, -5, -5, -6, -8, -10, -8, -6, -5, -5, -6, -8, -10"
+", -8, -6, -5, -5, -6, -8, -10, -8, -6, -5, -5, -6, -8, -10, -10} ,    {-15, -"
+"14, -14, -13, -11, -10,  -8,  -7,  -7,  -7,  -6,  -4,  -3,  -1,   0,   0,   0"
+",   1,   3,   4,   6,   7,   7,   7,   8,  10,  11,  13,  14,  14,  15})\n"
+"\n"
+"Icon:line({1,1,1},{-15,0,15})\n"
+"Icon:line({-1,-1,-1},{-15,0,15})"
+      MaskDisplayLang "2"
+      MaskIconFrame off
+      MaskIconOpaque off
+      MaskIconRotates on
+      MaskInit      "\n"
+      Parameter {
+        Variable      "trafo"
+        Prompt        "trafo"
+        Type          FreeText
+        Value         ""
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Terminal {
+        Type          Port
+        Position      [-15, -15]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [15, -15]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [-15, 15]
+        Direction     left
+      }
+      Terminal {
+        Type          Port
+        Position      [15, 15]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [15, 0]
+        Direction     right
+      }
+      Terminal {
+        Type          Port
+        Position      [-15, 0]
+        Direction     left
+      }
+      TerminalNames { "in1", "out1", "in2", "out2", "out3", "out4" }
+      Location      [0, 26; 1536, 760]
+      ZoomFactor    1
+      SliderPosition [0, 0]
+      ShowBrowser   off
+      BrowserWidth  100
+      Configurations {
+        Name          "Ideal Transformer"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "in1"
+            Show          off
+            Position      [145, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out1"
+            Show          off
+            Position      [815, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "in2"
+            Show          off
+            Position      [145, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out2"
+            Show          off
+            Position      [815, 200]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out3"
+            Show          off
+            Position      [815, 140]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "5"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [235, 250]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-35, -10; 35, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,5)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Iin"
+            Show          on
+            Position      [185, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vin"
+            Show          on
+            Position      [210, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vo"
+            Show          on
+            Position      [665, 145]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Ammeter
+            Name          "Io"
+            Show          on
+            Position      [640, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Transformer
+            Name          "Tr"
+            Show          on
+            Position      [445, 140]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Windings"
+              Value         "[1 1]"
+              Show          off
+            }
+            Parameter {
+              Variable      "n"
+              Value         "[trafo.n_prim trafo.n_sndry]"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "+"
+              Show          off
+            }
+            Parameter {
+              Variable      "Lm"
+              Value         "inf"
+              Show          off
+            }
+            Parameter {
+              Variable      "im0"
+              Value         "0"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out4"
+            Show          off
+            Position      [145, 140]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "6"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   2
+            Points        [210, 80]
+            Branch {
+              Points        [425, 80; 425, 125]
+              DstComponent  "Tr"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vin"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Tr"
+            SrcTerminal   3
+            Points        [465, 125; 465, 80]
+            DstComponent  "Io"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   1
+            DstComponent  "in1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vin"
+            SrcTerminal   2
+            Points        [210, 200]
+            Branch {
+              Points        [425, 200; 425, 155]
+              DstComponent  "Tr"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "in2"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   2
+            Points        [665, 80]
+            Branch {
+              DstComponent  "Vo"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "out1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vo"
+            SrcTerminal   2
+            Points        [665, 200]
+            Branch {
+              Points        [465, 200; 465, 155]
+              DstComponent  "Tr"
+              DstTerminal   4
+            }
+            Branch {
+              DstComponent  "out2"
+              DstTerminal   1
+            }
+          }
+        }
+        Name          "Ideal Transformer Middle Point"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "in1"
+            Show          off
+            Position      [145, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out1"
+            Show          off
+            Position      [815, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "in2"
+            Show          off
+            Position      [145, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out2"
+            Show          off
+            Position      [815, 200]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out3"
+            Show          off
+            Position      [815, 140]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "5"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [270, 250]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-30, -10; 30, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,5)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Iin"
+            Show          on
+            Position      [185, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vin"
+            Show          on
+            Position      [210, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vo"
+            Show          on
+            Position      [665, 145]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Ammeter
+            Name          "Io"
+            Show          on
+            Position      [640, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Port
+            Name          "out4"
+            Show          off
+            Position      [145, 140]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "6"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Transformer
+            Name          "Tr"
+            Show          on
+            Position      [445, 140]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Windings"
+              Value         "[1 2]"
+              Show          off
+            }
+            Parameter {
+              Variable      "n"
+              Value         "[trafo.n_prim trafo.n_sndry trafo.n_sndry]"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "+"
+              Show          off
+            }
+            Parameter {
+              Variable      "Lm"
+              Value         "inf"
+              Show          off
+            }
+            Parameter {
+              Variable      "im0"
+              Value         "0"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   2
+            Points        [210, 80]
+            Branch {
+              Points        [425, 80; 425, 125]
+              DstComponent  "Tr"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vin"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   1
+            DstComponent  "in1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vin"
+            SrcTerminal   2
+            Points        [210, 200]
+            Branch {
+              Points        [425, 200; 425, 155]
+              DstComponent  "Tr"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "in2"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   2
+            Points        [665, 80]
+            Branch {
+              DstComponent  "Vo"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "out1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vo"
+            SrcTerminal   2
+            Points        [665, 200]
+            Branch {
+              Points        [465, 200; 465, 175]
+              DstComponent  "Tr"
+              DstTerminal   6
+            }
+            Branch {
+              DstComponent  "out2"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   1
+            Points        [465, 80; 465, 105]
+            DstComponent  "Tr"
+            DstTerminal   3
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Tr"
+            SrcTerminal   5
+            Points        [470, 145; 470, 140]
+            Branch {
+              Points        [470, 135]
+              DstComponent  "Tr"
+              DstTerminal   4
+            }
+            Branch {
+              DstComponent  "out3"
+              DstTerminal   1
+            }
+          }
+        }
+        Name          "Ideal Transformer Complex"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "in1"
+            Show          off
+            Position      [145, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out1"
+            Show          off
+            Position      [815, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "in2"
+            Show          off
+            Position      [145, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out2"
+            Show          off
+            Position      [815, 200]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out3"
+            Show          off
+            Position      [815, 140]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "5"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [275, 250]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-35, -10; 35, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,5)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lp"
+            Show          on
+            Position      [255, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Lp"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LpIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rp"
+            Show          on
+            Position      [305, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rp"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lm"
+            Show          on
+            Position      [375, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LmIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rc"
+            Show          on
+            Position      [345, 135]
+            Direction     down
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rc"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rs"
+            Show          on
+            Position      [585, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rs"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Ls"
+            Show          on
+            Position      [640, 80]
+            Direction     left
+            Flipped       on
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Ls"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LsIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Iin"
+            Show          on
+            Position      [195, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vin"
+            Show          on
+            Position      [220, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vo"
+            Show          on
+            Position      [710, 145]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Ammeter
+            Name          "Io"
+            Show          on
+            Position      [685, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Transformer
+            Name          "Tr"
+            Show          on
+            Position      [490, 140]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Windings"
+              Value         "[1 1]"
+              Show          off
+            }
+            Parameter {
+              Variable      "n"
+              Value         "[trafo.n_prim trafo.n_sndry]"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "+"
+              Show          off
+            }
+            Parameter {
+              Variable      "Lm"
+              Value         "inf"
+              Show          off
+            }
+            Parameter {
+              Variable      "im0"
+              Value         "0"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am3"
+            Show          off
+            Position      [395, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am4"
+            Show          off
+            Position      [545, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm3"
+            Show          off
+            Position      [435, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm4"
+            Show          off
+            Position      [530, 140]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Port
+            Name          "out4"
+            Show          off
+            Position      [145, 140]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "6"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rp"
+            SrcTerminal   1
+            DstComponent  "Lp"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rc"
+            SrcTerminal   2
+            Points        [345, 105; 360, 105]
+            Branch {
+              Points        [375, 105]
+              DstComponent  "Lm"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [360, 80]
+              Branch {
+                DstComponent  "Rp"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Am3"
+                DstTerminal   1
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rc"
+            SrcTerminal   1
+            Points        [345, 170; 360, 170]
+            Branch {
+              Points        [375, 170]
+              DstComponent  "Lm"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [360, 200]
+              Branch {
+                Points        [435, 200]
+                Branch {
+                  Points        [470, 200; 470, 155]
+                  DstComponent  "Tr"
+                  DstTerminal   2
+                }
+                Branch {
+                  DstComponent  "Vm3"
+                  DstTerminal   2
+                }
+              }
+              Branch {
+                Points        [220, 200]
+                Branch {
+                  DstComponent  "Vin"
+                  DstTerminal   2
+                }
+                Branch {
+                  DstComponent  "in2"
+                  DstTerminal   1
+                }
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Lp"
+            SrcTerminal   1
+            Points        [220, 80]
+            Branch {
+              DstComponent  "Iin"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vin"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Tr"
+            SrcTerminal   4
+            Points        [510, 155; 510, 200; 530, 200]
+            Branch {
+              Points        [710, 200]
+              Branch {
+                DstComponent  "Vo"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "out2"
+                DstTerminal   1
+              }
+            }
+            Branch {
+              DstComponent  "Vm4"
+              DstTerminal   2
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   2
+            DstComponent  "Rs"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Tr"
+            SrcTerminal   1
+            Points        [470, 125; 470, 80; 435, 80]
+            Branch {
+              DstComponent  "Am3"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vm3"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Tr"
+            SrcTerminal   3
+            Points        [510, 125; 510, 80; 525, 80]
+            Branch {
+              DstComponent  "Am4"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [530, 80]
+              DstComponent  "Vm4"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   1
+            DstComponent  "in1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   2
+            Points        [710, 80]
+            Branch {
+              DstComponent  "Vo"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "out1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Ls"
+            SrcTerminal   2
+            DstComponent  "Rs"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Ls"
+            SrcTerminal   1
+            DstComponent  "Io"
+            DstTerminal   1
+          }
+        }
+        Name          "Ideal Transformer Middle Point Complex"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "in1"
+            Show          off
+            Position      [145, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out1"
+            Show          off
+            Position      [815, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "in2"
+            Show          off
+            Position      [145, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out2"
+            Show          off
+            Position      [815, 200]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out3"
+            Show          off
+            Position      [815, 140]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "5"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [270, 250]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-30, -10; 30, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,5)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lp"
+            Show          on
+            Position      [255, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Lp"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LpIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rp"
+            Show          on
+            Position      [305, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rp"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lm"
+            Show          on
+            Position      [375, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LmIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rc"
+            Show          on
+            Position      [345, 135]
+            Direction     down
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rc"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rs"
+            Show          on
+            Position      [585, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rs"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Ls"
+            Show          on
+            Position      [635, 80]
+            Direction     left
+            Flipped       on
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Ls"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LsIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Iin"
+            Show          on
+            Position      [195, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vin"
+            Show          on
+            Position      [220, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vo"
+            Show          on
+            Position      [710, 145]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Ammeter
+            Name          "Io"
+            Show          on
+            Position      [685, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am3"
+            Show          off
+            Position      [395, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am4"
+            Show          off
+            Position      [545, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm3"
+            Show          off
+            Position      [435, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm4"
+            Show          off
+            Position      [530, 140]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Port
+            Name          "out4"
+            Show          off
+            Position      [145, 140]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "6"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Transformer
+            Name          "Tr"
+            Show          on
+            Position      [490, 140]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Windings"
+              Value         "[1 2]"
+              Show          off
+            }
+            Parameter {
+              Variable      "n"
+              Value         "[trafo.n_prim trafo.n_sndry trafo.n_sndry]"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "+"
+              Show          off
+            }
+            Parameter {
+              Variable      "Lm"
+              Value         "inf"
+              Show          off
+            }
+            Parameter {
+              Variable      "im0"
+              Value         "0"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rp"
+            SrcTerminal   1
+            DstComponent  "Lp"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rc"
+            SrcTerminal   2
+            Points        [345, 105; 360, 105]
+            Branch {
+              Points        [375, 105]
+              DstComponent  "Lm"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [360, 80]
+              Branch {
+                DstComponent  "Rp"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Am3"
+                DstTerminal   1
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rc"
+            SrcTerminal   1
+            Points        [345, 170; 360, 170]
+            Branch {
+              Points        [375, 170]
+              DstComponent  "Lm"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [360, 200]
+              Branch {
+                Points        [435, 200]
+                Branch {
+                  Points        [470, 200; 470, 155]
+                  DstComponent  "Tr"
+                  DstTerminal   2
+                }
+                Branch {
+                  DstComponent  "Vm3"
+                  DstTerminal   2
+                }
+              }
+              Branch {
+                Points        [220, 200]
+                Branch {
+                  DstComponent  "Vin"
+                  DstTerminal   2
+                }
+                Branch {
+                  DstComponent  "in2"
+                  DstTerminal   1
+                }
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Lp"
+            SrcTerminal   1
+            Points        [220, 80]
+            Branch {
+              DstComponent  "Iin"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vin"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vm4"
+            SrcTerminal   2
+            Points        [530, 200]
+            Branch {
+              Points        [710, 200]
+              Branch {
+                DstComponent  "Vo"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "out2"
+                DstTerminal   1
+              }
+            }
+            Branch {
+              Points        [510, 200; 510, 175]
+              DstComponent  "Tr"
+              DstTerminal   6
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   2
+            DstComponent  "Rs"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Tr"
+            SrcTerminal   1
+            Points        [470, 125; 470, 80; 435, 80]
+            Branch {
+              DstComponent  "Am3"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vm3"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   1
+            Points        [525, 80]
+            Branch {
+              Points        [510, 80; 510, 105]
+              DstComponent  "Tr"
+              DstTerminal   3
+            }
+            Branch {
+              Points        [530, 80]
+              DstComponent  "Vm4"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   1
+            DstComponent  "in1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   2
+            Points        [710, 80]
+            Branch {
+              DstComponent  "Vo"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "out1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Tr"
+            SrcTerminal   5
+            Points        [515, 145; 515, 140]
+            Branch {
+              Points        [515, 135]
+              DstComponent  "Tr"
+              DstTerminal   4
+            }
+            Branch {
+              DstComponent  "out3"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Ls"
+            SrcTerminal   2
+            DstComponent  "Rs"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Ls"
+            SrcTerminal   1
+            DstComponent  "Io"
+            DstTerminal   1
+          }
+        }
+        Name          "Real Transformer Simple"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "in1"
+            Show          off
+            Position      [145, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out1"
+            Show          off
+            Position      [815, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "in2"
+            Show          off
+            Position      [145, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out2"
+            Show          off
+            Position      [815, 200]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out3"
+            Show          off
+            Position      [815, 140]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "5"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [275, 250]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-35, -10; 35, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,5)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Iin"
+            Show          on
+            Position      [185, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vin"
+            Show          on
+            Position      [210, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vo"
+            Show          on
+            Position      [665, 145]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Ammeter
+            Name          "Io"
+            Show          on
+            Position      [640, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Port
+            Name          "out4"
+            Show          off
+            Position      [145, 140]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "6"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          MagneticInterface
+            Name          "MagInt5"
+            Show          off
+            Position      [450, 170]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "n"
+              Value         "trafo.n_prim"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "1"
+              Show          off
+            }
+          }
+          Component {
+            Type          MagneticInterface
+            Name          "MagInt6"
+            Show          off
+            Position      [450, 125]
+            Direction     down
+            Flipped       on
+            LabelPosition west
+            Parameter {
+              Variable      "n"
+              Value         "trafo.n_sndry"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Components/Magnetic/Components/P_sat"
+            Name          "P_satTr"
+            Show          off
+            Position      [415, 90]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Frame         [-8, -15; 8, 15]
+            Parameter {
+              Variable      "fitting"
+              Value         "1"
+              Show          off
+            }
+            Parameter {
+              Variable      "A"
+              Value         "trafo.Core_CS_area"
+              Show          off
+            }
+            Parameter {
+              Variable      "l"
+              Value         "trafo.Core_flux_len"
+              Show          off
+            }
+            Parameter {
+              Variable      "mu_r_unsat"
+              Value         "trafo.Core_U_r_unsat"
+              Show          off
+            }
+            Parameter {
+              Variable      "mu_r_sat"
+              Value         "trafo.Core_U_r_sat"
+              Show          off
+            }
+            Parameter {
+              Variable      "B_sat"
+              Value         "trafo.Core_B_sat"
+              Show          off
+            }
+            Parameter {
+              Variable      "F_init"
+              Value         "trafo.Core_init_MMF"
+              Show          off
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, -20]
+              Direction     up
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, 20]
+              Direction     down
+            }
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Components/Magnetic/Components/P_air"
+            Name          "P_air2"
+            Show          off
+            Position      [450, 205]
+            Direction     up
+            Flipped       on
+            LabelPosition east
+            Frame         [-8, -10; 8, 10]
+            Parameter {
+              Variable      "A"
+              Value         "trafo.Gap_CS_area"
+              Show          off
+            }
+            Parameter {
+              Variable      "l"
+              Value         "trafo.Gap_flux_len"
+              Show          off
+            }
+            Parameter {
+              Variable      "F_init"
+              Value         "trafo.Gap_init_MMF"
+              Show          off
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, -15]
+              Direction     up
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, 15]
+              Direction     down
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   1
+            DstComponent  "in1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   2
+            Points        [665, 80]
+            Branch {
+              DstComponent  "Vo"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "out1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "MagInt5"
+            SrcTerminal   3
+            DstComponent  "MagInt6"
+            DstTerminal   4
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "P_satTr"
+            SrcTerminal   1
+            Points        [415, 60; 450, 60]
+            DstComponent  "MagInt6"
+            DstTerminal   3
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "P_air2"
+            SrcTerminal   2
+            DstComponent  "MagInt5"
+            DstTerminal   4
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "P_satTr"
+            SrcTerminal   2
+            Points        [415, 220]
+            DstComponent  "P_air2"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "MagInt6"
+            SrcTerminal   1
+            Points        [480, 110; 480, 80]
+            DstComponent  "Io"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vo"
+            SrcTerminal   2
+            Points        [665, 200]
+            Branch {
+              DstComponent  "out2"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [480, 200; 480, 140]
+              DstComponent  "MagInt6"
+              DstTerminal   2
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   2
+            Points        [210, 80]
+            Branch {
+              DstComponent  "Vin"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [390, 80; 390, 155]
+              DstComponent  "MagInt5"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vin"
+            SrcTerminal   2
+            Points        [210, 200]
+            Branch {
+              DstComponent  "in2"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [390, 200; 390, 185]
+              DstComponent  "MagInt5"
+              DstTerminal   2
+            }
+          }
+        }
+        Name          "Real Transformer Complex"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "in1"
+            Show          off
+            Position      [145, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out1"
+            Show          off
+            Position      [815, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "in2"
+            Show          off
+            Position      [145, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out2"
+            Show          off
+            Position      [815, 200]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out3"
+            Show          off
+            Position      [815, 140]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "5"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [275, 250]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-35, -10; 35, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,5)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lp"
+            Show          on
+            Position      [255, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Lp"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LpIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rp"
+            Show          on
+            Position      [305, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rp"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lm"
+            Show          on
+            Position      [375, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LmIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rc"
+            Show          on
+            Position      [345, 135]
+            Direction     down
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rc"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rs"
+            Show          on
+            Position      [645, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rs"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Ls"
+            Show          on
+            Position      [700, 80]
+            Direction     left
+            Flipped       on
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Ls"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LsIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Iin"
+            Show          on
+            Position      [195, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vin"
+            Show          on
+            Position      [220, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vo"
+            Show          on
+            Position      [770, 145]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Ammeter
+            Name          "Io"
+            Show          on
+            Position      [745, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am3"
+            Show          off
+            Position      [395, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am4"
+            Show          off
+            Position      [605, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm3"
+            Show          off
+            Position      [435, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm4"
+            Show          off
+            Position      [590, 140]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Port
+            Name          "out4"
+            Show          off
+            Position      [145, 140]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "6"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          MagneticInterface
+            Name          "MagInt5"
+            Show          off
+            Position      [520, 160]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "n"
+              Value         "trafo.n_prim"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "1"
+              Show          off
+            }
+          }
+          Component {
+            Type          MagneticInterface
+            Name          "MagInt6"
+            Show          off
+            Position      [520, 115]
+            Direction     down
+            Flipped       on
+            LabelPosition west
+            Parameter {
+              Variable      "n"
+              Value         "trafo.n_sndry"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Components/Magnetic/Components/P_sat"
+            Name          "P_satTr"
+            Show          off
+            Position      [485, 80]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Frame         [-8, -15; 8, 15]
+            Parameter {
+              Variable      "fitting"
+              Value         "1"
+              Show          off
+            }
+            Parameter {
+              Variable      "A"
+              Value         "trafo.Core_CS_area"
+              Show          off
+            }
+            Parameter {
+              Variable      "l"
+              Value         "trafo.Core_flux_len"
+              Show          off
+            }
+            Parameter {
+              Variable      "mu_r_unsat"
+              Value         "trafo.Core_U_r_unsat"
+              Show          off
+            }
+            Parameter {
+              Variable      "mu_r_sat"
+              Value         "trafo.Core_U_r_sat"
+              Show          off
+            }
+            Parameter {
+              Variable      "B_sat"
+              Value         "trafo.Core_B_sat"
+              Show          off
+            }
+            Parameter {
+              Variable      "F_init"
+              Value         "trafo.Core_init_MMF"
+              Show          off
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, -20]
+              Direction     up
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, 20]
+              Direction     down
+            }
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Components/Magnetic/Components/P_air"
+            Name          "P_air2"
+            Show          off
+            Position      [520, 195]
+            Direction     up
+            Flipped       on
+            LabelPosition east
+            Frame         [-8, -10; 8, 10]
+            Parameter {
+              Variable      "A"
+              Value         "trafo.Gap_CS_area"
+              Show          off
+            }
+            Parameter {
+              Variable      "l"
+              Value         "trafo.Gap_flux_len"
+              Show          off
+            }
+            Parameter {
+              Variable      "F_init"
+              Value         "trafo.Gap_init_MMF"
+              Show          off
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, -15]
+              Direction     up
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, 15]
+              Direction     down
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rp"
+            SrcTerminal   1
+            DstComponent  "Lp"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rc"
+            SrcTerminal   2
+            Points        [345, 105; 360, 105]
+            Branch {
+              Points        [375, 105]
+              DstComponent  "Lm"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [360, 80]
+              Branch {
+                DstComponent  "Rp"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Am3"
+                DstTerminal   1
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rc"
+            SrcTerminal   1
+            Points        [345, 170; 360, 170]
+            Branch {
+              Points        [375, 170]
+              DstComponent  "Lm"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [360, 200]
+              Branch {
+                Points        [435, 200]
+                Branch {
+                  DstComponent  "Vm3"
+                  DstTerminal   2
+                }
+                Branch {
+                  Points        [470, 200; 470, 175]
+                  DstComponent  "MagInt5"
+                  DstTerminal   2
+                }
+              }
+              Branch {
+                Points        [220, 200]
+                Branch {
+                  DstComponent  "Vin"
+                  DstTerminal   2
+                }
+                Branch {
+                  DstComponent  "in2"
+                  DstTerminal   1
+                }
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Lp"
+            SrcTerminal   1
+            Points        [220, 80]
+            Branch {
+              DstComponent  "Iin"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vin"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   2
+            DstComponent  "Rs"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   1
+            DstComponent  "in1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   2
+            Points        [770, 80]
+            Branch {
+              DstComponent  "Vo"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "out1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vo"
+            SrcTerminal   2
+            Points        [770, 200]
+            Branch {
+              Points        [590, 200]
+              Branch {
+                DstComponent  "Vm4"
+                DstTerminal   2
+              }
+              Branch {
+                Points        [560, 200; 560, 130]
+                DstComponent  "MagInt6"
+                DstTerminal   2
+              }
+            }
+            Branch {
+              DstComponent  "out2"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "MagInt5"
+            SrcTerminal   3
+            DstComponent  "MagInt6"
+            DstTerminal   4
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "P_satTr"
+            SrcTerminal   1
+            Points        [485, 50; 520, 50]
+            DstComponent  "MagInt6"
+            DstTerminal   3
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "P_air2"
+            SrcTerminal   2
+            DstComponent  "MagInt5"
+            DstTerminal   4
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "P_satTr"
+            SrcTerminal   2
+            Points        [485, 210]
+            DstComponent  "P_air2"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   1
+            Points        [585, 80]
+            Branch {
+              Points        [590, 80]
+              DstComponent  "Vm4"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [560, 80; 560, 100]
+              DstComponent  "MagInt6"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am3"
+            SrcTerminal   2
+            Points        [435, 80]
+            Branch {
+              DstComponent  "Vm3"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [470, 80; 470, 145]
+              DstComponent  "MagInt5"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   1
+            DstComponent  "Ls"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Ls"
+            SrcTerminal   2
+            DstComponent  "Rs"
+            DstTerminal   2
+          }
+        }
+        Name          "Real Transformer Middle Point Complex"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "in1"
+            Show          off
+            Position      [145, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out1"
+            Show          off
+            Position      [815, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "in2"
+            Show          off
+            Position      [145, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out2"
+            Show          off
+            Position      [815, 200]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out3"
+            Show          off
+            Position      [815, 140]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "5"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [275, 250]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-35, -10; 35, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,5)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lp"
+            Show          on
+            Position      [255, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Lp"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LpIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rp"
+            Show          on
+            Position      [305, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rp"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lm"
+            Show          on
+            Position      [375, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LmIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rc"
+            Show          on
+            Position      [345, 135]
+            Direction     down
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rc"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rs"
+            Show          on
+            Position      [645, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "trafo.Rs"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Ls"
+            Show          on
+            Position      [695, 80]
+            Direction     left
+            Flipped       on
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "trafo.Ls"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "trafo.LsIinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Iin"
+            Show          on
+            Position      [195, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vin"
+            Show          on
+            Position      [220, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vo"
+            Show          on
+            Position      [770, 145]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Ammeter
+            Name          "Io"
+            Show          on
+            Position      [745, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am3"
+            Show          off
+            Position      [395, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am4"
+            Show          off
+            Position      [605, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm3"
+            Show          off
+            Position      [435, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm4"
+            Show          off
+            Position      [590, 140]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Port
+            Name          "out4"
+            Show          off
+            Position      [145, 140]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "6"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          MagneticInterface
+            Name          "MagInt7"
+            Show          off
+            Position      [530, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "n"
+              Value         "trafo.n_prim"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "1"
+              Show          off
+            }
+          }
+          Component {
+            Type          MagneticInterface
+            Name          "MagInt8"
+            Show          off
+            Position      [530, 95]
+            Direction     down
+            Flipped       on
+            LabelPosition west
+            Parameter {
+              Variable      "n"
+              Value         "trafo.n_sndry"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Components/Magnetic/Components/P_sat"
+            Name          "P_satTr1"
+            Show          off
+            Position      [490, 90]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Frame         [-8, -15; 8, 15]
+            Parameter {
+              Variable      "fitting"
+              Value         "1"
+              Show          off
+            }
+            Parameter {
+              Variable      "A"
+              Value         "trafo.Core_CS_area"
+              Show          off
+            }
+            Parameter {
+              Variable      "l"
+              Value         "trafo.Core_flux_len"
+              Show          off
+            }
+            Parameter {
+              Variable      "mu_r_unsat"
+              Value         "trafo.Core_U_r_unsat"
+              Show          off
+            }
+            Parameter {
+              Variable      "mu_r_sat"
+              Value         "trafo.Core_U_r_sat"
+              Show          off
+            }
+            Parameter {
+              Variable      "B_sat"
+              Value         "trafo.Core_B_sat"
+              Show          off
+            }
+            Parameter {
+              Variable      "F_init"
+              Value         "trafo.Core_init_MMF"
+              Show          off
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, -20]
+              Direction     up
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, 20]
+              Direction     down
+            }
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Components/Magnetic/Components/P_air"
+            Name          "P_air3"
+            Show          off
+            Position      [530, 225]
+            Direction     up
+            Flipped       on
+            LabelPosition east
+            Frame         [-8, -10; 8, 10]
+            Parameter {
+              Variable      "A"
+              Value         "trafo.Gap_CS_area"
+              Show          off
+            }
+            Parameter {
+              Variable      "l"
+              Value         "trafo.Gap_flux_len"
+              Show          off
+            }
+            Parameter {
+              Variable      "F_init"
+              Value         "trafo.Gap_init_MMF"
+              Show          off
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, -15]
+              Direction     up
+            }
+            Terminal {
+              Type          MagneticPort
+              Position      [0, 15]
+              Direction     down
+            }
+          }
+          Component {
+            Type          MagneticInterface
+            Name          "MagInt9"
+            Show          off
+            Position      [530, 185]
+            Direction     down
+            Flipped       on
+            LabelPosition west
+            Parameter {
+              Variable      "n"
+              Value         "trafo.n_sndry"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "1"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rp"
+            SrcTerminal   1
+            DstComponent  "Lp"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rc"
+            SrcTerminal   2
+            Points        [345, 105; 360, 105]
+            Branch {
+              Points        [375, 105]
+              DstComponent  "Lm"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [360, 80]
+              Branch {
+                DstComponent  "Rp"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Am3"
+                DstTerminal   1
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rc"
+            SrcTerminal   1
+            Points        [345, 170; 360, 170]
+            Branch {
+              Points        [375, 170]
+              DstComponent  "Lm"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [360, 200]
+              Branch {
+                Points        [435, 200]
+                Branch {
+                  DstComponent  "Vm3"
+                  DstTerminal   2
+                }
+                Branch {
+                  Points        [470, 200; 470, 150]
+                  DstComponent  "MagInt7"
+                  DstTerminal   2
+                }
+              }
+              Branch {
+                Points        [220, 200]
+                Branch {
+                  DstComponent  "Vin"
+                  DstTerminal   2
+                }
+                Branch {
+                  DstComponent  "in2"
+                  DstTerminal   1
+                }
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Lp"
+            SrcTerminal   1
+            Points        [220, 80]
+            Branch {
+              DstComponent  "Iin"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vin"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   2
+            DstComponent  "Rs"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   1
+            DstComponent  "in1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   2
+            Points        [770, 80]
+            Branch {
+              DstComponent  "Vo"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "out1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vo"
+            SrcTerminal   2
+            Points        [770, 200]
+            Branch {
+              Points        [590, 200]
+              Branch {
+                DstComponent  "Vm4"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "MagInt9"
+                DstTerminal   2
+              }
+            }
+            Branch {
+              DstComponent  "out2"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "MagInt7"
+            SrcTerminal   3
+            DstComponent  "MagInt8"
+            DstTerminal   4
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "P_satTr1"
+            SrcTerminal   1
+            Points        [490, 60; 530, 60]
+            DstComponent  "MagInt8"
+            DstTerminal   3
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "P_satTr1"
+            SrcTerminal   2
+            Points        [490, 245; 530, 245]
+            DstComponent  "P_air3"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "MagInt9"
+            SrcTerminal   3
+            DstComponent  "MagInt7"
+            DstTerminal   4
+          }
+          Connection {
+            Type          Magnetic
+            SrcComponent  "MagInt9"
+            SrcTerminal   4
+            DstComponent  "P_air3"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   1
+            Points        [585, 80]
+            Branch {
+              Points        [590, 80]
+              DstComponent  "Vm4"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "MagInt8"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am3"
+            SrcTerminal   2
+            Points        [435, 80]
+            Branch {
+              DstComponent  "Vm3"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [470, 80; 470, 120]
+              DstComponent  "MagInt7"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "MagInt9"
+            SrcTerminal   1
+            Points        [550, 170; 550, 140]
+            Branch {
+              Points        [550, 110]
+              DstComponent  "MagInt8"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "out3"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Ls"
+            SrcTerminal   1
+            DstComponent  "Io"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Ls"
+            SrcTerminal   2
+            DstComponent  "Rs"
+            DstTerminal   2
+          }
+        }
+        Name          "Disable"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "in1"
+            Show          off
+            Position      [145, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out1"
+            Show          off
+            Position      [815, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "in2"
+            Show          off
+            Position      [145, 200]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out2"
+            Show          off
+            Position      [815, 200]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "out3"
+            Show          off
+            Position      [815, 140]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "Index"
+              Value         "5"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [275, 250]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-35, -10; 35, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,5)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Iin"
+            Show          on
+            Position      [195, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vin"
+            Show          on
+            Position      [220, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vo"
+            Show          on
+            Position      [710, 145]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Ammeter
+            Name          "Io"
+            Show          on
+            Position      [685, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am3"
+            Show          off
+            Position      [395, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am4"
+            Show          off
+            Position      [545, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm3"
+            Show          off
+            Position      [435, 135]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm4"
+            Show          off
+            Position      [530, 140]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Port
+            Name          "out4"
+            Show          off
+            Position      [145, 140]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "6"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   2
+            Points        [220, 80]
+            Branch {
+              DstComponent  "Am3"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vin"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Iin"
+            SrcTerminal   1
+            DstComponent  "in1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Vin"
+            SrcTerminal   2
+            Points        [220, 200]
+            Branch {
+              Points        [435, 200]
+              Branch {
+                DstComponent  "Vm3"
+                DstTerminal   2
+              }
+              Branch {
+                Points        [530, 200]
+                Branch {
+                  Points        [710, 200]
+                  Branch {
+                    DstComponent  "Vo"
+                    DstTerminal   2
+                  }
+                  Branch {
+                    DstComponent  "out2"
+                    DstTerminal   1
+                  }
+                }
+                Branch {
+                  DstComponent  "Vm4"
+                  DstTerminal   2
+                }
+              }
+            }
+            Branch {
+              DstComponent  "in2"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Io"
+            SrcTerminal   2
+            Points        [710, 80]
+            Branch {
+              DstComponent  "Vo"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "out1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   1
+            Points        [525, 80]
+            Branch {
+              Points        [530, 80]
+              DstComponent  "Vm4"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [435, 80]
+              Branch {
+                DstComponent  "Am3"
+                DstTerminal   2
+              }
+              Branch {
+                DstComponent  "Vm3"
+                DstTerminal   1
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am4"
+            SrcTerminal   2
+            DstComponent  "Io"
+            DstTerminal   1
+          }
+        }
+      }
+      Parameter {
+        Variable      "Configuration"
+        Value         "1"
+        Show          off
+      }
+      MaskProbe {
+        Name          "Transformer Input Current"
+        Probe {
+          Component     "Iin"
+          Path          "Ideal Transformer"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Iin"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Iin"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Iin"
+          Path          "Real Transformer Simple"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Iin"
+          Path          "Real Transformer Complex"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Iin"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Iin"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Iin"
+          Path          "Disable"
+          Signals       {"Measured current"}
+        }
+      }
+      MaskProbe {
+        Name          "Transformer Input Voltage"
+        Probe {
+          Component     "Vin"
+          Path          "Ideal Transformer"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vin"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vin"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vin"
+          Path          "Real Transformer Simple"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vin"
+          Path          "Real Transformer Complex"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vin"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vin"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vin"
+          Path          "Disable"
+          Signals       {"Measured voltage"}
+        }
+      }
+      MaskProbe {
+        Name          "Transformer Output Current"
+        Probe {
+          Component     "Io"
+          Path          "Ideal Transformer"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Io"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Io"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Io"
+          Path          "Real Transformer Simple"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Io"
+          Path          "Real Transformer Complex"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Io"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Io"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Io"
+          Path          "Disable"
+          Signals       {"Measured current"}
+        }
+      }
+      MaskProbe {
+        Name          "Transformer Output Voltage"
+        Probe {
+          Component     "Vo"
+          Path          "Ideal Transformer"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vo"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vo"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vo"
+          Path          "Real Transformer Simple"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vo"
+          Path          "Real Transformer Complex"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vo"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vo"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vo"
+          Path          "Disable"
+          Signals       {"Measured voltage"}
+        }
+      }
+      MaskProbe {
+        Name          "Primary MMF"
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "MagInt5"
+          Path          "Real Transformer Simple"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "MagInt5"
+          Path          "Real Transformer Complex"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "MagInt7"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "Secondary MMF"
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "MagInt6"
+          Path          "Real Transformer Simple"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "MagInt6"
+          Path          "Real Transformer Complex"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "MagInt8"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "Core Flux "
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "P_satTr"
+          Path          "Real Transformer Simple"
+          Signals       {"Flux"}
+        }
+        Probe {
+          Component     "P_satTr"
+          Path          "Real Transformer Complex"
+          Signals       {"Flux"}
+        }
+        Probe {
+          Component     "P_satTr1"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"Flux"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "Air Gap Flux"
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "P_air2"
+          Path          "Real Transformer Simple"
+          Signals       {"Flux"}
+        }
+        Probe {
+          Component     "P_air2"
+          Path          "Real Transformer Complex"
+          Signals       {"Flux"}
+        }
+        Probe {
+          Component     "P_air3"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"Flux"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "Air Gap MMF"
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "P_air2"
+          Path          "Real Transformer Simple"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "P_air2"
+          Path          "Real Transformer Complex"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "P_air3"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"MMF"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "Air Gap Field Strength"
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "P_air2"
+          Path          "Real Transformer Simple"
+          Signals       {"Field strength"}
+        }
+        Probe {
+          Component     "P_air2"
+          Path          "Real Transformer Complex"
+          Signals       {"Field strength"}
+        }
+        Probe {
+          Component     "P_air3"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"Field strength"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "Air Gap Flux Density"
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Ideal Transformer Middle Point Complex"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "P_air2"
+          Path          "Real Transformer Simple"
+          Signals       {"Flux density"}
+        }
+        Probe {
+          Component     "P_air2"
+          Path          "Real Transformer Complex"
+          Signals       {"Flux density"}
+        }
+        Probe {
+          Component     "P_air3"
+          Path          "Real Transformer Middle Point Complex"
+          Signals       {"Flux density"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+    }
+    Component {
+      Type          ConfigurableSubsystem
+      Name          "Choke"
+      Show          on
+      Position      [140, 110]
+      Direction     right
+      Flipped       off
+      LabelPosition north
+      Frame         [-20, -15; 20, 15]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskType      "Mutual Inductance with Mutual Resistance (2 Windings)"
+      MaskDescription "Magnetic coupling between two lossy windings."
+      MaskDisplay   "Icon:circle(-14, -18, 1)\n"
+"Icon:line({-10, -10, -11}, {15, 14, 14})\n"
+"Icon:arc(-11.5, 10.5, 3.5, 3.5, 90, 180)\n"
+"Icon:line({-10, -11}, {7, 7})\n"
+"Icon:arc(-11.5, 3.5, 3.5, 3.5, 90, 180)\n"
+"Icon:line({-10, -11}, {0, 0})\n"
+"Icon:arc(-11.5, -3.5, 3.5, 3.5, 90, 180)\n"
+"Icon:line({-10, -11}, {-7, -7})\n"
+"Icon:arc(-11.5, -10.5, 3.5, 3.5, 90, 180)\n"
+"Icon:line({-10, -10, -11}, {-15, -14, -14})\n"
+"\n"
+"Icon:circle(6, -17.5, .5)\n"
+"Icon:line({10, 10, 9}, {15, 14, 14})\n"
+"Icon:arc(8.5, 10.5, 3.5, 3.5, 90, 180)\n"
+"Icon:line({10, 9}, {7, 7})\n"
+"Icon:arc(8.5, 3.5, 3.5, 3.5, 90, 180)\n"
+"Icon:line({10, 9}, {0, 0})\n"
+"Icon:arc(8.5, -3.5, 3.5, 3.5, 90, 180)\n"
+"Icon:line({10, 9}, {-7, -7})\n"
+"Icon:arc(8.5, -10.5, 3.5, 3.5, 90, 180)\n"
+"Icon:line({10, 10, 9}, {-15, -14, -14})\n"
+"\n"
+"Icon:line({-2, -2}, {-17, 17})\n"
+"Icon:line({0, 0}, {-17, 17})"
+      MaskDisplayLang "2"
+      MaskIconFrame off
+      MaskIconOpaque on
+      MaskIconRotates on
+      Parameter {
+        Variable      "L"
+        Prompt        "Self inductance [L1 L2]"
+        Type          FreeText
+        Value         "[PFC.Choke.L1 PFC.Choke.L2]"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "R"
+        Prompt        "Winding resistance [R1 R2]"
+        Type          FreeText
+        Value         "[PFC.Choke.R1 PFC.Choke.R2]"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "Lm"
+        Prompt        "Mutual inductance Lm"
+        Type          FreeText
+        Value         "PFC.Choke.Lm"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "Rm"
+        Prompt        "Mutual resistance Rm"
+        Type          FreeText
+        Value         "PFC.Choke.Rm"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Parameter {
+        Variable      "i0"
+        Prompt        "Initial current [i1 i2]"
+        Type          FreeText
+        Value         "[PFC.Choke.i1 PFC.Choke.i2]"
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Terminal {
+        Type          Port
+        Position      [-10, -20]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [-10, 20]
+        Direction     down
+      }
+      Terminal {
+        Type          Port
+        Position      [10, -20]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [10, 20]
+        Direction     down
+      }
+      CommentThroughTerminals    [ [ 0 1 ][ 2 3 ] ]
+      TerminalNames { "w1a", "w1b", "w2a", "w2b" }
+      Location      [0, 26; 1536, 780]
+      ZoomFactor    1
+      SliderPosition [0, 0]
+      ShowBrowser   off
+      BrowserWidth  100
+      Configurations {
+        Name          "Configuration 1"
+        Schematic {
+          Component {
+            Type          Inductor
+            Name          "L1-Lm"
+            Show          on
+            Position      [215, 170]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "L(1)-Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "i0(1)"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "R1-Rm"
+            Show          on
+            Position      [270, 170]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "R(1)-Rm"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "w1a"
+            Show          on
+            Position      [165, 170]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "Lm"
+            Show          on
+            Position      [315, 195]
+            Direction     down
+            Flipped       on
+            LabelPosition west
+            Parameter {
+              Variable      "L"
+              Value         "Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "i0(1)+i0(2)"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rm"
+            Show          on
+            Position      [315, 245]
+            Direction     down
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "R"
+              Value         "Rm"
+              Show          off
+            }
+          }
+          Component {
+            Type          Transformer
+            Name          "Tr1"
+            Show          on
+            Position      [360, 220]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Windings"
+              Value         "[1 1]"
+              Show          off
+            }
+            Parameter {
+              Variable      "n"
+              Value         "[1 1]"
+              Show          off
+            }
+            Parameter {
+              Variable      "Polarity"
+              Value         "+"
+              Show          off
+            }
+            Parameter {
+              Variable      "Lm"
+              Value         "inf"
+              Show          off
+            }
+            Parameter {
+              Variable      "im0"
+              Value         "0"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "w1b"
+            Show          on
+            Position      [160, 270]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "L2-Lm"
+            Show          on
+            Position      [405, 170]
+            Direction     left
+            Flipped       on
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "L(2)-Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "i0(2)"
+              Show          off
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "R2-Rm"
+            Show          on
+            Position      [460, 170]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "R"
+              Value         "R(2)-Rm"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "w2a"
+            Show          on
+            Position      [510, 170]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "w2b"
+            Show          on
+            Position      [510, 270]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm1"
+            Show          off
+            Position      [190, 220]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm2"
+            Show          off
+            Position      [485, 220]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "L2-Lm"
+            SrcTerminal   2
+            Points        [370, 170]
+            DstComponent  "Tr1"
+            DstTerminal   3
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "L2-Lm"
+            SrcTerminal   1
+            DstComponent  "R2-Rm"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "L1-Lm"
+            SrcTerminal   2
+            DstComponent  "R1-Rm"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rm"
+            SrcTerminal   1
+            Points        [315, 270]
+            Branch {
+              Points        [350, 270]
+              DstComponent  "Tr1"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [190, 270]
+              Branch {
+                DstComponent  "w1b"
+                DstTerminal   1
+              }
+              Branch {
+                DstComponent  "Vm1"
+                DstTerminal   2
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rm"
+            SrcTerminal   2
+            DstComponent  "Lm"
+            DstTerminal   2
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Lm"
+            SrcTerminal   1
+            Points        [315, 170]
+            Branch {
+              Points        [350, 170]
+              DstComponent  "Tr1"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "R1-Rm"
+              DstTerminal   2
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "L1-Lm"
+            SrcTerminal   1
+            Points        [190, 170]
+            Branch {
+              DstComponent  "w1a"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vm1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "R2-Rm"
+            SrcTerminal   2
+            Points        [485, 170]
+            Branch {
+              DstComponent  "w2a"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vm2"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Tr1"
+            SrcTerminal   4
+            Points        [370, 270; 485, 270]
+            Branch {
+              DstComponent  "w2b"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vm2"
+              DstTerminal   2
+            }
+          }
+        }
+        Name          "Configuration 1 copy"
+        Schematic {
+          Component {
+            Type          Inductor
+            Name          "L1-Lm"
+            Show          on
+            Position      [260, 170]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Parameter {
+              Variable      "L"
+              Value         "L(1)-Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "i0(1)"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "w1a"
+            Show          on
+            Position      [165, 170]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "w1b"
+            Show          on
+            Position      [160, 270]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Inductor
+            Name          "L2-Lm"
+            Show          on
+            Position      [260, 270]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "L"
+              Value         "L(2)-Lm"
+              Show          off
+            }
+            Parameter {
+              Variable      "i_init"
+              Value         "i0(2)"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "w2a"
+            Show          on
+            Position      [510, 170]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "w2b"
+            Show          on
+            Position      [510, 270]
+            Direction     right
+            Flipped       on
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm1"
+            Show          off
+            Position      [190, 220]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm2"
+            Show          off
+            Position      [485, 220]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "L1-Lm"
+            SrcTerminal   1
+            Points        [190, 170]
+            Branch {
+              DstComponent  "w1a"
+              DstTerminal   1
+            }
+            Branch {
+              DstComponent  "Vm1"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "w2a"
+            SrcTerminal   1
+            Points        [485, 170]
+            Branch {
+              DstComponent  "L1-Lm"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "Vm2"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "w1b"
+            SrcTerminal   1
+            Points        [190, 270]
+            Branch {
+              DstComponent  "Vm1"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "L2-Lm"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "w2b"
+            SrcTerminal   1
+            Points        [485, 270]
+            Branch {
+              DstComponent  "Vm2"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "L2-Lm"
+              DstTerminal   2
+            }
+          }
+        }
+      }
+      Parameter {
+        Variable      "Configuration"
+        Value         "1"
+        Show          off
+      }
+      MaskProbe {
+        Name          "Winding 1 current"
+        Probe {
+          Component     "L1-Lm"
+          Path          "Configuration 1"
+          Signals       {"Inductor current"}
+        }
+      }
+      MaskProbe {
+        Name          "Winding 1 voltage"
+        Probe {
+          Component     "Vm1"
+          Path          "Configuration 1"
+          Signals       {"Measured voltage"}
+        }
+      }
+      MaskProbe {
+        Name          "Winding 2 current"
+        Probe {
+          Component     "L2-Lm"
+          Path          "Configuration 1"
+          Signals       {"Inductor current"}
+        }
+      }
+      MaskProbe {
+        Name          "Winding 2 voltage"
+        Probe {
+          Component     "Vm2"
+          Path          "Configuration 1"
+          Signals       {"Measured voltage"}
+        }
+      }
+    }
+    RectangleAnnotation {
+      Position     [420, 140]
+      Width        760
+      Height       200
+      CornerRadius 3
+      Thickness    7
+      PenColor     4289331455
+      PenAlpha     1
+      BrushColor   10642217
+      BrushAlpha   0
+    } 
+  }
+}
+DemoSignature "LuHYD2TIBedhLHAHMHyjosCFHlKAywvRaaa2cbZifCw="

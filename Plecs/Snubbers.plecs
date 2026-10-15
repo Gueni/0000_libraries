@@ -1,0 +1,1172 @@
+Plecs {
+  Name          "Snubbers"
+  Version       "4.9"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "1.0"
+  Timeout       ""
+  Solver        "auto"
+  MaxStep       "1e-3"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "1e-3"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "3"
+  NegativeSwitchLossMsg "3"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "2"
+  DatatypeInheritanceConflictMsg "1"
+  ContSampleTimeConflictMsg "1"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "1000"
+  AlgebraicLoopWithStateMachineMsg "3"
+  AssertionAction "1"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands ""
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "1"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [0, 23; 1920, 989]
+    ZoomFactor    1.96258
+    SliderPosition [7, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          ConfigurableSubsystem
+      Name          "RC Snub"
+      Show          on
+      Position      [125, 100]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Frame         [-5, -20; 5, 20]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskType      "RC Snubber"
+      MaskDescription "This subsystem contains an RC snubber network, designed"
+" to protect power electronic components from voltage spikes and dampen oscill"
+"ations in switching circuits. "
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Parameter {
+        Variable      "RCS"
+        Prompt        "RC Snubber Parameters :"
+        Type          FreeText
+        Value         ""
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Terminal {
+        Type          Port
+        Position      [0, -25]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [0, 25]
+        Direction     down
+      }
+      TerminalNames { "Port1", "Port2" }
+      Location      [0, 26; 1536, 780]
+      ZoomFactor    1
+      SliderPosition [0, 0]
+      ShowBrowser   off
+      BrowserWidth  100
+      Configurations {
+        Name          "Enable"
+        Schematic {
+          Component {
+            Type          Resistor
+            Name          "Rsnub"
+            Show          on
+            Position      [160, 130]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "R"
+              Value         "RCS.Rsnub"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "Port1"
+            Show          off
+            Position      [65, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "Port2"
+            Show          off
+            Position      [65, 240]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Isnub"
+            Show          on
+            Position      [125, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vsnub"
+            Show          on
+            Position      [250, 165]
+            Direction     up
+            Flipped       off
+            LabelPosition northeast
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Passives/C"
+            Name          "Csnub"
+            Show          on
+            Position      [160, 185]
+            Direction     left
+            Flipped       off
+            LabelPosition east
+            Frame         [-10, -20; 10, 20]
+            Parameter {
+              Variable      "Cap_dict"
+              Value         "RCS.Csnub"
+              Show          off
+            }
+            Parameter {
+              Variable      "Configuration"
+              Value         "RCS.Csnub.Config"
+              Show          off
+            }
+            Terminal {
+              Type          Port
+              Position      [-25, 0]
+              Direction     left
+            }
+            Terminal {
+              Type          Port
+              Position      [25, 0]
+              Direction     right
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Isnub"
+            SrcTerminal   1
+            DstComponent  "Port1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rsnub"
+            SrcTerminal   1
+            Points        [160, 80]
+            Branch {
+              DstComponent  "Isnub"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [250, 80]
+              DstComponent  "Vsnub"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Csnub"
+            SrcTerminal   1
+            Points        [160, 240]
+            Branch {
+              DstComponent  "Port2"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [250, 240]
+              DstComponent  "Vsnub"
+              DstTerminal   2
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Rsnub"
+            SrcTerminal   2
+            DstComponent  "Csnub"
+            DstTerminal   2
+          }
+        }
+        Name          "Disable"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "Port1"
+            Show          off
+            Position      [65, 80]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "Port2"
+            Show          off
+            Position      [65, 240]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Isnub"
+            Show          on
+            Position      [125, 80]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vsnub"
+            Show          on
+            Position      [250, 165]
+            Direction     up
+            Flipped       off
+            LabelPosition northeast
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [125, 160]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-40, -10; 40, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,1)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Isnub"
+            SrcTerminal   1
+            DstComponent  "Port1"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Wire
+            Points        [160, 110; 160, 80]
+            Branch {
+              DstComponent  "Isnub"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [250, 80]
+              DstComponent  "Vsnub"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            Points        [160, 210; 160, 240]
+            Branch {
+              DstComponent  "Port2"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [250, 240]
+              DstComponent  "Vsnub"
+              DstTerminal   2
+            }
+          }
+        }
+      }
+      Parameter {
+        Variable      "Configuration"
+        Value         "1"
+        Show          off
+      }
+      MaskProbe {
+        Name          "RC Snubber Current"
+        Probe {
+          Component     "Isnub"
+          Path          "Enable"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "Isnub"
+          Path          "Disable"
+          Signals       {"Measured current"}
+        }
+      }
+      MaskProbe {
+        Name          "RC Snubber Voltage"
+        Probe {
+          Component     "Vsnub"
+          Path          "Enable"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "Vsnub"
+          Path          "Disable"
+          Signals       {"Measured voltage"}
+        }
+      }
+      MaskProbe {
+        Name          "RC Snubber Resistor Current"
+        Probe {
+          Component     "Rsnub"
+          Path          "Enable"
+          Signals       {"Resistor current"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RC Snubber Resistor Voltage"
+        Probe {
+          Component     "Rsnub"
+          Path          "Enable"
+          Signals       {"Resistor voltage"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RC Snubber Resistor Dissipation"
+        Probe {
+          Component     "Rsnub"
+          Path          "Enable"
+          Signals       {"Resistor power"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RC Snubber Capacitor Current"
+        Probe {
+          Component     "Csnub"
+          Path          "Enable"
+          Signals       {"Capacitor Current"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RC Snubber Capacitor Voltage"
+        Probe {
+          Component     "Csnub"
+          Path          "Enable"
+          Signals       {"Capacitor Voltage"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RC Snubber Capacitor Dissipation"
+        Probe {
+          Component     "Csnub"
+          Path          "Enable"
+          Signals       {"Capacitor Dissipation"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+    }
+    Component {
+      Type          ConfigurableSubsystem
+      Name          "RCD Clamp"
+      Show          on
+      Position      [205, 100]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Frame         [-5, -20; 5, 20]
+      SampleTime    "-1"
+      CodeGenDiscretizationMethod "2"
+      CodeGenTarget "Generic"
+      MaskType      "RCD Clamp"
+      MaskDescription "This subsystem contains an RCD clamp circuit, designed "
+"to limit voltage spikes and recover energy in flyback converters and other sw"
+"itching power supplies."
+      MaskDisplayLang "2"
+      MaskIconFrame on
+      MaskIconOpaque off
+      MaskIconRotates on
+      Parameter {
+        Variable      "RCD"
+        Prompt        "RCD Clamp Parameters :"
+        Type          FreeText
+        Value         ""
+        Show          off
+        Tunable       off
+        TabName       ""
+      }
+      Terminal {
+        Type          Port
+        Position      [0, -25]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [0, 25]
+        Direction     down
+      }
+      Terminal {
+        Type          HeatPort
+        Position      [-10, 0]
+        Direction     left
+      }
+      TerminalNames { "-", "+", "Ambient" }
+      Location      [0, 26; 1536, 780]
+      ZoomFactor    1
+      SliderPosition [0, 0]
+      ShowBrowser   off
+      BrowserWidth  100
+      Configurations {
+        Name          "Enable"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "-"
+            Show          on
+            Position      [200, 60]
+            Direction     down
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "+"
+            Show          on
+            Position      [200, 430]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "iRCD"
+            Show          on
+            Position      [200, 120]
+            Direction     down
+            Flipped       off
+            LabelPosition east
+          }
+          Component {
+            Type          Voltmeter
+            Name          "VRCD"
+            Show          on
+            Position      [100, 230]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Resistor
+            Name          "R"
+            Show          on
+            Position      [240, 235]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "R"
+              Value         "RCD.R"
+              Show          off
+            }
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Passives/C"
+            Name          "C"
+            Show          on
+            Position      [160, 235]
+            Direction     left
+            Flipped       off
+            LabelPosition east
+            Frame         [-10, -20; 10, 20]
+            Parameter {
+              Variable      "Cap_dict"
+              Value         "RCD.C"
+              Show          off
+            }
+            Parameter {
+              Variable      "Configuration"
+              Value         "RCD.C.Config"
+              Show          off
+            }
+            Terminal {
+              Type          Port
+              Position      [-25, 0]
+              Direction     left
+            }
+            Terminal {
+              Type          Port
+              Position      [25, 0]
+              Direction     right
+            }
+          }
+          Component {
+            Type          Reference
+            SrcComponent  "Switches/D"
+            Name          "D"
+            Show          on
+            Position      [200, 345]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+            Frame         [-15, -10; 15, 10]
+            Parameter {
+              Variable      "Diode"
+              Value         "RCD.diode"
+              Show          off
+            }
+            Parameter {
+              Variable      "Configuration"
+              Value         "RCD.diode.Config"
+              Show          off
+            }
+            Terminal {
+              Type          Port
+              Position      [0, -15]
+              Direction     up
+            }
+            Terminal {
+              Type          Port
+              Position      [0, 15]
+              Direction     down
+            }
+            Terminal {
+              Type          HeatPort
+              Position      [20, 0]
+              Direction     right
+            }
+          }
+          Component {
+            Type          ThermalResistor
+            Name          "Rth"
+            Show          on
+            Position      [270, 400]
+            Direction     down
+            Flipped       on
+            LabelPosition east
+            Parameter {
+              Variable      "Rth"
+              Value         "RCD.rth"
+              Show          off
+            }
+          }
+          Component {
+            Type          HeatPort
+            Name          "Ambient"
+            Show          off
+            Position      [270, 445]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          PlecsProbe
+            Name          "Probe"
+            Show          off
+            Position      [380, 190]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Probe {
+              Component     "C"
+              Path          "RCD Clamp/Enable"
+              Signals       {"Capacitor Dissipation"}
+            }
+            Probe {
+              Component     "R"
+              Path          "RCD Clamp/Enable"
+              Signals       {"Resistor power"}
+            }
+            Probe {
+              Component     "D"
+              Path          "RCD Clamp/Enable"
+              Signals       {"Diode conduction loss", "Diode switching loss"}
+            }
+          }
+          Component {
+            Type          Sum
+            Name          "Sum"
+            Show          off
+            Position      [435, 190]
+            Direction     up
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "IconShape"
+              Value         "2"
+              Show          off
+            }
+            Parameter {
+              Variable      "Inputs"
+              Value         "|+"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataTypeOverflowMode"
+              Value         "1"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "C"
+            SrcTerminal   1
+            Points        [160, 290; 200, 290]
+            Branch {
+              Points        [240, 290]
+              DstComponent  "R"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "D"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          HeatPipe
+            SrcComponent  "Ambient"
+            SrcTerminal   1
+            DstComponent  "Rth"
+            DstTerminal   2
+          }
+          Connection {
+            Type          HeatPipe
+            SrcComponent  "Rth"
+            SrcTerminal   1
+            Points        [270, 345]
+            DstComponent  "D"
+            DstTerminal   3
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "R"
+            SrcTerminal   1
+            Points        [240, 170; 200, 170]
+            Branch {
+              Points        [160, 170]
+              DstComponent  "C"
+              DstTerminal   2
+            }
+            Branch {
+              DstComponent  "iRCD"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "-"
+            SrcTerminal   1
+            Points        [200, 80]
+            Branch {
+              DstComponent  "iRCD"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [100, 80]
+              DstComponent  "VRCD"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "D"
+            SrcTerminal   2
+            Points        [200, 395]
+            Branch {
+              DstComponent  "+"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [100, 395]
+              DstComponent  "VRCD"
+              DstTerminal   2
+            }
+          }
+          Connection {
+            Type          Signal
+            SrcComponent  "Probe"
+            SrcTerminal   1
+            DstComponent  "Sum"
+            DstTerminal   2
+          }
+        }
+        Name          "Disable"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "-"
+            Show          on
+            Position      [200, 60]
+            Direction     down
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "+"
+            Show          on
+            Position      [200, 430]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "iRCD"
+            Show          on
+            Position      [200, 120]
+            Direction     down
+            Flipped       off
+            LabelPosition east
+          }
+          Component {
+            Type          Voltmeter
+            Name          "VRCD"
+            Show          on
+            Position      [100, 230]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          ThermalResistor
+            Name          "Rth"
+            Show          on
+            Position      [270, 400]
+            Direction     down
+            Flipped       on
+            LabelPosition east
+            Parameter {
+              Variable      "Rth"
+              Value         "RCD.rth"
+              Show          off
+            }
+          }
+          Component {
+            Type          HeatPort
+            Name          "Ambient"
+            Show          off
+            Position      [270, 445]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "Index"
+              Value         "3"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [320, 170]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-40, -10; 40, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,1)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Connection {
+            Type          HeatPipe
+            SrcComponent  "Ambient"
+            SrcTerminal   1
+            DstComponent  "Rth"
+            DstTerminal   2
+          }
+          Connection {
+            Type          HeatPipe
+            SrcComponent  "Rth"
+            SrcTerminal   1
+            Points        [270, 345; 220, 345]
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "iRCD"
+            SrcTerminal   1
+            Points        [200, 170]
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "-"
+            SrcTerminal   1
+            Points        [200, 80]
+            Branch {
+              DstComponent  "iRCD"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [100, 80]
+              DstComponent  "VRCD"
+              DstTerminal   1
+            }
+          }
+          Connection {
+            Type          Wire
+            Points        [200, 360; 200, 395]
+            Branch {
+              DstComponent  "+"
+              DstTerminal   1
+            }
+            Branch {
+              Points        [100, 395]
+              DstComponent  "VRCD"
+              DstTerminal   2
+            }
+          }
+        }
+      }
+      Parameter {
+        Variable      "Configuration"
+        Value         "1"
+        Show          off
+      }
+      MaskProbe {
+        Name          "RCD Current"
+        Probe {
+          Component     "iRCD"
+          Path          "Enable"
+          Signals       {"Measured current"}
+        }
+        Probe {
+          Component     "iRCD"
+          Path          "Disable"
+          Signals       {"Measured current"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Voltage"
+        Probe {
+          Component     "VRCD"
+          Path          "Enable"
+          Signals       {"Measured voltage"}
+        }
+        Probe {
+          Component     "VRCD"
+          Path          "Disable"
+          Signals       {"Measured voltage"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Dissipation"
+        Probe {
+          Component     "Sum"
+          Path          "Enable"
+          Signals       {"Output"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Resistor Voltage"
+        Probe {
+          Component     "R"
+          Path          "Enable"
+          Signals       {"Resistor voltage"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Resistor Current"
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+        Probe {
+          Component     "R"
+          Path          "Enable"
+          Signals       {"Resistor current"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Resistor Dissipation"
+        Probe {
+          Component     "R"
+          Path          "Enable"
+          Signals       {"Resistor power"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Capacitor Voltage"
+        Probe {
+          Component     "C"
+          Path          "Enable"
+          Signals       {"Capacitor Voltage"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Capacitor Current"
+        Probe {
+          Component     "C"
+          Path          "Enable"
+          Signals       {"Capacitor Current"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Capacitor Dissipation"
+        Probe {
+          Component     "C"
+          Path          "Enable"
+          Signals       {"Capacitor Dissipation"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Diode Voltage"
+        Probe {
+          Component     "D"
+          Path          "Enable"
+          Signals       {"Diode voltage"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Diode Current"
+        Probe {
+          Component     "D"
+          Path          "Enable"
+          Signals       {"Diode current"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+      MaskProbe {
+        Name          "RCD Diode Dissipation"
+        Probe {
+          Component     "D"
+          Path          "Enable"
+          Signals       {"Diode conduction loss"}
+        }
+        Probe {
+          Component     "PH"
+          Path          "Disable"
+          Signals       {"Constant"}
+        }
+      }
+    }
+    RectangleAnnotation {
+      Position     [340, 160]
+      Width        600
+      Height       240
+      CornerRadius 3
+      Thickness    7
+      PenColor     4289331455
+      PenAlpha     1
+      BrushColor   10642217
+      BrushAlpha   0
+    } 
+  }
+}
+DemoSignature "rBZ/XHXCwqs4wcv15mLoXF2SH2blCxNyXIx3pFUx80I="

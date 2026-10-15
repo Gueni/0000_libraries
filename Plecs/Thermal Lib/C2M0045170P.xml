@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SemiconductorLibrary xmlns="http://www.plexim.com/xml/semiconductors/" version="1.1">
+    <Package class="MOSFET" vendor="Wolfspeed" partnumber="C2M0045170P">
+        <Variables>
+            <Variable>
+                <Name>Rgon</Name>
+                <Description>External turn-on gate resistance</Description>
+            </Variable>
+            <Variable>
+                <Name>Rgoff</Name>
+                <Description>External turn-off gate resistance</Description>
+            </Variable>
+        </Variables>
+        <SemiconductorData type="MOSFET">
+            <TurnOnLoss>
+                <ComputationMethod>Table and formula</ComputationMethod>
+                <Formula>E/(0.0961e-3*2.5+ 1.106e-3)*(0.0961e-3*Rgon+ 1.106e-3)</Formula>
+                <CurrentAxis> -10 0 9.59 20.08 30.44 40.68 50.62 60.44 69.95 79.78</CurrentAxis>
+                <VoltageAxis> -100 0 900 1200</VoltageAxis>
+                <TemperatureAxis> -55 25 150 900</TemperatureAxis>
+                <Energy scale="0.001">
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0.3013 0.4132 0.528 0.6456 0.7718 0.9058 1.043 1.176</Voltage>
+                        <Voltage> 0 0 0.4857 0.6565 0.8388 1.023 1.217 1.417 1.628 1.847</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0.33 0.46 0.59 0.72 0.86 1 1.16 1.3</Voltage>
+                        <Voltage> 0 0 0.54 0.73 0.93 1.13 1.35 1.57 1.8 2.05</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0.5174 0.7097 0.9068 1.109 1.325 1.556 1.791 2.02</Voltage>
+                        <Voltage> 0 0 0.8341 1.127 1.441 1.758 2.091 2.433 2.795 3.172</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0.6779 0.9298 1.188 1.453 1.737 2.038 2.346 2.647</Voltage>
+                        <Voltage> 0 0 1.093 1.477 1.887 2.303 2.739 3.188 3.662 4.156</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOnLoss>
+            <TurnOffLoss>
+                <ComputationMethod>Table and formula</ComputationMethod>
+                <Formula>E/(0.0935e-3*2.5+ 0.015e-3)*(0.0935e-3*Rgoff+ 0.015e-3)</Formula>
+                <CurrentAxis> -10 0 9.59 20.08 30.44 40.68 50.62 60.44 69.95 79.78</CurrentAxis>
+                <VoltageAxis> -100 0 900 1200</VoltageAxis>
+                <TemperatureAxis> -55 25 150 900</TemperatureAxis>
+                <Energy scale="0.001">
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0.09003 0.09299 0.111 0.1376 0.1895 0.257 0.335 0.4192</Voltage>
+                        <Voltage> 0 0 0.1403 0.1519 0.1658 0.1976 0.2628 0.3523 0.4564 0.5684</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0.09 0.09 0.11 0.14 0.19 0.26 0.34 0.42</Voltage>
+                        <Voltage> 0 0 0.14 0.15 0.17 0.2 0.27 0.36 0.46 0.57</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0.1103 0.1139 0.136 0.1686 0.2322 0.3149 0.4105 0.5135</Voltage>
+                        <Voltage> 0 0 0.1719 0.186 0.2031 0.2421 0.322 0.4316 0.5592 0.6964</Voltage>
+                    </Temperature>
+                    <Temperature>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0 0 0 0 0 0 0 0</Voltage>
+                        <Voltage> 0 0 0.1103 0.1139 0.136 0.1686 0.2322 0.3149 0.4105 0.5135</Voltage>
+                        <Voltage> 0 0 0.1719 0.186 0.2031 0.2421 0.322 0.4316 0.5592 0.6964</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOffLoss>
+            <ConductionLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> -150 -120 -90 -60 -30 -5 0 5 30 60 90 120 150</CurrentAxis>
+                <TemperatureAxis> -40 25 150 900</TemperatureAxis>
+                <VoltageDrop scale="1">
+                    <Temperature> -4.428 -3.483 -2.66 -1.768 -0.899 -0.156 0 0.168 0.96 2.375 4.541 7.338 10.63</Temperature>
+                    <Temperature> -5.489 -4.449 -3.35 -2.259 -1.131 -0.185 0 0.202 1.198 2.917 5.24 8.271 12.14</Temperature>
+                    <Temperature> -5.333 -4.857 -4.369 -3.856 -2.248 -0.369 0 0.417 2.562 5.607 9.765 15.42 22.35</Temperature>
+                    <Temperature> -5.6 -5.1 -4.587 -4.049 -2.36 -0.3875 0 0.4379 2.69 5.887 10.25 16.19 23.47</Temperature>
+                </VoltageDrop>
+            </ConductionLoss>
+        </SemiconductorData>
+        <ThermalModel>
+            <Branch type="Cauer">
+                <RCElement R="0.0072" C="0.002"/>
+                <RCElement R="0.0215" C="0.0074"/>
+                <RCElement R="0.106" C="0.0251"/>
+                <RCElement R="0.104" C="0.163"/>
+            </Branch>
+        </ThermalModel>
+        <Comment>
+            <Line></Line>
+        </Comment>
+    </Package>
+</SemiconductorLibrary>

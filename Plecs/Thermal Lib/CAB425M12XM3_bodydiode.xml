@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SemiconductorLibrary xmlns="http://www.plexim.com/xml/semiconductors/" version="1.1">
+    <Package class="Diode" vendor="Wolfspeed" partnumber="CAB425M12XM3">
+        <Variables/>
+        <SemiconductorData type="Diode">
+            <TurnOnLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0</CurrentAxis>
+                <VoltageAxis> 0</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1">
+                    <Temperature>
+                        <Voltage> 0</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOnLoss>
+            <TurnOffLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0</CurrentAxis>
+                <VoltageAxis> 0</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1">
+                    <Temperature>
+                        <Voltage> 0</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOffLoss>
+            <ConductionLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0 0.8 25 50 95 150 226 300 400 500 600 700 800</CurrentAxis>
+                <TemperatureAxis> -40 25 100 150 175 900</TemperatureAxis>
+                <VoltageDrop scale="1">
+                    <Temperature> 0 2.5 3.75 4.2 4.6 4.99 5.4 5.678 6 6.31 6.59 6.82 7.03</Temperature>
+                    <Temperature> 0 2.45 3.37 3.65 4 4.35 4.7 5 5.31 5.6 5.86 6.11 6.3</Temperature>
+                    <Temperature> 0 2.36 3.11 3.36 3.71 3.98 4.31 4.58 4.88 5.1 5.33 5.54 5.71</Temperature>
+                    <Temperature> 0 2.35 3 3.22 3.56 3.84 4.133 4.39 4.65 4.88 5.1 5.29 5.46</Temperature>
+                    <Temperature> 0 2.3 2.94 3.15 3.5 3.74 4.055 4.27 4.55 4.79 5 5.19 5.36</Temperature>
+                    <Temperature> 0 2.07 2.646 2.835 3.15 3.366 3.6495 3.843 4.095 4.311 4.5 4.671 4.824</Temperature>
+                </VoltageDrop>
+            </ConductionLoss>
+        </SemiconductorData>
+        <ThermalModel>
+            <Branch type="Cauer">
+                <RCElement R="0.02737" C="0.09689"/>
+                <RCElement R="0.05124" C="0.28599"/>
+                <RCElement R="0.05040" C="2.48772"/>
+            </Branch>
+        </ThermalModel>
+        <Comment>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>DISCLAIMER</Line>
+            <Line>This model is provided as is, where is, and with no warranty of any kind either</Line>
+            <Line>expressed or implied, including but not limited to any implied warranties of</Line>
+            <Line>merchantability and fitness for a particular purpose.</Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line></Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>Cree SiC Module PLECS Library</Line>
+            <Line></Line>
+            <Line>	CAB425M12XM3</Line>
+            <Line>	Half Bridge Module - Body Diode Model</Line>
+            <Line>	Version  1.4	 Date: 11-12-2020</Line>
+            <Line>	Version  1.5	 Date: 12-15-2020</Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line></Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>To find other WOLFSPEED SiC models, please visit: </Line>
+            <Line>https://www.wolfspeed.com/power/tools-and-support/all-models</Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+        </Comment>
+    </Package>
+</SemiconductorLibrary>

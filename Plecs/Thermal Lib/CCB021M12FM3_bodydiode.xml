@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SemiconductorLibrary xmlns="http://www.plexim.com/xml/semiconductors/" version="1.1">
+    <Package class="Diode" vendor="Wolfspeed" partnumber="CCB021M12FM3">
+        <Variables/>
+        <SemiconductorData type="Diode">
+            <TurnOnLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0</CurrentAxis>
+                <VoltageAxis> 0</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1">
+                    <Temperature>
+                        <Voltage> 0</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOnLoss>
+            <TurnOffLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0</CurrentAxis>
+                <VoltageAxis> 0</VoltageAxis>
+                <TemperatureAxis> 25</TemperatureAxis>
+                <Energy scale="1">
+                    <Temperature>
+                        <Voltage> 0</Voltage>
+                    </Temperature>
+                </Energy>
+            </TurnOffLoss>
+            <ConductionLoss>
+                <ComputationMethod>Table only</ComputationMethod>
+                <CurrentAxis> 0 0.02 0.1 1 2.5 5 10 20 30 40 50 60 70 80 90 100</CurrentAxis>
+                <TemperatureAxis> -40 -25 0 25 100 125 150 175 1000</TemperatureAxis>
+                <VoltageDrop scale="1">
+                    <Temperature> 0.000 2.877 3.487 4.373 4.743 5.044 5.383 5.800 6.108 6.372 6.611 6.835 7.048 7.253 7.452 7.647</Temperature>
+                    <Temperature> 0.000 2.757 3.342 4.191 4.548 4.840 5.173 5.587 5.898 6.165 6.409 6.638 6.857 7.068 7.274 7.475</Temperature>
+                    <Temperature> 0.000 2.616 3.171 3.979 4.320 4.600 4.923 5.330 5.639 5.906 6.152 6.383 6.605 6.819 7.028 7.233</Temperature>
+                    <Temperature> 0.000 2.509 3.042 3.818 4.146 4.418 4.733 5.135 5.441 5.709 5.956 6.188 6.412 6.629 6.841 7.048</Temperature>
+                    <Temperature> 0.000 2.322 2.815 3.534 3.838 4.091 4.385 4.762 5.050 5.303 5.536 5.756 5.968 6.173 6.374 6.571</Temperature>
+                    <Temperature> 0.000 2.274 2.756 3.460 3.759 4.007 4.297 4.668 4.954 5.205 5.436 5.655 5.865 6.069 6.269 6.465</Temperature>
+                    <Temperature> 0.000 2.232 2.705 3.396 3.690 3.935 4.220 4.589 4.873 5.122 5.352 5.570 5.780 5.984 6.184 6.379</Temperature>
+                    <Temperature> 0.000 2.193 2.659 3.338 3.627 3.869 4.152 4.517 4.800 5.048 5.278 5.496 5.706 5.910 6.110 6.306</Temperature>
+                    <Temperature> 0.000 1.974 2.393 3.004 3.265 3.482 3.736 4.065 4.320 4.543 4.750 4.947 5.136 5.319 5.499 5.675</Temperature>
+                </VoltageDrop>
+            </ConductionLoss>
+        </SemiconductorData>
+        <ThermalModel>
+            <Branch type="Cauer">
+                <RCElement R="0.053247" C="0.002463"/>
+                <RCElement R="0.243752" C="0.016463"/>
+                <RCElement R="0.819753" C="0.092602"/>
+            </Branch>
+        </ThermalModel>
+        <Comment>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>DISCLAIMER</Line>
+            <Line>This model is provided as is, where is, and with no warranty of any kind either</Line>
+            <Line>expressed or implied, including but not limited to any implied warranties of</Line>
+            <Line>merchantability and fitness for a particular purpose.</Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line></Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>Cree SiC Module PLECS Library</Line>
+            <Line></Line>
+            <Line>	CCB021M12FM3</Line>
+            <Line>	Six Pack Module - Body Diode Model</Line>
+            <Line>	Version  1.5	 Date: 12-15-2020</Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line></Line>
+            <Line></Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+            <Line>To find other WOLFSPEED SiC models, please visit: </Line>
+            <Line>https://www.wolfspeed.com/power/tools-and-support/all-models</Line>
+            <Line>-------------------------------------------------------------------------------------------------</Line>
+        </Comment>
+    </Package>
+</SemiconductorLibrary>
