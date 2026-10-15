@@ -1,0 +1,57 @@
+# ---------------------------------------------------------------
+# Altium Designer
+# ---------------------------------------------------------------
+
+# Local history (auto-saved revisions of every document)
+History/
+**/History/
+
+# Generated previews, logs and outputs
+__Previews/
+Project Logs for */
+Project Outputs for */
+
+# Per-user / per-workspace state
+*.PrjPcbStructure.bak
+*.SchDocPreview
+*.PcbDocPreview
+*.PrjPcbVariants.bak
+*.dsnwrk
+*.DsnWrk
+*.PrjGrpStructure
+
+# Autosave, backup and lock files
+*.$$$
+*.~*
+~$*
+*.bak
+*.Bak
+*.BAK
+*.lck
+*.LOG
+*.tmp
+
+# Altium cache / temp folders
+.vault/
+**/Altium Temp/
+
+# Access database lock file (created while DB.mdb is open)
+*.ldb
+*.laccdb
+
+# ---------------------------------------------------------------
+# PLECS
+# ---------------------------------------------------------------
+*.plecs~
+*.plecs.bak
+*.plecs.autosave
+
+# ---------------------------------------------------------------
+# OS / editor
+# ---------------------------------------------------------------
+desktop.ini
+Thumbs.db
+ehthumbs.db
+.DS_Store
+.vscode/
+.idea/
