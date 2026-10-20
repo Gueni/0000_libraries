@@ -116,14 +116,3 @@ number from a device's thermal description. Many MOSFET models expose `Rgon` /
 `Rgoff` (external gate resistance) as variables.
 
 ---
-
-## Notes
-
-- This is a working collection, not a qualified parts catalog. Verify symbols,
-  footprints, pinouts, ratings, and loss/thermal data against current
-  manufacturer datasheets before using them in a released design.
-- Files may trigger migration warnings when opened in a different Altium or
-  PLECS version than they were saved in.
-- No license is included. Some content (e.g. tutorial material and vendor
-  semiconductor models) may be subject to its original publisher's terms;
-  check before redistributing.
