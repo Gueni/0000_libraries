@@ -53,7 +53,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 23; 1920, 989]
+    Location      [0, 24; 1539, 825]
     ZoomFactor    1.96258
     SliderPosition [7, 0]
     ShowBrowser   off
@@ -1169,4 +1169,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "rBZ/XHXCwqs4wcv15mLoXF2SH2blCxNyXIx3pFUx80I="
+DemoSignature "fjbfXSaI5yqPzKVvcAzQfcQBfnPOx3iPrF529Yt76mM="

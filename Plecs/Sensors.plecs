@@ -53,56 +53,59 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 23; 1920, 989]
-    ZoomFactor    1.71498
-    SliderPosition [0, 0]
+    Location      [0, 24; 1539, 825]
+    ZoomFactor    2.57012
+    SliderPosition [22, 0]
     ShowBrowser   off
     BrowserWidth  100
     Component {
       Type          Subsystem
-      Name          "A_sense"
+      Name          "A"
       Show          on
-      Position      [400, 105]
+      Position      [320, 85]
       Direction     right
       Flipped       off
-      LabelPosition west
-      Frame         [-5, -20; 5, 20]
+      LabelPosition none
+      Frame         [-20, -5; 20, 5]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
       MaskType      "A_sense"
-      MaskDescription "A_sense"
+      MaskDescription "Isolated current sensor (shunt + isolated amplifier, e."
+"g. AMC1301): in series between its two ports. v_out = clamp(Vofs + err_ofs + "
+"G*(1+err_g) * i filtered by a first-order pole at BW, Vmin, Vmax)."
       MaskDisplayLang "2"
       MaskIconFrame on
       MaskIconOpaque off
       MaskIconRotates on
       Parameter {
-        Variable      "new_var"
-        Prompt        "New Description"
+        Variable      "Sensor"
+        Prompt        "Sensor struct: G [V/unit], Vofs [V], BW [Hz] (BW2 [Hz] "
+"for voltage), err_g [/], err_ofs [V], Vmin [V], Vmax [V]"
         Type          FreeText
-        Value         ""
+        Value         "Sensor"
         Show          off
         Tunable       off
         TabName       ""
       }
       Terminal {
         Type          Port
-        Position      [-25, 0]
-        Direction     left
+        Position      [0, 25]
+        Direction     down
       }
       Terminal {
         Type          Port
-        Position      [25, 0]
-        Direction     right
+        Position      [0, -25]
+        Direction     up
       }
       Terminal {
         Type          Output
-        Position      [0, -9]
-        Direction     up
+        Position      [-9, 0]
+        Direction     left
       }
       Schematic {
-        Location      [0, 23; 1536, 777]
-        ZoomFactor    2.2459
+        Location      [0, 24; 1536, 778]
+        ZoomFactor    1.31077
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -110,7 +113,7 @@ Plecs {
           Type          Port
           Name          "Port1"
           Show          off
-          Position      [65, 80]
+          Position      [60, 120]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -126,11 +129,20 @@ Plecs {
           }
         }
         Component {
+          Type          Ammeter
+          Name          "Am"
+          Show          off
+          Position      [120, 160]
+          Direction     up
+          Flipped       off
+          LabelPosition east
+        }
+        Component {
           Type          Port
           Name          "Port2"
           Show          off
-          Position      [175, 80]
-          Direction     left
+          Position      [60, 195]
+          Direction     right
           Flipped       off
           LabelPosition north
           Parameter {
@@ -145,10 +157,137 @@ Plecs {
           }
         }
         Component {
+          Type          Gain
+          Name          "Sensitivity"
+          Show          on
+          Position      [215, 160]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "K"
+            Value         "Sensor.G*(1+Sensor.err_g)"
+            Show          on
+          }
+          Parameter {
+            Variable      "Multiplication"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputDataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "GainDataType"
+            Value         "11"
+            Show          off
+          }
+        }
+        Component {
+          Type          TransferFunction
+          Name          "Bandwidth"
+          Show          on
+          Position      [385, 160]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-35, -15; 35, 15]
+          Parameter {
+            Variable      "Numerator"
+            Value         "[1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "Denominator"
+            Value         "[1/(2*pi*Sensor.BW) 1]"
+            Show          on
+          }
+          Parameter {
+            Variable      "X0"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "Vofs"
+          Show          on
+          Position      [300, 240]
+          Direction     right
+          Flipped       off
+          LabelPosition west
+          Frame         [-80, -10; 80, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "Sensor.Vofs+Sensor.err_ofs"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Offset"
+          Show          on
+          Position      [515, 165]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "++"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Saturation
+          Name          "Output range"
+          Show          on
+          Position      [585, 165]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "UpperLimit"
+            Value         "Sensor.Vmax"
+            Show          off
+          }
+          Parameter {
+            Variable      "LowerLimit"
+            Value         "Sensor.Vmin"
+            Show          off
+          }
+        }
+        Component {
           Type          Output
           Name          "Out1"
           Show          off
-          Position      [175, 55]
+          Position      [645, 165]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -165,36 +304,92 @@ Plecs {
         }
         Connection {
           Type          Wire
-          SrcComponent  "Port2"
+          SrcComponent  "Port1"
           SrcTerminal   1
-          DstComponent  "Port1"
+          Points        [120, 120]
+          DstComponent  "Am"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Wire
+          SrcComponent  "Am"
+          SrcTerminal   2
+          Points        [120, 195]
+          DstComponent  "Port2"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Am"
+          SrcTerminal   3
+          DstComponent  "Sensitivity"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sensitivity"
+          SrcTerminal   2
+          DstComponent  "Bandwidth"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Bandwidth"
+          SrcTerminal   2
+          DstComponent  "Offset"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Vofs"
+          SrcTerminal   1
+          Points        [480, 240; 480, 170]
+          DstComponent  "Offset"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Offset"
+          SrcTerminal   1
+          DstComponent  "Output range"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Output range"
+          SrcTerminal   2
+          DstComponent  "Out1"
           DstTerminal   1
         }
       }
     }
     Component {
       Type          Subsystem
-      Name          "V_sense"
+      Name          "V"
       Show          on
-      Position      [320, 105]
+      Position      [255, 100]
       Direction     right
       Flipped       off
-      LabelPosition west
+      LabelPosition none
       Frame         [-5, -20; 5, 20]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
       MaskType      "V_sense"
-      MaskDescription "V_sense"
+      MaskDescription "Isolated voltage sensor (resistive divider + RC anti-al"
+"ias filter + isolated amplifier, e.g. AMC1311): across its two ports. v_out ="
+" clamp(Vofs + err_ofs + G*(1+err_g) * v filtered by poles at BW and BW2, Vmin"
+", Vmax)."
       MaskDisplayLang "2"
       MaskIconFrame on
       MaskIconOpaque off
       MaskIconRotates on
       Parameter {
-        Variable      "new_var"
-        Prompt        "New Description"
+        Variable      "Sensor"
+        Prompt        "Sensor struct: G [V/unit], Vofs [V], BW [Hz] (BW2 [Hz] "
+"for voltage), err_g [/], err_ofs [V], Vmin [V], Vmax [V]"
         Type          FreeText
-        Value         ""
+        Value         "Sensor"
         Show          off
         Tunable       off
         TabName       ""
@@ -215,8 +410,8 @@ Plecs {
         Direction     up
       }
       Schematic {
-        Location      [0, 26; 1536, 780]
-        ZoomFactor    2.2459
+        Location      [0, 24; 1536, 778]
+        ZoomFactor    1.71655
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -224,7 +419,7 @@ Plecs {
           Type          Port
           Name          "Port1"
           Show          off
-          Position      [65, 80]
+          Position      [60, 80]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -243,10 +438,10 @@ Plecs {
           Type          Port
           Name          "Port2"
           Show          off
-          Position      [175, 80]
-          Direction     left
+          Position      [60, 160]
+          Direction     right
           Flipped       off
-          LabelPosition north
+          LabelPosition south
           Parameter {
             Variable      "Index"
             Value         "2"
@@ -259,10 +454,147 @@ Plecs {
           }
         }
         Component {
+          Type          Voltmeter
+          Name          "Vm"
+          Show          off
+          Position      [120, 120]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+        }
+        Component {
+          Type          Gain
+          Name          "Divider ratio"
+          Show          on
+          Position      [215, 120]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "K"
+            Value         "Sensor.G*(1+Sensor.err_g)"
+            Show          on
+          }
+          Parameter {
+            Variable      "Multiplication"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputDataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "GainDataType"
+            Value         "11"
+            Show          off
+          }
+        }
+        Component {
+          Type          TransferFunction
+          Name          "RC + amplifier"
+          Show          on
+          Position      [365, 120]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-35, -15; 35, 15]
+          Parameter {
+            Variable      "Numerator"
+            Value         "[1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "Denominator"
+            Value         "[1/((2*pi*Sensor.BW)*(2*pi*Sensor.BW2)) 1/(2*pi*Sen"
+"sor.BW)+1/(2*pi*Sensor.BW2) 1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "X0"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "Vofs"
+          Show          on
+          Position      [395, 180]
+          Direction     right
+          Flipped       off
+          LabelPosition west
+          Frame         [-80, -10; 80, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "Sensor.Vofs+Sensor.err_ofs"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Offset"
+          Show          on
+          Position      [560, 125]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "++"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Saturation
+          Name          "Output range"
+          Show          on
+          Position      [615, 125]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "UpperLimit"
+            Value         "Sensor.Vmax"
+            Show          off
+          }
+          Parameter {
+            Variable      "LowerLimit"
+            Value         "Sensor.Vmin"
+            Show          off
+          }
+        }
+        Component {
           Type          Output
           Name          "Out1"
           Show          off
-          Position      [175, 55]
+          Position      [670, 125]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -279,36 +611,97 @@ Plecs {
         }
         Connection {
           Type          Wire
-          SrcComponent  "Port2"
+          SrcComponent  "Port1"
           SrcTerminal   1
-          DstComponent  "Port1"
+          Points        [120, 80]
+          DstComponent  "Vm"
           DstTerminal   1
         }
+        Connection {
+          Type          Wire
+          SrcComponent  "Port2"
+          SrcTerminal   1
+          Points        [120, 160]
+          DstComponent  "Vm"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Vm"
+          SrcTerminal   3
+          DstComponent  "Divider ratio"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Divider ratio"
+          SrcTerminal   2
+          DstComponent  "RC + amplifier"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "RC + amplifier"
+          SrcTerminal   2
+          DstComponent  "Offset"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Vofs"
+          SrcTerminal   1
+          Points        [510, 180; 510, 130]
+          DstComponent  "Offset"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Offset"
+          SrcTerminal   1
+          DstComponent  "Output range"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Output range"
+          SrcTerminal   2
+          DstComponent  "Out1"
+          DstTerminal   1
+        }
+        Annotation {
+          Name          "<html><body>\n<p><span style=\" font-size:5px; font-w"
+"eight:700;\">[1/((2*pi*Sensor.BW)*(2*pi*Sensor.BW2)) 1/(2*pi*Sensor.BW)+1/(2*"
+"pi*Sensor.BW2) 1]</span></p></body></html>"
+          Position      [375, 95]
+        } 
       }
     }
     Component {
       Type          Subsystem
-      Name          "HA_sense"
+      Name          "HA"
       Show          on
-      Position      [240, 105]
+      Position      [210, 100]
       Direction     right
       Flipped       off
-      LabelPosition west
-      Frame         [-5, -20; 5, 20]
+      LabelPosition none
+      Frame         [-10, -20; 10, 20]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
       MaskType      "HA_sense"
-      MaskDescription "HA_sense"
+      MaskDescription "Hall-effect current sensor (e.g. ACS730 / LEM): in seri"
+"es between its two ports. v_out = clamp(Vofs + err_ofs + G*(1+err_g) * i filt"
+"ered by a first-order pole at BW, Vmin, Vmax)."
       MaskDisplayLang "2"
       MaskIconFrame on
       MaskIconOpaque off
       MaskIconRotates on
       Parameter {
-        Variable      "new_var"
-        Prompt        "New Description"
+        Variable      "Sensor"
+        Prompt        "Sensor struct: G [V/unit], Vofs [V], BW [Hz] (BW2 [Hz] "
+"for voltage), err_g [/], err_ofs [V], Vmin [V], Vmax [V]"
         Type          FreeText
-        Value         ""
+        Value         "Sensor"
         Show          off
         Tunable       off
         TabName       ""
@@ -325,12 +718,12 @@ Plecs {
       }
       Terminal {
         Type          Output
-        Position      [0, -9]
+        Position      [0, -14]
         Direction     up
       }
       Schematic {
         Location      [0, 24; 1536, 778]
-        ZoomFactor    2.2459
+        ZoomFactor    1.5
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
@@ -338,7 +731,7 @@ Plecs {
           Type          Port
           Name          "Port1"
           Show          off
-          Position      [65, 80]
+          Position      [60, 120]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -354,11 +747,20 @@ Plecs {
           }
         }
         Component {
+          Type          Ammeter
+          Name          "Am"
+          Show          off
+          Position      [120, 160]
+          Direction     up
+          Flipped       off
+          LabelPosition east
+        }
+        Component {
           Type          Port
           Name          "Port2"
           Show          off
-          Position      [175, 80]
-          Direction     left
+          Position      [60, 200]
+          Direction     right
           Flipped       off
           LabelPosition north
           Parameter {
@@ -373,10 +775,137 @@ Plecs {
           }
         }
         Component {
+          Type          Gain
+          Name          "Sensitivity"
+          Show          on
+          Position      [205, 160]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "K"
+            Value         "Sensor.G*(1+Sensor.err_g)"
+            Show          on
+          }
+          Parameter {
+            Variable      "Multiplication"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputDataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "GainDataType"
+            Value         "11"
+            Show          off
+          }
+        }
+        Component {
+          Type          TransferFunction
+          Name          "Bandwidth"
+          Show          on
+          Position      [330, 160]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-35, -15; 35, 15]
+          Parameter {
+            Variable      "Numerator"
+            Value         "[1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "Denominator"
+            Value         "[1/(2*pi*Sensor.BW) 1]"
+            Show          off
+          }
+          Parameter {
+            Variable      "X0"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "Vofs"
+          Show          on
+          Position      [280, 230]
+          Direction     right
+          Flipped       off
+          LabelPosition west
+          Frame         [-75, -10; 75, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "Sensor.Vofs+Sensor.err_ofs"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Offset"
+          Show          on
+          Position      [425, 165]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "++"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Saturation
+          Name          "Output range"
+          Show          on
+          Position      [490, 165]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "UpperLimit"
+            Value         "Sensor.Vmax"
+            Show          off
+          }
+          Parameter {
+            Variable      "LowerLimit"
+            Value         "Sensor.Vmin"
+            Show          off
+          }
+        }
+        Component {
           Type          Output
           Name          "Out1"
           Show          off
-          Position      [175, 55]
+          Position      [550, 165]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -393,66 +922,122 @@ Plecs {
         }
         Connection {
           Type          Wire
-          SrcComponent  "Port2"
+          SrcComponent  "Port1"
           SrcTerminal   1
-          DstComponent  "Port1"
+          Points        [120, 120]
+          DstComponent  "Am"
           DstTerminal   1
         }
+        Connection {
+          Type          Wire
+          SrcComponent  "Am"
+          SrcTerminal   2
+          Points        [120, 200]
+          DstComponent  "Port2"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Am"
+          SrcTerminal   3
+          DstComponent  "Sensitivity"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sensitivity"
+          SrcTerminal   2
+          DstComponent  "Bandwidth"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Bandwidth"
+          SrcTerminal   2
+          DstComponent  "Offset"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Vofs"
+          SrcTerminal   1
+          Points        [380, 230; 380, 170]
+          DstComponent  "Offset"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Offset"
+          SrcTerminal   1
+          DstComponent  "Output range"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Output range"
+          SrcTerminal   2
+          DstComponent  "Out1"
+          DstTerminal   1
+        }
+        Annotation {
+          Name          "<html><body>\n<p><span style=\" font-size:7px;\">[1/("
+"2*pi*Sensor.BW) 1]</span></p></body></html>"
+          Position      [330, 200]
+        } 
       }
     }
     Component {
       Type          Subsystem
-      Name          "CT_sense"
+      Name          "ADC"
       Show          on
-      Position      [160, 105]
+      Position      [115, 100]
       Direction     right
       Flipped       off
-      LabelPosition west
-      Frame         [-5, -20; 5, 20]
+      LabelPosition none
+      Frame         [-35, -15; 35, 15]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
-      MaskType      "CT_sense"
-      MaskDescription "CT_sense"
+      MaskType      "ADC"
+      MaskDescription "Analog-to-digital converter: gain and offset error, inp"
+"ut range 0..Vref, sample & hold every Ts (offset Toffs, set Ts = 1/fsw to sam"
+"ple synchronously with the PWM), N-bit quantization (floor), output in counts"
+" 0..2^N-1."
       MaskDisplayLang "2"
       MaskIconFrame on
       MaskIconOpaque off
       MaskIconRotates on
       Parameter {
-        Variable      "new_var"
-        Prompt        "New Description"
+        Variable      "ADC"
+        Prompt        "ADC struct: N [bit], Vref [V], Ts [s], Toffs [s], err_g"
+" [/], err_ofs [V]"
         Type          FreeText
-        Value         ""
+        Value         "ADC"
         Show          off
         Tunable       off
         TabName       ""
       }
       Terminal {
-        Type          Port
-        Position      [-25, 0]
-        Direction     left
-      }
-      Terminal {
-        Type          Port
-        Position      [25, 0]
-        Direction     right
+        Type          Input
+        Position      [0, 35]
+        Direction     down
       }
       Terminal {
         Type          Output
-        Position      [0, -9]
+        Position      [0, -39]
         Direction     up
       }
       Schematic {
         Location      [0, 24; 1536, 778]
-        ZoomFactor    2.2459
+        ZoomFactor    1.96436
         SliderPosition [0, 0]
         ShowBrowser   off
         BrowserWidth  100
         Component {
-          Type          Port
-          Name          "Port1"
+          Type          Input
+          Name          "In1"
           Show          off
-          Position      [65, 80]
+          Position      [55, 55]
           Direction     right
           Flipped       off
           LabelPosition south
@@ -468,13 +1053,206 @@ Plecs {
           }
         }
         Component {
-          Type          Port
-          Name          "Port2"
-          Show          off
-          Position      [175, 80]
-          Direction     left
+          Type          Gain
+          Name          "Gain error"
+          Show          on
+          Position      [120, 55]
+          Direction     right
           Flipped       off
-          LabelPosition north
+          LabelPosition south
+          Parameter {
+            Variable      "K"
+            Value         "1+ADC.err_g"
+            Show          on
+          }
+          Parameter {
+            Variable      "Multiplication"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputDataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "GainDataType"
+            Value         "11"
+            Show          off
+          }
+        }
+        Component {
+          Type          Constant
+          Name          "Offset error"
+          Show          on
+          Position      [80, 130]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Frame         [-40, -10; 40, 10]
+          Parameter {
+            Variable      "Value"
+            Value         "ADC.err_ofs"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "10"
+            Show          off
+          }
+        }
+        Component {
+          Type          Sum
+          Name          "Offset"
+          Show          on
+          Position      [200, 60]
+          Direction     up
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "IconShape"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "Inputs"
+            Value         "++"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Saturation
+          Name          "Input range"
+          Show          on
+          Position      [260, 60]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "UpperLimit"
+            Value         "ADC.Vref"
+            Show          off
+          }
+          Parameter {
+            Variable      "LowerLimit"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          ZeroOrderHold
+          Name          "Sample & hold"
+          Show          on
+          Position      [345, 60]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Ts"
+            Value         "[ADC.Ts ADC.Toffs]"
+            Show          off
+          }
+        }
+        Component {
+          Type          Gain
+          Name          "LSB"
+          Show          on
+          Position      [440, 60]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "K"
+            Value         "2^ADC.N/ADC.Vref"
+            Show          on
+          }
+          Parameter {
+            Variable      "Multiplication"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "OutputDataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "GainDataType"
+            Value         "11"
+            Show          off
+          }
+        }
+        Component {
+          Type          Rounding
+          Name          "Quantizer"
+          Show          on
+          Position      [535, 60]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "Operation"
+            Value         "1"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataType"
+            Value         "11"
+            Show          off
+          }
+          Parameter {
+            Variable      "DataTypeOverflowMode"
+            Value         "1"
+            Show          off
+          }
+        }
+        Component {
+          Type          Saturation
+          Name          "Code range"
+          Show          on
+          Position      [595, 60]
+          Direction     right
+          Flipped       off
+          LabelPosition south
+          Parameter {
+            Variable      "UpperLimit"
+            Value         "2^ADC.N-1"
+            Show          off
+          }
+          Parameter {
+            Variable      "LowerLimit"
+            Value         "0"
+            Show          off
+          }
+        }
+        Component {
+          Type          Output
+          Name          "Out1"
+          Show          off
+          Position      [655, 60]
+          Direction     right
+          Flipped       off
+          LabelPosition south
           Parameter {
             Variable      "Index"
             Value         "2"
@@ -486,30 +1264,68 @@ Plecs {
             Show          off
           }
         }
-        Component {
-          Type          Output
-          Name          "Out1"
-          Show          off
-          Position      [175, 55]
-          Direction     right
-          Flipped       off
-          LabelPosition south
-          Parameter {
-            Variable      "Index"
-            Value         "3"
-            Show          on
-          }
-          Parameter {
-            Variable      "Width"
-            Value         "-1"
-            Show          off
-          }
+        Connection {
+          Type          Signal
+          SrcComponent  "In1"
+          SrcTerminal   1
+          DstComponent  "Gain error"
+          DstTerminal   1
         }
         Connection {
-          Type          Wire
-          SrcComponent  "Port2"
+          Type          Signal
+          SrcComponent  "Gain error"
+          SrcTerminal   2
+          DstComponent  "Offset"
+          DstTerminal   2
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Offset error"
           SrcTerminal   1
-          DstComponent  "Port1"
+          Points        [165, 130; 165, 65]
+          DstComponent  "Offset"
+          DstTerminal   3
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Offset"
+          SrcTerminal   1
+          DstComponent  "Input range"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Input range"
+          SrcTerminal   2
+          DstComponent  "Sample & hold"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Sample & hold"
+          SrcTerminal   2
+          DstComponent  "LSB"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "LSB"
+          SrcTerminal   2
+          DstComponent  "Quantizer"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Quantizer"
+          SrcTerminal   2
+          DstComponent  "Code range"
+          DstTerminal   1
+        }
+        Connection {
+          Type          Signal
+          SrcComponent  "Code range"
+          SrcTerminal   2
+          DstComponent  "Out1"
           DstTerminal   1
         }
       }
@@ -527,4 +1343,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "+8K40rYKrArMKn8lR7NjTol1PZ9fPRfpNd77E0jLWiM="
+DemoSignature "dpR07fEteMFwZqVGNRK3ylwzEqHkd4s5gmx35/P3Gxk="

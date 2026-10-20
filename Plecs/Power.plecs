@@ -54,8 +54,8 @@ Plecs {
   ScriptsDialogSplitterPos "0"
   Schematic {
     Location      [0, 24; 1539, 825]
-    ZoomFactor    1.14436
-    SliderPosition [0, 0]
+    ZoomFactor    1.71497
+    SliderPosition [331, 0]
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -5781,11 +5781,11 @@ Plecs {
       Type          ConfigurableSubsystem
       Name          "BAT"
       Show          on
-      Position      [895, 105]
+      Position      [895, 135]
       Direction     down
       Flipped       on
       LabelPosition none
-      Frame         [-15, -25; 15, 25]
+      Frame         [-15, -55; 15, 55]
       SampleTime    "-1"
       CodeGenDiscretizationMethod "2"
       CodeGenTarget "Generic"
@@ -5982,13 +5982,13 @@ Plecs {
       }
       Terminal {
         Type          Port
-        Position      [0, -30]
-        Direction     up
+        Position      [20, -35]
+        Direction     right
       }
       Terminal {
         Type          Port
-        Position      [0, 30]
-        Direction     down
+        Position      [20, 40]
+        Direction     right
       }
       Terminal {
         Type          Input
@@ -9691,973 +9691,6 @@ Plecs {
             Type          Port
             Name          "LF"
             Show          on
-            Position      [530, 75]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "1"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "NF"
-            Show          on
-            Position      [530, 195]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "2"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "N"
-            Show          on
-            Position      [85, 195]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "3"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "L"
-            Show          on
-            Position      [85, 75]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "4"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Ammeter
-            Name          "Io"
-            Show          on
-            Position      [460, 75]
-            Direction     left
-            Flipped       off
-            LabelPosition south
-          }
-          Component {
-            Type          Voltmeter
-            Name          "Vo"
-            Show          on
-            Position      [490, 125]
-            Direction     up
-            Flipped       off
-            LabelPosition west
-          }
-          Component {
-            Type          Port
-            Name          "PE"
-            Show          on
-            Position      [80, 225]
-            Direction     left
-            Flipped       on
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "5"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "L2"
-            Show          on
-            Position      [85, 115]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "6"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "L3"
-            Show          on
-            Position      [85, 155]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "7"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "LF2"
-            Show          on
-            Position      [530, 115]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "8"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "LF3"
-            Show          on
-            Position      [530, 155]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "9"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Resistor
-            Name          "R1"
-            Show          off
-            Position      [320, 100]
-            Direction     up
-            Flipped       off
-            LabelPosition east
-            Parameter {
-              Variable      "R"
-              Value         "AC_Filter.RL1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Resistor
-            Name          "R2"
-            Show          off
-            Position      [320, 170]
-            Direction     up
-            Flipped       off
-            LabelPosition east
-            Parameter {
-              Variable      "R"
-              Value         "AC_Filter.RL2"
-              Show          off
-            }
-          }
-          Component {
-            Type          Resistor
-            Name          "R9"
-            Show          off
-            Position      [170, 75]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "R"
-              Value         "AC_Filter.Rin"
-              Show          off
-            }
-          }
-          Component {
-            Type          Reference
-            SrcComponent  "Magnatic Components/Choke"
-            Name          "CMC"
-            Show          on
-            Position      [380, 135]
-            Direction     right
-            Flipped       off
-            LabelPosition north
-            Frame         [-20, -15; 20, 15]
-            Parameter {
-              Variable      "L"
-              Value         "[PFC.Choke.L1 PFC.Choke.L2]"
-              Show          off
-            }
-            Parameter {
-              Variable      "R"
-              Value         "[PFC.Choke.R1 PFC.Choke.R2]"
-              Show          off
-            }
-            Parameter {
-              Variable      "Lm"
-              Value         "PFC.Choke.Lm"
-              Show          off
-            }
-            Parameter {
-              Variable      "Rm"
-              Value         "PFC.Choke.Rm"
-              Show          off
-            }
-            Parameter {
-              Variable      "i0"
-              Value         "[PFC.Choke.i1 PFC.Choke.i2]"
-              Show          off
-            }
-            Parameter {
-              Variable      "Configuration"
-              Value         "1"
-              Show          off
-            }
-            Terminal {
-              Type          Port
-              Position      [-10, -20]
-              Direction     up
-            }
-            Terminal {
-              Type          Port
-              Position      [-10, 20]
-              Direction     down
-            }
-            Terminal {
-              Type          Port
-              Position      [10, -20]
-              Direction     up
-            }
-            Terminal {
-              Type          Port
-              Position      [10, 20]
-              Direction     down
-            }
-          }
-          Component {
-            Type          Reference
-            SrcComponent  "Passives/C"
-            Name          "Cy1"
-            Show          on
-            Position      [250, 110]
-            Direction     left
-            Flipped       off
-            LabelPosition west
-            Frame         [-10, -20; 10, 20]
-            Parameter {
-              Variable      "Cap_dict"
-              Value         "AC_Filter.Cy1"
-              Show          off
-            }
-            Parameter {
-              Variable      "Configuration"
-              Value         "AC_Filter.Cy1.Config"
-              Show          off
-            }
-            Terminal {
-              Type          Port
-              Position      [-25, 0]
-              Direction     left
-            }
-            Terminal {
-              Type          Port
-              Position      [25, 0]
-              Direction     right
-            }
-          }
-          Component {
-            Type          Reference
-            SrcComponent  "Passives/C"
-            Name          "Cy2"
-            Show          on
-            Position      [250, 160]
-            Direction     left
-            Flipped       off
-            LabelPosition west
-            Frame         [-10, -20; 10, 20]
-            Parameter {
-              Variable      "Cap_dict"
-              Value         "AC_Filter.Cy2"
-              Show          off
-            }
-            Parameter {
-              Variable      "Configuration"
-              Value         "AC_Filter.Cy2.Config"
-              Show          off
-            }
-            Terminal {
-              Type          Port
-              Position      [-25, 0]
-              Direction     left
-            }
-            Terminal {
-              Type          Port
-              Position      [25, 0]
-              Direction     right
-            }
-          }
-          Component {
-            Type          Reference
-            SrcComponent  "Passives/C"
-            Name          "Cx"
-            Show          on
-            Position      [290, 135]
-            Direction     left
-            Flipped       off
-            LabelPosition west
-            Frame         [-10, -20; 10, 20]
-            Parameter {
-              Variable      "Cap_dict"
-              Value         "AC_Filter.Cx"
-              Show          off
-            }
-            Parameter {
-              Variable      "Configuration"
-              Value         "AC_Filter.Cx.Config"
-              Show          off
-            }
-            Terminal {
-              Type          Port
-              Position      [-25, 0]
-              Direction     left
-            }
-            Terminal {
-              Type          Port
-              Position      [25, 0]
-              Direction     right
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Io"
-            SrcTerminal   2
-            Points        [490, 75]
-            Branch {
-              DstComponent  "LF"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "Vo"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "R1"
-            SrcTerminal   2
-            DstComponent  "R2"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "CMC"
-            SrcTerminal   2
-            Points        [345, 125; 345, 75; 320, 75]
-            Branch {
-              Points        [290, 75]
-              Branch {
-                Points        [250, 75]
-                Branch {
-                  DstComponent  "R9"
-                  DstTerminal   1
-                }
-                Branch {
-                  DstComponent  "Cy1"
-                  DstTerminal   2
-                }
-              }
-              Branch {
-                DstComponent  "Cx"
-                DstTerminal   2
-              }
-            }
-            Branch {
-              DstComponent  "R1"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "CMC"
-            SrcTerminal   4
-            Points        [345, 145; 345, 195; 320, 195]
-            Branch {
-              Points        [290, 195]
-              Branch {
-                Points        [250, 195]
-                Branch {
-                  DstComponent  "N"
-                  DstTerminal   1
-                }
-                Branch {
-                  DstComponent  "Cy2"
-                  DstTerminal   1
-                }
-              }
-              Branch {
-                DstComponent  "Cx"
-                DstTerminal   1
-              }
-            }
-            Branch {
-              DstComponent  "R2"
-              DstTerminal   2
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "NF"
-            SrcTerminal   1
-            Points        [490, 195]
-            Branch {
-              DstComponent  "Vo"
-              DstTerminal   2
-            }
-            Branch {
-              Points        [415, 195; 415, 145]
-              DstComponent  "CMC"
-              DstTerminal   3
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "R9"
-            SrcTerminal   2
-            DstComponent  "L"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Io"
-            SrcTerminal   1
-            Points        [415, 75; 415, 125]
-            DstComponent  "CMC"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Cy2"
-            SrcTerminal   2
-            Points        [250, 135]
-            Branch {
-              DstComponent  "Cy1"
-              DstTerminal   1
-            }
-            Branch {
-              Points        [185, 135; 185, 225]
-              DstComponent  "PE"
-              DstTerminal   1
-            }
-          }
-        }
-        Name          "1PH Simple"
-        Schematic {
-          Component {
-            Type          Port
-            Name          "LF"
-            Show          on
-            Position      [705, 75]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "1"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "NF"
-            Show          on
-            Position      [705, 175]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "2"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "N"
-            Show          on
-            Position      [85, 175]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "3"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "L"
-            Show          on
-            Position      [85, 75]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "4"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Ammeter
-            Name          "Io"
-            Show          on
-            Position      [635, 75]
-            Direction     left
-            Flipped       off
-            LabelPosition south
-          }
-          Component {
-            Type          Voltmeter
-            Name          "Vo"
-            Show          on
-            Position      [665, 125]
-            Direction     up
-            Flipped       off
-            LabelPosition west
-          }
-          Component {
-            Type          Port
-            Name          "PE"
-            Show          on
-            Position      [350, 230]
-            Direction     down
-            Flipped       on
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "5"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Inductor
-            Name          "Lin"
-            Show          on
-            Position      [290, 95]
-            Direction     left
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "L"
-              Value         "Lin"
-              Show          off
-            }
-            Parameter {
-              Variable      "i_init"
-              Value         "0"
-              Show          off
-            }
-          }
-          Component {
-            Type          Resistor
-            Name          "Rd"
-            Show          on
-            Position      [290, 75]
-            Direction     left
-            Flipped       off
-            LabelPosition north
-            Parameter {
-              Variable      "R"
-              Value         "Rd"
-              Show          off
-            }
-          }
-          Component {
-            Type          Capacitor
-            Name          "Cin"
-            Show          on
-            Position      [350, 125]
-            Direction     down
-            Flipped       on
-            LabelPosition west
-            Parameter {
-              Variable      "C"
-              Value         "Cin"
-              Show          off
-            }
-            Parameter {
-              Variable      "v_init"
-              Value         "0"
-              Show          off
-            }
-          }
-          Component {
-            Type          Resistor
-            Name          "Ro"
-            Show          on
-            Position      [560, 75]
-            Direction     left
-            Flipped       off
-            LabelPosition north
-            Parameter {
-              Variable      "R"
-              Value         "Ro"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "L2"
-            Show          on
-            Position      [85, 105]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "6"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "L3"
-            Show          on
-            Position      [85, 145]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "7"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "LF2"
-            Show          on
-            Position      [705, 105]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "8"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "LF3"
-            Show          on
-            Position      [705, 145]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "9"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Reference
-            SrcComponent  "Magnatic Components/Choke"
-            Name          "CMC"
-            Show          on
-            Position      [440, 125]
-            Direction     right
-            Flipped       off
-            LabelPosition north
-            Frame         [-20, -15; 20, 15]
-            Parameter {
-              Variable      "L"
-              Value         "[PFC.Choke.L1 PFC.Choke.L2]"
-              Show          off
-            }
-            Parameter {
-              Variable      "R"
-              Value         "[PFC.Choke.R1 PFC.Choke.R2]"
-              Show          off
-            }
-            Parameter {
-              Variable      "Lm"
-              Value         "PFC.Choke.Lm"
-              Show          off
-            }
-            Parameter {
-              Variable      "Rm"
-              Value         "PFC.Choke.Rm"
-              Show          off
-            }
-            Parameter {
-              Variable      "i0"
-              Value         "[PFC.Choke.i1 PFC.Choke.i2]"
-              Show          off
-            }
-            Parameter {
-              Variable      "Configuration"
-              Value         "1"
-              Show          off
-            }
-            Terminal {
-              Type          Port
-              Position      [-10, -20]
-              Direction     up
-            }
-            Terminal {
-              Type          Port
-              Position      [-10, 20]
-              Direction     down
-            }
-            Terminal {
-              Type          Port
-              Position      [10, -20]
-              Direction     up
-            }
-            Terminal {
-              Type          Port
-              Position      [10, 20]
-              Direction     down
-            }
-          }
-          Component {
-            Type          Reference
-            SrcComponent  "Passives/C"
-            Name          "Cx"
-            Show          on
-            Position      [520, 125]
-            Direction     left
-            Flipped       off
-            LabelPosition west
-            Frame         [-10, -20; 10, 20]
-            Parameter {
-              Variable      "Cap_dict"
-              Value         "AC_Filter.Cx"
-              Show          off
-            }
-            Parameter {
-              Variable      "Configuration"
-              Value         "AC_Filter.Cx.Config"
-              Show          off
-            }
-            Terminal {
-              Type          Port
-              Position      [-25, 0]
-              Direction     left
-            }
-            Terminal {
-              Type          Port
-              Position      [25, 0]
-              Direction     right
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Io"
-            SrcTerminal   2
-            Points        [665, 75]
-            Branch {
-              DstComponent  "LF"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "Vo"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Lin"
-            SrcTerminal   2
-            Points        [320, 95; 320, 75]
-            Branch {
-              Points        [350, 75]
-              Branch {
-                Points        [410, 75; 410, 115]
-                DstComponent  "CMC"
-                DstTerminal   2
-              }
-              Branch {
-                DstComponent  "Cin"
-                DstTerminal   1
-              }
-            }
-            Branch {
-              DstComponent  "Rd"
-              DstTerminal   2
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "NF"
-            SrcTerminal   1
-            Points        [665, 175]
-            Branch {
-              Points        [520, 175]
-              Branch {
-                Points        [470, 175; 470, 135]
-                DstComponent  "CMC"
-                DstTerminal   3
-              }
-              Branch {
-                DstComponent  "Cx"
-                DstTerminal   1
-              }
-            }
-            Branch {
-              DstComponent  "Vo"
-              DstTerminal   2
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "CMC"
-            SrcTerminal   4
-            Points        [410, 135; 410, 175; 350, 175]
-            Branch {
-              DstComponent  "Cin"
-              DstTerminal   2
-            }
-            Branch {
-              DstComponent  "N"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Lin"
-            SrcTerminal   1
-            Points        [260, 95; 260, 75]
-            Branch {
-              DstComponent  "Rd"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "L"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Io"
-            SrcTerminal   1
-            DstComponent  "Ro"
-            DstTerminal   2
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "CMC"
-            SrcTerminal   1
-            Points        [470, 115; 470, 75; 520, 75]
-            Branch {
-              DstComponent  "Ro"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "Cx"
-              DstTerminal   2
-            }
-          }
-        }
-        Name          "1PH Complex"
-        Schematic {
-          Component {
-            Type          Port
-            Name          "LF"
-            Show          on
             Position      [835, 75]
             Direction     right
             Flipped       on
@@ -10893,27 +9926,27 @@ Plecs {
             Frame         [-20, -15; 20, 15]
             Parameter {
               Variable      "L"
-              Value         "[PFC.Choke.L1 PFC.Choke.L2]"
+              Value         "[AC_Filter.CMC.L1 AC_Filter.CMC.L2]"
               Show          off
             }
             Parameter {
               Variable      "R"
-              Value         "[PFC.Choke.R1 PFC.Choke.R2]"
+              Value         "[AC_Filter.CMC.R1 AC_Filter.CMC.R2]"
               Show          off
             }
             Parameter {
               Variable      "Lm"
-              Value         "PFC.Choke.Lm"
+              Value         "AC_Filter.CMC.Lm"
               Show          off
             }
             Parameter {
               Variable      "Rm"
-              Value         "PFC.Choke.Rm"
+              Value         "AC_Filter.CMC.Rm"
               Show          off
             }
             Parameter {
               Variable      "i0"
-              Value         "[PFC.Choke.i1 PFC.Choke.i2]"
+              Value         "[AC_Filter.CMC.i1 AC_Filter.CMC.i2]"
               Show          off
             }
             Parameter {
@@ -10954,27 +9987,27 @@ Plecs {
             Frame         [-20, -15; 20, 15]
             Parameter {
               Variable      "L"
-              Value         "[PFC.Choke.L1 PFC.Choke.L2]"
+              Value         "[AC_Filter.DMC.L1 AC_Filter.DMC.L2]"
               Show          off
             }
             Parameter {
               Variable      "R"
-              Value         "[PFC.Choke.R1 PFC.Choke.R2]"
+              Value         "[AC_Filter.DMC.R1 AC_Filter.DMC.R2]"
               Show          off
             }
             Parameter {
               Variable      "Lm"
-              Value         "PFC.Choke.Lm"
+              Value         "AC_Filter.DMC.Lm"
               Show          off
             }
             Parameter {
               Variable      "Rm"
-              Value         "PFC.Choke.Rm"
+              Value         "AC_Filter.DMC.Rm"
               Show          off
             }
             Parameter {
               Variable      "i0"
-              Value         "[PFC.Choke.i1 PFC.Choke.i2]"
+              Value         "[AC_Filter.DMC.i1 AC_Filter.DMC.i2]"
               Show          off
             }
             Parameter {
@@ -11108,12 +10141,12 @@ Plecs {
             Frame         [-10, -20; 10, 20]
             Parameter {
               Variable      "Cap_dict"
-              Value         "AC_Filter.Cx"
+              Value         "AC_Filter.Cx1"
               Show          off
             }
             Parameter {
               Variable      "Configuration"
-              Value         "AC_Filter.Cx.Config"
+              Value         "AC_Filter.Cx1.Config"
               Show          off
             }
             Terminal {
@@ -11125,6 +10158,39 @@ Plecs {
               Type          Port
               Position      [25, 0]
               Direction     right
+            }
+          }
+          Component {
+            Type          Resistor
+            Name          "Rd"
+            Show          on
+            Position      [680, 105]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "R"
+              Value         "AC_Filter.Rd"
+              Show          off
+            }
+          }
+          Component {
+            Type          Capacitor
+            Name          "Cd"
+            Show          on
+            Position      [680, 165]
+            Direction     up
+            Flipped       off
+            LabelPosition east
+            Parameter {
+              Variable      "C"
+              Value         "AC_Filter.Cd"
+              Show          off
+            }
+            Parameter {
+              Variable      "v_init"
+              Value         "0"
+              Show          off
             }
           }
           Connection {
@@ -11183,15 +10249,22 @@ Plecs {
               DstTerminal   2
             }
             Branch {
-              Points        [600, 195]
+              Points        [680, 195]
               Branch {
-                Points        [530, 195; 530, 145]
-                DstComponent  "DMC"
-                DstTerminal   3
+                Points        [600, 195]
+                Branch {
+                  Points        [530, 195; 530, 145]
+                  DstComponent  "DMC"
+                  DstTerminal   3
+                }
+                Branch {
+                  DstComponent  "Cx1"
+                  DstTerminal   1
+                }
               }
               Branch {
-                DstComponent  "Cx1"
-                DstTerminal   1
+                DstComponent  "Cd"
+                DstTerminal   2
               }
             }
           }
@@ -11260,13 +10333,27 @@ Plecs {
             SrcTerminal   1
             Points        [530, 125; 530, 75; 600, 75]
             Branch {
-              DstComponent  "Io"
-              DstTerminal   1
+              Points        [680, 75]
+              Branch {
+                DstComponent  "Io"
+                DstTerminal   1
+              }
+              Branch {
+                DstComponent  "Rd"
+                DstTerminal   1
+              }
             }
             Branch {
               DstComponent  "Cx1"
               DstTerminal   2
             }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Cd"
+            SrcTerminal   1
+            DstComponent  "Rd"
+            DstTerminal   2
           }
         }
         Name          "3PH"
@@ -12901,16 +11988,6 @@ Plecs {
           Signals       {"Measured current"}
         }
         Probe {
-          Component     "Io"
-          Path          "1PH Simple"
-          Signals       {"Measured current"}
-        }
-        Probe {
-          Component     "Io"
-          Path          "1PH Complex"
-          Signals       {"Measured current"}
-        }
-        Probe {
           Component     "PCC"
           Path          "3PH"
           Signals       {"Measured current"}
@@ -12926,16 +12003,6 @@ Plecs {
         Probe {
           Component     "Vo"
           Path          "1PH"
-          Signals       {"Measured voltage"}
-        }
-        Probe {
-          Component     "Vo"
-          Path          "1PH Simple"
-          Signals       {"Measured voltage"}
-        }
-        Probe {
-          Component     "Vo"
-          Path          "1PH Complex"
           Signals       {"Measured voltage"}
         }
         Probe {
@@ -15215,7 +14282,7 @@ Plecs {
       ShowBrowser   off
       BrowserWidth  100
       Configurations {
-        Name          "1PH TPB PFC "
+        Name          "1PH TPB PFC 2 Leg"
         Schematic {
           Component {
             Type          Port
@@ -16315,7 +15382,7 @@ Plecs {
             DstTerminal   4
           }
         }
-        Name          "1PH PFC"
+        Name          "1PH TPB PFC 3 Leg"
         Schematic {
           Component {
             Type          Port
@@ -16716,7 +15783,7 @@ Plecs {
             SrcComponent  "Components/Electrical/Transformers/Mutual\\nInd. 2"
             Name          "Choke"
             Show          on
-            Position      [360, 240]
+            Position      [360, 225]
             Direction     right
             Flipped       off
             LabelPosition north
@@ -17406,12 +16473,11 @@ Plecs {
             SrcTerminal   2
             Points        [295, 215]
             Branch {
-              Points        [325, 215; 325, 230]
               DstComponent  "Choke"
               DstTerminal   2
             }
             Branch {
-              Points        [295, 260; 325, 260; 325, 250]
+              Points        [295, 235]
               DstComponent  "Choke"
               DstTerminal   4
             }
@@ -17568,7 +16634,7 @@ Plecs {
             Type          Wire
             SrcComponent  "iL5"
             SrcTerminal   1
-            Points        [395, 260; 395, 250]
+            Points        [395, 260; 395, 235]
             DstComponent  "Choke"
             DstTerminal   3
           }
@@ -17576,12 +16642,11 @@ Plecs {
             Type          Wire
             SrcComponent  "iL4"
             SrcTerminal   1
-            Points        [395, 215; 395, 230]
             DstComponent  "Choke"
             DstTerminal   1
           }
         }
-        Name          "1PH PFC D"
+        Name          "1PH TPB PFC Diodes"
         Schematic {
           Component {
             Type          Port
@@ -17934,7 +16999,7 @@ Plecs {
             SrcComponent  "Components/Electrical/Transformers/Mutual\\nInd. 2"
             Name          "Choke"
             Show          on
-            Position      [360, 240]
+            Position      [360, 225]
             Direction     right
             Flipped       off
             LabelPosition north
@@ -18616,12 +17681,11 @@ Plecs {
             SrcTerminal   2
             Points        [295, 215]
             Branch {
-              Points        [325, 215; 325, 230]
               DstComponent  "Choke"
               DstTerminal   2
             }
             Branch {
-              Points        [295, 260; 325, 260; 325, 250]
+              Points        [295, 235]
               DstComponent  "Choke"
               DstTerminal   4
             }
@@ -18750,7 +17814,7 @@ Plecs {
             Type          Wire
             SrcComponent  "iL5"
             SrcTerminal   1
-            Points        [395, 260; 395, 250]
+            Points        [395, 260; 395, 235]
             DstComponent  "Choke"
             DstTerminal   3
           }
@@ -18758,7 +17822,6 @@ Plecs {
             Type          Wire
             SrcComponent  "iL4"
             SrcTerminal   1
-            Points        [395, 215; 395, 230]
             DstComponent  "Choke"
             DstTerminal   1
           }
@@ -18777,398 +17840,6 @@ Plecs {
             }
           }
         }
-        Name          "Pass"
-        Schematic {
-          Component {
-            Type          Port
-            Name          "VDC+"
-            Show          on
-            Position      [845, 160]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "1"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "VDC-"
-            Show          on
-            Position      [850, 370]
-            Direction     right
-            Flipped       on
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "2"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "VAC-"
-            Show          on
-            Position      [195, 370]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "3"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "VAC+"
-            Show          on
-            Position      [195, 160]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "4"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "PE"
-            Show          on
-            Position      [400, 410]
-            Direction     down
-            Flipped       on
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "5"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Ammeter
-            Name          "iL2"
-            Show          off
-            Position      [285, 160]
-            Direction     left
-            Flipped       off
-            LabelPosition south
-          }
-          Component {
-            Type          HeatPort
-            Name          "Port1"
-            Show          off
-            Position      [500, 415]
-            Direction     up
-            Flipped       off
-            LabelPosition east
-            Parameter {
-              Variable      "Index"
-              Value         "6"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Voltmeter
-            Name          "Vout1"
-            Show          off
-            Position      [760, 265]
-            Direction     up
-            Flipped       off
-            LabelPosition west
-          }
-          Component {
-            Type          Voltmeter
-            Name          "Vin1"
-            Show          off
-            Position      [240, 270]
-            Direction     down
-            Flipped       on
-            LabelPosition east
-          }
-          Component {
-            Type          Input
-            Name          "Gate"
-            Show          off
-            Position      [195, 125]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "7"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Constant
-            Name          "SW PH"
-            Show          on
-            Position      [435, 210]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Frame         [-35, -10; 35, 10]
-            Parameter {
-              Variable      "Value"
-              Value         "zeros(1,6)"
-              Show          off
-            }
-            Parameter {
-              Variable      "DataType"
-              Value         "10"
-              Show          off
-            }
-          }
-          Component {
-            Type          Ammeter
-            Name          "iL3"
-            Show          off
-            Position      [725, 160]
-            Direction     left
-            Flipped       off
-            LabelPosition south
-          }
-          Component {
-            Type          Goto
-            Name          "Goto9"
-            Show          off
-            Position      [285, 130]
-            Direction     up
-            Flipped       off
-            LabelPosition east
-            Parameter {
-              Variable      "Tag"
-              Value         "Iin"
-              Show          off
-            }
-            Parameter {
-              Variable      "Visibility"
-              Value         "2"
-              Show          off
-            }
-            Parameter {
-              Variable      "NoMatchingCounterpartAction"
-              Value         "3"
-              Show          off
-            }
-          }
-          Component {
-            Type          Goto
-            Name          "Goto10"
-            Show          off
-            Position      [200, 270]
-            Direction     left
-            Flipped       off
-            LabelPosition north
-            Parameter {
-              Variable      "Tag"
-              Value         "Vin"
-              Show          off
-            }
-            Parameter {
-              Variable      "Visibility"
-              Value         "2"
-              Show          off
-            }
-            Parameter {
-              Variable      "NoMatchingCounterpartAction"
-              Value         "3"
-              Show          off
-            }
-          }
-          Component {
-            Type          Goto
-            Name          "Goto12"
-            Show          off
-            Position      [725, 125]
-            Direction     up
-            Flipped       off
-            LabelPosition east
-            Parameter {
-              Variable      "Tag"
-              Value         "Io"
-              Show          off
-            }
-            Parameter {
-              Variable      "Visibility"
-              Value         "2"
-              Show          off
-            }
-            Parameter {
-              Variable      "NoMatchingCounterpartAction"
-              Value         "3"
-              Show          off
-            }
-          }
-          Component {
-            Type          Goto
-            Name          "Goto13"
-            Show          off
-            Position      [800, 265]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "Tag"
-              Value         "Vo"
-              Show          off
-            }
-            Parameter {
-              Variable      "Visibility"
-              Value         "2"
-              Show          off
-            }
-            Parameter {
-              Variable      "NoMatchingCounterpartAction"
-              Value         "3"
-              Show          off
-            }
-          }
-          Component {
-            Type          Constant
-            Name          "Choke PH"
-            Show          on
-            Position      [435, 250]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Frame         [-35, -10; 35, 10]
-            Parameter {
-              Variable      "Value"
-              Value         "zeros(1,4)"
-              Show          off
-            }
-            Parameter {
-              Variable      "DataType"
-              Value         "10"
-              Show          off
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Vout1"
-            SrcTerminal   1
-            Points        [760, 160]
-            Branch {
-              DstComponent  "iL3"
-              DstTerminal   2
-            }
-            Branch {
-              DstComponent  "VDC+"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Vout1"
-            SrcTerminal   2
-            Points        [760, 370]
-            Branch {
-              Points        [240, 370]
-              Branch {
-                DstComponent  "Vin1"
-                DstTerminal   2
-              }
-              Branch {
-                DstComponent  "VAC-"
-                DstTerminal   1
-              }
-            }
-            Branch {
-              DstComponent  "VDC-"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Vin1"
-            SrcTerminal   1
-            Points        [240, 160]
-            Branch {
-              DstComponent  "VAC+"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "iL2"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "iL3"
-            SrcTerminal   1
-            DstComponent  "iL2"
-            DstTerminal   2
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "iL2"
-            SrcTerminal   3
-            DstComponent  "Goto9"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "Vin1"
-            SrcTerminal   3
-            DstComponent  "Goto10"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "Vout1"
-            SrcTerminal   3
-            DstComponent  "Goto13"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "iL3"
-            SrcTerminal   3
-            DstComponent  "Goto12"
-            DstTerminal   1
-          }
-        }
       }
       Parameter {
         Variable      "Configuration"
@@ -19179,17 +17850,12 @@ Plecs {
         Name          "Input Voltage"
         Probe {
           Component     "Vin1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Measured voltage"}
         }
         Probe {
           Component     "Vin1"
-          Path          "1PH PFC"
-          Signals       {"Measured voltage"}
-        }
-        Probe {
-          Component     "Vin1"
-          Path          "Pass"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Measured voltage"}
         }
       }
@@ -19197,17 +17863,12 @@ Plecs {
         Name          "Input Current"
         Probe {
           Component     "iL2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Measured current"}
         }
         Probe {
           Component     "iL2"
-          Path          "1PH PFC"
-          Signals       {"Measured current"}
-        }
-        Probe {
-          Component     "iL2"
-          Path          "Pass"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Measured current"}
         }
       }
@@ -19215,17 +17876,12 @@ Plecs {
         Name          "Output Voltage"
         Probe {
           Component     "Vout1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Measured voltage"}
         }
         Probe {
           Component     "Vout1"
-          Path          "1PH PFC"
-          Signals       {"Measured voltage"}
-        }
-        Probe {
-          Component     "Vout1"
-          Path          "Pass"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Measured voltage"}
         }
       }
@@ -19233,17 +17889,12 @@ Plecs {
         Name          "Output Current"
         Probe {
           Component     "iL3"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Measured current"}
         }
         Probe {
           Component     "iL3"
-          Path          "1PH PFC"
-          Signals       {"Measured current"}
-        }
-        Probe {
-          Component     "iL3"
-          Path          "Pass"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Measured current"}
         }
       }
@@ -19251,17 +17902,12 @@ Plecs {
         Name          "Gate Signals"
         Probe {
           Component     "Gate"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Output"}
         }
         Probe {
           Component     "Gate"
-          Path          "1PH PFC"
-          Signals       {"Output"}
-        }
-        Probe {
-          Component     "Gate"
-          Path          "Pass"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Output"}
         }
       }
@@ -19269,352 +17915,317 @@ Plecs {
         Name          "Input Choke"
         Probe {
           Component     "Choke"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Winding 2 voltage", "Winding 1 current", "Winding 1 "
 "voltage", "Winding 2 current"}
         }
         Probe {
           Component     "Choke"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Winding 2 voltage", "Winding 1 current", "Winding 1 "
 "voltage", "Winding 2 current"}
-        }
-        Probe {
-          Component     "Choke PH"
-          Path          "Pass"
-          Signals       {"Constant"}
         }
       }
       MaskProbe {
         Name          "SW Voltages"
         Probe {
           Component     "HS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "SW PH"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Constant"}
         }
         Probe {
           Component     "HS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "HS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device voltage"}
         }
         Probe {
           Component     "LS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device voltage"}
-        }
-        Probe {
-          Component     "SW PH"
-          Path          "Pass"
-          Signals       {"Constant"}
         }
       }
       MaskProbe {
         Name          "SW Currents"
         Probe {
           Component     "HS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "SW PH"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Constant"}
         }
         Probe {
           Component     "HS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "HS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device current"}
         }
         Probe {
           Component     "LS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device current"}
-        }
-        Probe {
-          Component     "SW PH"
-          Path          "Pass"
-          Signals       {"Constant"}
         }
       }
       MaskProbe {
         Name          "SW Junction Temperature"
         Probe {
           Component     "HS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "SW PH"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Constant"}
         }
         Probe {
           Component     "HS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "HS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device junction temperature"}
         }
         Probe {
           Component     "LS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device junction temperature"}
-        }
-        Probe {
-          Component     "SW PH"
-          Path          "Pass"
-          Signals       {"Constant"}
         }
       }
       MaskProbe {
         Name          "Device Switching Losses"
         Probe {
           Component     "HS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "SW PH"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Constant"}
         }
         Probe {
           Component     "HS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "HS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device switching loss"}
         }
         Probe {
           Component     "LS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device switching loss"}
-        }
-        Probe {
-          Component     "SW PH"
-          Path          "Pass"
-          Signals       {"Constant"}
         }
       }
       MaskProbe {
         Name          "Device Conduction Losses"
         Probe {
           Component     "HS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "SW PH"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Constant"}
         }
         Probe {
           Component     "HS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "LS1"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "HS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "LS2"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "HS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device conduction loss"}
         }
         Probe {
           Component     "LS3"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Device conduction loss"}
-        }
-        Probe {
-          Component     "SW PH"
-          Path          "Pass"
-          Signals       {"Constant"}
         }
       }
       MaskProbe {
         Name          "Output Capacitor Voltage"
         Probe {
           Component     "Cout"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Capacitor voltage"}
         }
         Probe {
-          Component     "SW PH"
-          Path          "Pass"
-          Signals       {"Constant"}
-        }
-        Probe {
           Component     "Cout"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Capacitor voltage"}
         }
       }
@@ -19622,17 +18233,12 @@ Plecs {
         Name          "Output Capacitor Current"
         Probe {
           Component     "Cout"
-          Path          "1PH TPB PFC "
+          Path          "1PH TPB PFC 2 Leg"
           Signals       {"Capacitor current"}
         }
         Probe {
-          Component     "SW PH"
-          Path          "Pass"
-          Signals       {"Constant"}
-        }
-        Probe {
           Component     "Cout"
-          Path          "1PH PFC"
+          Path          "1PH TPB PFC 3 Leg"
           Signals       {"Capacitor current"}
         }
       }
@@ -19650,4 +18256,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "mRFIHk9A02/vIhJOoSimkTXDW6Lr1b5ejnZ0joLmg9o="
+DemoSignature "2gXFqqKEDTpSqOXkMSEO5VDbyFna7jrbGuAbIVaXNLM="

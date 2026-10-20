@@ -53,7 +53,7 @@ Plecs {
   ScriptsDialogGeometry ""
   ScriptsDialogSplitterPos "0"
   Schematic {
-    Location      [0, 23; 1920, 989]
+    Location      [0, 24; 1539, 825]
     ZoomFactor    1.49863
     SliderPosition [0, 0]
     ShowBrowser   off
@@ -4397,13 +4397,13 @@ Plecs {
       ShowBrowser   off
       BrowserWidth  100
       Configurations {
-        Name          "Configuration 1"
+        Name          "Real"
         Schematic {
           Component {
             Type          Inductor
             Name          "L1-Lm"
             Show          on
-            Position      [215, 170]
+            Position      [225, 80]
             Direction     left
             Flipped       off
             LabelPosition north
@@ -4422,7 +4422,7 @@ Plecs {
             Type          Resistor
             Name          "R1-Rm"
             Show          on
-            Position      [270, 170]
+            Position      [280, 80]
             Direction     left
             Flipped       off
             LabelPosition north
@@ -4436,7 +4436,7 @@ Plecs {
             Type          Port
             Name          "w1a"
             Show          on
-            Position      [165, 170]
+            Position      [175, 80]
             Direction     right
             Flipped       off
             LabelPosition south
@@ -4455,7 +4455,7 @@ Plecs {
             Type          Inductor
             Name          "Lm"
             Show          on
-            Position      [315, 195]
+            Position      [325, 105]
             Direction     down
             Flipped       on
             LabelPosition west
@@ -4474,7 +4474,7 @@ Plecs {
             Type          Resistor
             Name          "Rm"
             Show          on
-            Position      [315, 245]
+            Position      [325, 155]
             Direction     down
             Flipped       off
             LabelPosition west
@@ -4488,7 +4488,7 @@ Plecs {
             Type          Transformer
             Name          "Tr1"
             Show          on
-            Position      [360, 220]
+            Position      [370, 130]
             Direction     right
             Flipped       on
             LabelPosition south
@@ -4522,7 +4522,7 @@ Plecs {
             Type          Port
             Name          "w1b"
             Show          on
-            Position      [160, 270]
+            Position      [170, 180]
             Direction     right
             Flipped       off
             LabelPosition south
@@ -4541,7 +4541,7 @@ Plecs {
             Type          Inductor
             Name          "L2-Lm"
             Show          on
-            Position      [405, 170]
+            Position      [415, 80]
             Direction     left
             Flipped       on
             LabelPosition north
@@ -4560,7 +4560,7 @@ Plecs {
             Type          Resistor
             Name          "R2-Rm"
             Show          on
-            Position      [460, 170]
+            Position      [470, 80]
             Direction     left
             Flipped       off
             LabelPosition north
@@ -4574,7 +4574,7 @@ Plecs {
             Type          Port
             Name          "w2a"
             Show          on
-            Position      [510, 170]
+            Position      [520, 80]
             Direction     right
             Flipped       on
             LabelPosition south
@@ -4593,7 +4593,7 @@ Plecs {
             Type          Port
             Name          "w2b"
             Show          on
-            Position      [510, 270]
+            Position      [520, 180]
             Direction     right
             Flipped       on
             LabelPosition south
@@ -4612,7 +4612,7 @@ Plecs {
             Type          Voltmeter
             Name          "Vm1"
             Show          off
-            Position      [190, 220]
+            Position      [200, 130]
             Direction     up
             Flipped       off
             LabelPosition west
@@ -4621,7 +4621,7 @@ Plecs {
             Type          Voltmeter
             Name          "Vm2"
             Show          off
-            Position      [485, 220]
+            Position      [495, 130]
             Direction     up
             Flipped       off
             LabelPosition west
@@ -4630,7 +4630,7 @@ Plecs {
             Type          Wire
             SrcComponent  "L2-Lm"
             SrcTerminal   2
-            Points        [370, 170]
+            Points        [380, 80]
             DstComponent  "Tr1"
             DstTerminal   3
           }
@@ -4652,14 +4652,14 @@ Plecs {
             Type          Wire
             SrcComponent  "Rm"
             SrcTerminal   1
-            Points        [315, 270]
+            Points        [325, 180]
             Branch {
-              Points        [350, 270]
+              Points        [360, 180]
               DstComponent  "Tr1"
               DstTerminal   2
             }
             Branch {
-              Points        [190, 270]
+              Points        [200, 180]
               Branch {
                 DstComponent  "w1b"
                 DstTerminal   1
@@ -4681,9 +4681,9 @@ Plecs {
             Type          Wire
             SrcComponent  "Lm"
             SrcTerminal   1
-            Points        [315, 170]
+            Points        [325, 80]
             Branch {
-              Points        [350, 170]
+              Points        [360, 80]
               DstComponent  "Tr1"
               DstTerminal   1
             }
@@ -4696,7 +4696,7 @@ Plecs {
             Type          Wire
             SrcComponent  "L1-Lm"
             SrcTerminal   1
-            Points        [190, 170]
+            Points        [200, 80]
             Branch {
               DstComponent  "w1a"
               DstTerminal   1
@@ -4710,7 +4710,7 @@ Plecs {
             Type          Wire
             SrcComponent  "R2-Rm"
             SrcTerminal   2
-            Points        [485, 170]
+            Points        [495, 80]
             Branch {
               DstComponent  "w2a"
               DstTerminal   1
@@ -4724,204 +4724,13 @@ Plecs {
             Type          Wire
             SrcComponent  "Tr1"
             SrcTerminal   4
-            Points        [370, 270; 485, 270]
+            Points        [380, 180; 495, 180]
             Branch {
               DstComponent  "w2b"
               DstTerminal   1
             }
             Branch {
               DstComponent  "Vm2"
-              DstTerminal   2
-            }
-          }
-        }
-        Name          "Configuration 1 copy"
-        Schematic {
-          Component {
-            Type          Inductor
-            Name          "L1-Lm"
-            Show          on
-            Position      [260, 170]
-            Direction     left
-            Flipped       off
-            LabelPosition north
-            Parameter {
-              Variable      "L"
-              Value         "L(1)-Lm"
-              Show          off
-            }
-            Parameter {
-              Variable      "i_init"
-              Value         "i0(1)"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "w1a"
-            Show          on
-            Position      [165, 170]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "1"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "w1b"
-            Show          on
-            Position      [160, 270]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "2"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Inductor
-            Name          "L2-Lm"
-            Show          on
-            Position      [260, 270]
-            Direction     right
-            Flipped       on
-            LabelPosition south
-            Parameter {
-              Variable      "L"
-              Value         "L(2)-Lm"
-              Show          off
-            }
-            Parameter {
-              Variable      "i_init"
-              Value         "i0(2)"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "w2a"
-            Show          on
-            Position      [510, 170]
-            Direction     right
-            Flipped       on
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "3"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "w2b"
-            Show          on
-            Position      [510, 270]
-            Direction     right
-            Flipped       on
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "4"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Voltmeter
-            Name          "Vm1"
-            Show          off
-            Position      [190, 220]
-            Direction     up
-            Flipped       off
-            LabelPosition west
-          }
-          Component {
-            Type          Voltmeter
-            Name          "Vm2"
-            Show          off
-            Position      [485, 220]
-            Direction     up
-            Flipped       off
-            LabelPosition west
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "L1-Lm"
-            SrcTerminal   1
-            Points        [190, 170]
-            Branch {
-              DstComponent  "w1a"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "Vm1"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "w2a"
-            SrcTerminal   1
-            Points        [485, 170]
-            Branch {
-              DstComponent  "L1-Lm"
-              DstTerminal   2
-            }
-            Branch {
-              DstComponent  "Vm2"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "w1b"
-            SrcTerminal   1
-            Points        [190, 270]
-            Branch {
-              DstComponent  "Vm1"
-              DstTerminal   2
-            }
-            Branch {
-              DstComponent  "L2-Lm"
-              DstTerminal   1
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "w2b"
-            SrcTerminal   1
-            Points        [485, 270]
-            Branch {
-              DstComponent  "Vm2"
-              DstTerminal   2
-            }
-            Branch {
-              DstComponent  "L2-Lm"
               DstTerminal   2
             }
           }
@@ -4936,7 +4745,7 @@ Plecs {
         Name          "Winding 1 current"
         Probe {
           Component     "L1-Lm"
-          Path          "Configuration 1"
+          Path          "Real"
           Signals       {"Inductor current"}
         }
       }
@@ -4944,7 +4753,7 @@ Plecs {
         Name          "Winding 1 voltage"
         Probe {
           Component     "Vm1"
-          Path          "Configuration 1"
+          Path          "Real"
           Signals       {"Measured voltage"}
         }
       }
@@ -4952,7 +4761,7 @@ Plecs {
         Name          "Winding 2 current"
         Probe {
           Component     "L2-Lm"
-          Path          "Configuration 1"
+          Path          "Real"
           Signals       {"Inductor current"}
         }
       }
@@ -4960,7 +4769,7 @@ Plecs {
         Name          "Winding 2 voltage"
         Probe {
           Component     "Vm2"
-          Path          "Configuration 1"
+          Path          "Real"
           Signals       {"Measured voltage"}
         }
       }
@@ -4978,4 +4787,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "LuHYD2TIBedhLHAHMHyjosCFHlKAywvRaaa2cbZifCw="
+DemoSignature "/uukjTJbA8VF6kmjDPRAzcZlx8Dt6KeMGWduXnHV1tw="
