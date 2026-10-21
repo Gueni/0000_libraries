@@ -1,0 +1,1035 @@
+Plecs {
+  Name          "test_diode"
+  Version       "4.9"
+  CircuitModel  "ContStateSpace"
+  StartTime     "0.0"
+  TimeSpan      "Bench.IF*Bench.Lload/Bench.Vdc + Bench.t_off + Bench.t_on2 + Bench.t_tail"
+  Timeout       ""
+  Solver        "radau"
+  MaxStep       "Bench.maxStep"
+  InitStep      "-1"
+  FixedStep     "1e-3"
+  Refine        "1"
+  ZCStepSize    "1e-9"
+  RelTol        "Bench.relTol"
+  AbsTol        "-1"
+  TurnOnThreshold "0"
+  NonIdealSwitchResistance "1"
+  SyncFixedStepTasks "2"
+  UseSingleCommonBaseRate "2"
+  LossVariableLimitExceededMsg "1"
+  NegativeSwitchLossMsg "2"
+  DivisionByZeroMsg "3"
+  DatatypeOverflowMsg "2"
+  DatatypeInheritanceConflictMsg "1"
+  ContSampleTimeConflictMsg "1"
+  StiffnessDetectionMsg "2"
+  MaxConsecutiveZCs "10000"
+  AlgebraicLoopWithStateMachineMsg "2"
+  AssertionAction "2"
+  FixedPointDatatypeOverride "1"
+  InitializationCommands "% Defaults: physical mode, snapshot of lib/parameters.py; lib/ctest.py pas"
+"ses the current values as ModelVars.\n"
+"Bench.Vdc = 400.0;\n"
+"Bench.IF = 50.0;\n"
+"Bench.Lload = 0.0001;\n"
+"Bench.Ls_D = 1.54e-07;\n"
+"Bench.Ls_FET = 2e-08;\n"
+"Bench.Rs_FET = 1.0;\n"
+"Bench.Rs_FET_phys = 100.0;\n"
+"Bench.Rsn = 3.9;\n"
+"Bench.Csn = 1e-08;\n"
+"Bench.Rd = 22.0;\n"
+"Bench.Cd = 1e-09;\n"
+"Bench.t_off = 5e-06;\n"
+"Bench.t_on2 = 3e-06;\n"
+"Bench.t_tail = 3e-06;\n"
+"Bench.Tamb = 25.0;\n"
+"Bench.maxStep = 1e-07;\n"
+"Bench.relTol = 0.0001;\n"
+"BD.Config = 2.0;\n"
+"BD.therm_diode = 'file:C3M0021120K_bodydiode';\n"
+"BD.vf_diode = 4.5;\n"
+"BD.ron_diode = 0.005;\n"
+"BD.t_init = 25.0;\n"
+"BD.num_par_diode = 1.0;\n"
+"BD.Case_Cth = 0.0;\n"
+"BD.Case_Tinit = 25.0;\n"
+"BD.Case_Amb_rth = 0.1;\n"
+"BD.nPara = 1.0;\n"
+"BD.VI.T = [-40.0 25.0 175.0];\n"
+"BD.VI.I = [0.0 0.5 2.0 5.0 8.0 15.0 20.0 30.0 40.0 60.0 80.0 100.0 120.0 1"
+"40.0 160.0 180.0 200.0];\n"
+"BD.VI.V = [2.85 3.0 3.5 3.9 4.15 4.6 4.77 5.1 5.42 5.9 6.3 6.59 6.9 7.14 7"
+".4 7.6 7.84; 2.75 2.9 3.15 3.5 3.75 4.1 4.3 4.66 4.89 5.37 5.77 6.1 6.4 6."
+"65 6.9 7.13 7.35; 2.3 2.45 2.74 3.1 3.3 3.6 3.8 4.12 4.4 4.78 5.16 5.46 5."
+"75 6.0 6.25 6.47 6.7];\n"
+"BD.Ron = 0.012;\n"
+"BD.RR.IF = 50.0;\n"
+"BD.RR.didt = 2600000000.0;\n"
+"BD.RR.Irrm = 42.0;\n"
+"BD.RR.trr = 3.4e-08;\n"
+"BD.RR.Qrr = 0.0;\n"
+"BD.RR.Tmeas = 175.0;\n"
+"BD.RR.ktau = 2.0;\n"
+"BD.Cj.V = [0.0 1.0 2.0 5.0 10.0 20.0 30.0 50.0 75.0 100.0 150.0 200.0 300."
+"0 400.0 600.0 800.0 1000.0 1200.0];\n"
+"BD.Cj.C = [4.3e-09 3.2999999999999998e-09 2.6999999999999998e-09 1.9e-09 1"
+".3e-09 9.5e-10 8.2e-10 6.5e-10 5.6e-10 5e-10 4.2e-10 3.6e-10 2.8e-10 2.35e"
+"-10 1.95e-10 1.82e-10 1.8e-10 1.8e-10];\n"
+"BD.Roff = 1000000000.0;\n"
+"BD.Aval.Vbr = 0.0;\n"
+"BD.Aval.Rav = 1.0;\n"
+"BD.FR.Vfr = 0.0;\n"
+"BD.FR.IF = 1.0;\n"
+"BD.FR.tfr = 0.0;\n"
+"BD.Pkg.La = 0.0;\n"
+"BD.Pkg.Lk = 0.0;\n"
+"BD.Pkg.Rp = 100.0;\n"
+"BD.Th.Rth = [0.001];\n"
+"BD.Th.Cth = [0.0001];\n"
+"BD.Th.Tinit = 25.0;\n"
+"Out.file = 'test_diode.csv';"
+  InitialState  "1"
+  SystemState   ""
+  TaskingMode   "1"
+  TaskConfigurations ""
+  CodeGenParameterInlining "2"
+  CodeGenFloatingPointFormat "2"
+  CodeGenAbsTimeUsageMsg "3"
+  CodeGenBaseName ""
+  CodeGenOutputDir ""
+  CodeGenExtraOpts ""
+  CodeGenTarget "Generic"
+  CodeGenTargetSettings ""
+  ExtendedMatrixPrecision "1"
+  MatrixSignificanceCheck "2"
+  RemoveUnusedStateSpaceOutputs "1"
+  EnableStateSpaceSplitting "2"
+  DisplayStateSpaceSplitting "1"
+  DiscretizationMethod "2"
+  ExternalModeSettings ""
+  AlgebraicLoopMethod "1"
+  AlgebraicLoopTolerance "1e-6"
+  ScriptsDialogGeometry ""
+  ScriptsDialogSplitterPos "0"
+  Schematic {
+    Location      [0, 26; 1536, 780]
+    ZoomFactor    1
+    SliderPosition [0, 0]
+    ShowBrowser   off
+    BrowserWidth  100
+    Component {
+      Type          DCVoltageSource
+      Name          "Vdc"
+      Show          on
+      Position      [100, 290]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "V"
+        Value         "Bench.Vdc"
+        Show          off
+      }
+    }
+    Component {
+      Type          Ammeter
+      Name          "Am_D"
+      LibraryKeywords "current"
+      Show          on
+      Position      [400, 140]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+    }
+    Component {
+      Type          Reference
+      SrcComponent  "Switches/D"
+      Name          "DUT"
+      Show          on
+      Position      [400, 220]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "Diode"
+        Value         "BD"
+        Show          off
+      }
+      Parameter {
+        Variable      "Configuration"
+        Value         "BD.Config"
+        Show          off
+      }
+      Terminal {
+        Type          Port
+        Position      [0, -15]
+        Direction     up
+      }
+      Terminal {
+        Type          Port
+        Position      [0, 15]
+        Direction     down
+      }
+      Terminal {
+        Type          HeatPort
+        Position      [20, 0]
+        Direction     right
+      }
+    }
+    Component {
+      Type          Voltmeter
+      Name          "Vm_D"
+      Show          on
+      Position      [320, 220]
+      Direction     up
+      Flipped       on
+      LabelPosition west
+    }
+    Component {
+      Type          Inductor
+      Name          "Lload"
+      Show          on
+      Position      [520, 190]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+      Parameter {
+        Variable      "L"
+        Value         "Bench.Lload"
+        Show          off
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "Rd"
+      Show          on
+      Position      [590, 150]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "Bench.Rd"
+        Show          off
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "Cd"
+      Show          on
+      Position      [590, 230]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+      Parameter {
+        Variable      "C"
+        Value         "Bench.Cd"
+        Show          off
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Switch
+      Name          "S"
+      Show          on
+      Position      [400, 370]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "s_init"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "SwitchModel"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "f_grid"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Inductor
+      Name          "Ls"
+      Show          on
+      Position      [400, 450]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+      Parameter {
+        Variable      "L"
+        Value         "Bench.Ls_D"
+        Show          off
+      }
+      Parameter {
+        Variable      "i_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Resistor
+      Name          "Rsn"
+      Show          on
+      Position      [460, 335]
+      Direction     up
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "R"
+        Value         "Bench.Rsn"
+        Show          off
+      }
+    }
+    Component {
+      Type          Capacitor
+      Name          "Csn"
+      Show          on
+      Position      [460, 385]
+      Direction     up
+      Flipped       off
+      LabelPosition west
+      Parameter {
+        Variable      "C"
+        Value         "Bench.Csn"
+        Show          off
+      }
+      Parameter {
+        Variable      "v_init"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          ConstantTemperatureGnd
+      Name          "Tamb"
+      Show          on
+      Position      [460, 260]
+      Direction     down
+      Flipped       off
+      LabelPosition east
+      Parameter {
+        Variable      "T"
+        Value         "Bench.Tamb"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "Goto Id"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [440, 140]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Id"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "3"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "Goto Vd"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [270, 220]
+      Direction     left
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Vd"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "3"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From g"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [330, 370]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "g"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Step
+      Name          "Pulse 1 end"
+      Show          on
+      Position      [80, 580]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Time"
+        Value         "Bench.IF*Bench.Lload/Bench.Vdc"
+        Show          off
+      }
+      Parameter {
+        Variable      "Before"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "After"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Step
+      Name          "Pulse 2 start"
+      Show          on
+      Position      [80, 650]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Time"
+        Value         "Bench.IF*Bench.Lload/Bench.Vdc + Bench.t_off"
+        Show          off
+      }
+      Parameter {
+        Variable      "Before"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "After"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Step
+      Name          "Pulse 2 end"
+      Show          on
+      Position      [80, 720]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Time"
+        Value         "Bench.IF*Bench.Lload/Bench.Vdc + Bench.t_off + Bench.t_on2"
+        Show          off
+      }
+      Parameter {
+        Variable      "Before"
+        Value         "0"
+        Show          off
+      }
+      Parameter {
+        Variable      "After"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+    }
+    Component {
+      Type          Sum
+      Name          "Double pulse"
+      Show          on
+      Position      [200, 650]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "IconShape"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "Inputs"
+        Value         "++-"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataType"
+        Value         "10"
+        Show          off
+      }
+      Parameter {
+        Variable      "DataTypeOverflowMode"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          Goto
+      Name          "Goto g"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [280, 650]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "g"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "3"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From Id out"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [640, 140]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Id"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From Id scope"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [800, 140]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Id"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From Vd out"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [640, 190]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Vd"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From Vd scope"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [800, 190]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "Vd"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From g out"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [640, 240]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "g"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          From
+      Name          "From g scope"
+      LibraryKeywords "tag label"
+      Show          off
+      Position      [800, 240]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Tag"
+        Value         "g"
+        Show          off
+      }
+      Parameter {
+        Variable      "Visibility"
+        Value         "2"
+        Show          off
+      }
+      Parameter {
+        Variable      "NoMatchingCounterpartAction"
+        Value         "1"
+        Show          off
+      }
+    }
+    Component {
+      Type          SignalMux
+      Name          "Mux out"
+      LibraryKeywords "mux"
+      Show          on
+      Position      [700, 190]
+      Direction     right
+      Flipped       off
+      LabelPosition south
+      Parameter {
+        Variable      "Width"
+        Value         "3"
+        Show          off
+      }
+    }
+    Component {
+      Type          ToFile
+      Name          "To File"
+      Show          on
+      Position      [750, 190]
+      Direction     right
+      Flipped       off
+      LabelPosition north
+      Parameter {
+        Variable      "Filename"
+        Value         "Out.file"
+        Show          off
+        Evaluate      on
+      }
+      Parameter {
+        Variable      "FileType"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "WriteSignalNames"
+        Value         "1"
+        Show          off
+      }
+      Parameter {
+        Variable      "SampleTime"
+        Value         "0"
+        Show          off
+      }
+    }
+    Component {
+      Type          Scope
+      Name          "Scope"
+      LibraryKeywords "plot"
+      Show          on
+      Position      [900, 190]
+      Direction     up
+      Flipped       off
+      LabelPosition south
+      Location      [0, 0; 0, 0]
+      State         ""
+      SavedViews    ""
+      HeaderState   ""
+      PlotPalettes  ""
+      Axes          "3"
+      TimeRange     "0.0"
+      ScrollingMode "1"
+      SingleTimeAxis "1"
+      Open          "0"
+      Ts            "-1"
+      SampleLimit   "0"
+      XAxisLabel    "Time / s"
+      ShowLegend    "1"
+      Axis {
+        Name          "Id"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "Vd"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Axis {
+        Name          "g"
+        AutoScale     1
+        MinValue      0
+        MaxValue      1
+        Signals       {}
+        SignalTypes   [ ]
+        Untangle      0
+        KeepBaseline  off
+        BaselineValue 0
+      }
+      Fourier {
+        SingleXAxis       on
+        AxisLabel         "Frequency / Hz"
+        Scaling           0
+        PhaseDisplay      0
+        ShowFourierLegend off
+        Axis {
+          Name          ""
+          AutoScale     1
+          MinValue      0
+          MaxValue      1
+          Signals       {}
+          Untangle      0
+          KeepBaseline  off
+          BaselineValue 0
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Vdc"
+      SrcTerminal   1
+      Points        [100, 80]
+      Branch {
+        Points        [400, 80]
+        Branch {
+          DstComponent  "Am_D"
+          DstTerminal   1
+        }
+        Branch {
+          Points        [520, 80]
+          Branch {
+            DstComponent  "Lload"
+            DstTerminal   1
+          }
+          Branch {
+            Points        [590, 80]
+            DstComponent  "Rd"
+            DstTerminal   1
+          }
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Rd"
+      SrcTerminal   2
+      DstComponent  "Cd"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Am_D"
+      SrcTerminal   2
+      Points        [400, 180]
+      Branch {
+        DstComponent  "DUT"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [320, 180]
+        DstComponent  "Vm_D"
+        DstTerminal   1
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "DUT"
+      SrcTerminal   2
+      Points        [400, 300]
+      Branch {
+        DstComponent  "S"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [320, 300]
+        DstComponent  "Vm_D"
+        DstTerminal   2
+      }
+      Branch {
+        Points        [460, 300]
+        Branch {
+          DstComponent  "Rsn"
+          DstTerminal   1
+        }
+        Branch {
+          Points        [520, 300]
+          Branch {
+            DstComponent  "Lload"
+            DstTerminal   2
+          }
+          Branch {
+            Points        [590, 300]
+            DstComponent  "Cd"
+            DstTerminal   2
+          }
+        }
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "S"
+      SrcTerminal   2
+      Points        [400, 415]
+      Branch {
+        DstComponent  "Ls"
+        DstTerminal   1
+      }
+      Branch {
+        Points        [460, 415]
+        DstComponent  "Csn"
+        DstTerminal   2
+      }
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Rsn"
+      SrcTerminal   2
+      DstComponent  "Csn"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Wire
+      SrcComponent  "Vdc"
+      SrcTerminal   2
+      Points        [100, 500; 400, 500]
+      DstComponent  "Ls"
+      DstTerminal   2
+    }
+    Connection {
+      Type          HeatPipe
+      SrcComponent  "DUT"
+      SrcTerminal   3
+      Points        [460, 220]
+      DstComponent  "Tamb"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Am_D"
+      SrcTerminal   3
+      DstComponent  "Goto Id"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Vm_D"
+      SrcTerminal   3
+      DstComponent  "Goto Vd"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From g"
+      SrcTerminal   1
+      DstComponent  "S"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Pulse 1 end"
+      SrcTerminal   1
+      DstComponent  "Double pulse"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Pulse 2 start"
+      SrcTerminal   1
+      DstComponent  "Double pulse"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Pulse 2 end"
+      SrcTerminal   1
+      DstComponent  "Double pulse"
+      DstTerminal   4
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Double pulse"
+      SrcTerminal   1
+      DstComponent  "Goto g"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From Id out"
+      SrcTerminal   1
+      DstComponent  "Mux out"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From Id scope"
+      SrcTerminal   1
+      DstComponent  "Scope"
+      DstTerminal   1
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From Vd out"
+      SrcTerminal   1
+      DstComponent  "Mux out"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From Vd scope"
+      SrcTerminal   1
+      DstComponent  "Scope"
+      DstTerminal   2
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From g out"
+      SrcTerminal   1
+      DstComponent  "Mux out"
+      DstTerminal   4
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "From g scope"
+      SrcTerminal   1
+      DstComponent  "Scope"
+      DstTerminal   3
+    }
+    Connection {
+      Type          Signal
+      SrcComponent  "Mux out"
+      SrcTerminal   1
+      DstComponent  "To File"
+      DstTerminal   1
+    }
+  }
+}

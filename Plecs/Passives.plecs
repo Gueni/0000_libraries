@@ -54,8 +54,8 @@ Plecs {
   ScriptsDialogSplitterPos "0"
   Schematic {
     Location      [0, 24; 1539, 825]
-    ZoomFactor    3.36579
-    SliderPosition [203, 42]
+    ZoomFactor    2.24591
+    SliderPosition [11, 0]
     ShowBrowser   off
     BrowserWidth  100
     Component {
@@ -125,7 +125,152 @@ Plecs {
       ShowBrowser   off
       BrowserWidth  100
       Configurations {
-        Name          "Capacitor with ESR and ESL"
+        Name          "Ideal"
+        Schematic {
+          Component {
+            Type          Port
+            Name          "Port1"
+            Show          off
+            Position      [85, 50]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "1"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Port
+            Name          "Port2"
+            Show          off
+            Position      [85, 210]
+            Direction     right
+            Flipped       off
+            LabelPosition south
+            Parameter {
+              Variable      "Index"
+              Value         "2"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Capacitor
+            Name          "C"
+            Show          on
+            Position      [160, 125]
+            Direction     down
+            Flipped       on
+            LabelPosition west
+            Parameter {
+              Variable      "C"
+              Value         "Cap_t"
+              Show          off
+            }
+            Parameter {
+              Variable      "v_init"
+              Value         "Cap_dict.Vinit"
+              Show          off
+            }
+          }
+          Component {
+            Type          Ammeter
+            Name          "Am1"
+            Show          off
+            Position      [135, 50]
+            Direction     left
+            Flipped       off
+            LabelPosition south
+          }
+          Component {
+            Type          Voltmeter
+            Name          "Vm1"
+            Show          off
+            Position      [205, 125]
+            Direction     up
+            Flipped       off
+            LabelPosition west
+          }
+          Component {
+            Type          Constant
+            Name          "PH"
+            Show          on
+            Position      [295, 115]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Frame         [-30, -10; 30, 10]
+            Parameter {
+              Variable      "Value"
+              Value         "zeros(1,1)"
+              Show          off
+            }
+            Parameter {
+              Variable      "DataType"
+              Value         "10"
+              Show          off
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "C"
+            SrcTerminal   1
+            Points        [160, 50]
+            Branch {
+              Points        [205, 50]
+              Branch {
+                Points        [215, 50]
+              }
+              Branch {
+                DstComponent  "Vm1"
+                DstTerminal   1
+              }
+            }
+            Branch {
+              DstComponent  "Am1"
+              DstTerminal   2
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Port2"
+            SrcTerminal   1
+            Points        [160, 210]
+            Branch {
+              DstComponent  "C"
+              DstTerminal   2
+            }
+            Branch {
+              Points        [205, 210]
+              Branch {
+                Points        [215, 210]
+              }
+              Branch {
+                DstComponent  "Vm1"
+                DstTerminal   2
+              }
+            }
+          }
+          Connection {
+            Type          Wire
+            SrcComponent  "Am1"
+            SrcTerminal   1
+            DstComponent  "Port1"
+            DstTerminal   1
+          }
+        }
+        Name          "Real"
         Schematic {
           Component {
             Type          Port
@@ -317,262 +462,6 @@ Plecs {
             DstTerminal   2
           }
         }
-        Name          "Ideal Capacitor"
-        Schematic {
-          Component {
-            Type          Port
-            Name          "Port1"
-            Show          off
-            Position      [85, 50]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "1"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "Port2"
-            Show          off
-            Position      [85, 210]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "2"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Capacitor
-            Name          "C"
-            Show          on
-            Position      [160, 125]
-            Direction     down
-            Flipped       on
-            LabelPosition west
-            Parameter {
-              Variable      "C"
-              Value         "Cap_t"
-              Show          off
-            }
-            Parameter {
-              Variable      "v_init"
-              Value         "Cap_dict.Vinit"
-              Show          off
-            }
-          }
-          Component {
-            Type          Ammeter
-            Name          "Am1"
-            Show          off
-            Position      [135, 50]
-            Direction     left
-            Flipped       off
-            LabelPosition south
-          }
-          Component {
-            Type          Voltmeter
-            Name          "Vm1"
-            Show          off
-            Position      [205, 125]
-            Direction     up
-            Flipped       off
-            LabelPosition west
-          }
-          Component {
-            Type          Constant
-            Name          "PH"
-            Show          on
-            Position      [295, 115]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Frame         [-30, -10; 30, 10]
-            Parameter {
-              Variable      "Value"
-              Value         "zeros(1,1)"
-              Show          off
-            }
-            Parameter {
-              Variable      "DataType"
-              Value         "10"
-              Show          off
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "C"
-            SrcTerminal   1
-            Points        [160, 50]
-            Branch {
-              Points        [205, 50]
-              Branch {
-                Points        [215, 50]
-              }
-              Branch {
-                DstComponent  "Vm1"
-                DstTerminal   1
-              }
-            }
-            Branch {
-              DstComponent  "Am1"
-              DstTerminal   2
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Port2"
-            SrcTerminal   1
-            Points        [160, 210]
-            Branch {
-              DstComponent  "C"
-              DstTerminal   2
-            }
-            Branch {
-              Points        [205, 210]
-              Branch {
-                Points        [215, 210]
-              }
-              Branch {
-                DstComponent  "Vm1"
-                DstTerminal   2
-              }
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Am1"
-            SrcTerminal   1
-            DstComponent  "Port1"
-            DstTerminal   1
-          }
-        }
-        Name          "Pass"
-        Schematic {
-          Component {
-            Type          Port
-            Name          "Port1"
-            Show          off
-            Position      [85, 50]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "1"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Port
-            Name          "Port2"
-            Show          off
-            Position      [85, 210]
-            Direction     right
-            Flipped       off
-            LabelPosition south
-            Parameter {
-              Variable      "Index"
-              Value         "2"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Ammeter
-            Name          "Am1"
-            Show          off
-            Position      [125, 50]
-            Direction     left
-            Flipped       off
-            LabelPosition south
-          }
-          Component {
-            Type          Voltmeter
-            Name          "Vm1"
-            Show          off
-            Position      [200, 130]
-            Direction     up
-            Flipped       off
-            LabelPosition west
-          }
-          Component {
-            Type          Constant
-            Name          "PH"
-            Show          on
-            Position      [300, 120]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Frame         [-35, -10; 35, 10]
-            Parameter {
-              Variable      "Value"
-              Value         "zeros(1,1)"
-              Show          off
-            }
-            Parameter {
-              Variable      "DataType"
-              Value         "10"
-              Show          off
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Am1"
-            SrcTerminal   1
-            DstComponent  "Port1"
-            DstTerminal   1
-          }
-          Connection {
-            Type          Wire
-            Points        [215, 210; 200, 210]
-            Branch {
-              DstComponent  "Port2"
-              DstTerminal   1
-            }
-            Branch {
-              DstComponent  "Vm1"
-              DstTerminal   2
-            }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Vm1"
-            SrcTerminal   1
-            Points        [200, 50]
-            Branch {
-              Points        [215, 50]
-            }
-            Branch {
-              DstComponent  "Am1"
-              DstTerminal   2
-            }
-          }
-        }
       }
       Parameter {
         Variable      "Configuration"
@@ -583,17 +472,12 @@ Plecs {
         Name          "Capacitor Voltage"
         Probe {
           Component     "C"
-          Path          "Ideal Capacitor"
+          Path          "Ideal"
           Signals       {"Capacitor voltage"}
         }
         Probe {
           Component     "Vm1"
-          Path          "Capacitor with ESR and ESL"
-          Signals       {"Measured voltage"}
-        }
-        Probe {
-          Component     "Vm1"
-          Path          "Pass"
+          Path          "Real"
           Signals       {"Measured voltage"}
         }
       }
@@ -601,17 +485,12 @@ Plecs {
         Name          "Capacitor Current"
         Probe {
           Component     "C"
-          Path          "Ideal Capacitor"
+          Path          "Ideal"
           Signals       {"Capacitor current"}
         }
         Probe {
           Component     "Am1"
-          Path          "Capacitor with ESR and ESL"
-          Signals       {"Measured current"}
-        }
-        Probe {
-          Component     "Am1"
-          Path          "Pass"
+          Path          "Real"
           Signals       {"Measured current"}
         }
       }
@@ -619,18 +498,13 @@ Plecs {
         Name          "Capacitor Dissipation"
         Probe {
           Component     "PH"
-          Path          "Ideal Capacitor"
+          Path          "Ideal"
           Signals       {"Constant"}
         }
         Probe {
           Component     "ESR"
-          Path          "Capacitor with ESR and ESL"
+          Path          "Real"
           Signals       {"Resistor power"}
-        }
-        Probe {
-          Component     "PH"
-          Path          "Pass"
-          Signals       {"Constant"}
         }
       }
     }
@@ -1506,4 +1380,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "7eNl+XJIlW2R88lccmdfoey0KEL5js5B+x3NU7Mlp+A="
+DemoSignature "HHUKgHNzNHa2cE1M1ym/9VJe3J0XwY36AWSNXiKJA68="
