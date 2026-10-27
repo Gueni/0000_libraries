@@ -1429,57 +1429,23 @@ Plecs {
             Type          MutInductor
             Name          "L"
             Show          on
-            Position      [260, 80]
-            Direction     left
+            Position      [350, 130]
+            Direction     down
             Flipped       on
-            LabelPosition north
+            LabelPosition west
             Parameter {
               Variable      "Windings"
-              Value         "1"
+              Value         "2"
               Show          off
             }
             Parameter {
               Variable      "L"
-              Value         "[Lm L(1)]"
+              Value         "[L(1) Lm; Lm L(2)]"
               Show          off
             }
             Parameter {
               Variable      "i_init"
-              Value         "[i0(1)]"
-              Show          off
-            }
-          }
-          Component {
-            Type          Transformer
-            Name          "Tr"
-            Show          on
-            Position      [350, 130]
-            Direction     right
-            Flipped       on
-            LabelPosition south
-            Parameter {
-              Variable      "Windings"
-              Value         "[1 1]"
-              Show          off
-            }
-            Parameter {
-              Variable      "n"
-              Value         "[1 1]"
-              Show          off
-            }
-            Parameter {
-              Variable      "Polarity"
-              Value         "+"
-              Show          off
-            }
-            Parameter {
-              Variable      "Lm"
-              Value         "inf"
-              Show          off
-            }
-            Parameter {
-              Variable      "im0"
-              Value         "0"
+              Value         "[i0(1) i0(2)]"
               Show          off
             }
           }
@@ -1489,21 +1455,14 @@ Plecs {
             SrcTerminal   1
             Points        [200, 80]
             Branch {
+              Points        [340, 80]
               DstComponent  "L"
-              DstTerminal   2
+              DstTerminal   1
             }
             Branch {
               DstComponent  "Vm1"
               DstTerminal   1
             }
-          }
-          Connection {
-            Type          Wire
-            SrcComponent  "Tr"
-            SrcTerminal   1
-            Points        [320, 115; 320, 80]
-            DstComponent  "L"
-            DstTerminal   1
           }
           Connection {
             Type          Wire
@@ -1515,8 +1474,8 @@ Plecs {
               DstTerminal   2
             }
             Branch {
-              Points        [320, 180; 320, 145]
-              DstComponent  "Tr"
+              Points        [340, 180]
+              DstComponent  "L"
               DstTerminal   2
             }
           }
@@ -1530,8 +1489,8 @@ Plecs {
               DstTerminal   1
             }
             Branch {
-              Points        [380, 80; 380, 115]
-              DstComponent  "Tr"
+              Points        [360, 80]
+              DstComponent  "L"
               DstTerminal   3
             }
           }
@@ -1545,8 +1504,8 @@ Plecs {
               DstTerminal   2
             }
             Branch {
-              Points        [380, 180; 380, 145]
-              DstComponent  "Tr"
+              Points        [360, 180]
+              DstComponent  "L"
               DstTerminal   4
             }
           }
@@ -1931,7 +1890,7 @@ Plecs {
         Probe {
           Component     "L"
           Path          "Ideal"
-          Signals       {"Winding 1 current"}
+          Signals       {"Winding 2 current"}
         }
       }
       MaskProbe {
@@ -1961,4 +1920,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "Zz0LibjTiPPw8PhP176B6mOQKcSUUXJCvUrWzLnYqBA="
+DemoSignature "PijxqLXsSSNVI++LbogVIFiVYi6m9bfp7LLeIT8uw+g="

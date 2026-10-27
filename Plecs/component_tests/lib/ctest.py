@@ -38,6 +38,14 @@ class ComponentTest:
     def model_vars(self, test, mode):
         """ModelVars of a test in a mode: the device (or its body diode) with the configurations of MODES[mode]."""
         cfg             = prm.MODES[mode]
+        if 'choke' in prm.TESTS[test]:                                          # choke: DUT struct CH, PLECS reference struct CHR
+            bench       = dict(prm.Bench)
+            ch          = copy.deepcopy(prm.CHOKES[prm.TESTS[test]['choke']])
+            ch.update(Config=cfg['Choke'], i1=bench['Ch_i1'], i2=bench['Ch_i2'])
+            ref         = dict(ch)
+            if cfg['Choke'] == 1:                                               # Ideal choke: no winding / mutual resistance
+                ref.update(R1=0, R2=0, Rm=0)
+            return {'Bench': bench, 'CH': ch, 'CHR': ref}
         sw              = copy.deepcopy(prm.DEVICES[self.device])
         sw['Config']    = cfg['FET']
         sw['Coss']['Config']             = cfg['Coss']
@@ -47,7 +55,7 @@ class ComponentTest:
             bd          = sw['therm_body_diode']
             bd['Cj']    = {'V': sw['Cap']['V'], 'C': sw['Cap']['Coss']}
             return {'Bench': bench, 'BD': bd}
-        bench['Rs_FET'] = prm.Bench['Rs_FET_phys'] if mode == 'physical' else prm.Bench['Rs_FET']
+        bench['Rs_FET'] = prm.Bench['Rs_FET_phys'] if mode == 'real' else prm.Bench['Rs_FET']
         return {'Bench': bench, 'SW': sw}
 
     def run(self, test, mode):
@@ -63,7 +71,10 @@ class ComponentTest:
             if not prm.KEEP_OPEN:
                 self.server.plecs.close(t['model'])                             # closed: the model file is reloaded on the next run
         d               = np.loadtxt(csv, delimiter=',', ndmin=2)
-        return dict({'t': d[:, 0]}, **{s: d[:, i + 1] for i, s in enumerate(t['signals'])})
+        r               = dict({'t': d[:, 0]}, **{s: d[:, i + 1] for i, s in enumerate(t['signals'])})
+        if 'choke' in t:
+            r['par']    = mv['CHR']                                             # parameters of the analytic solution (R = 0 in ideal mode)
+        return r
 
     #?------------------------------------------------------------------------------------------------------------------------------------
     #? Evaluation
@@ -120,6 +131,39 @@ class ComponentTest:
                 'Eon [uJ]': ComponentTest.integral(t, v * i, won) * 1e6, 'Eoff [uJ]': ComponentTest.integral(t, v * i, woff) * 1e6,
                 'Id peak on [A]': i[won].max() if won.any() else 0.0, 'Vds peak off [V]': v[woff].max() if woff.any() else 0.0,
                 'HS Irrm [A]': ih[won].max() if won.any() else 0.0}
+
+    @staticmethod
+    def choke_analytic(t, v1, v2, p):
+        """Exact 2-winding currents for the measured terminal voltages: L di/dt = v - R i, L = [L1 Lm; Lm L2],
+        R = [R1 Rm; Rm R2], i(0) = [i1 i2], integrated with the trapezoidal rule (A-stable) between the output samples."""
+        L                               = np.array([[p['L1'], p['Lm']], [p['Lm'], p['L2']]])
+        R                               = np.array([[p['R1'], p['Rm']], [p['Rm'], p['R2']]])
+        Li, I2                          = np.linalg.inv(L), np.eye(2)
+        A, v                            = Li @ R, np.column_stack((v1, v2))
+        i                               = np.zeros((t.size, 2))
+        i[0]                            = [p['i1'], p['i2']]
+        for k in range(t.size - 1):
+            h                           = t[k + 1] - t[k]
+            i[k + 1]                    = i[k] if h <= 0 else np.linalg.solve(I2 + 0.5 * h * A, (I2 - 0.5 * h * A) @ i[k] + 0.5 * h * Li @ (v[k] + v[k + 1]))
+        return i[:, 0], i[:, 1]
+
+    @staticmethod
+    def choke_figures(r):
+        """Winding currents vs the analytic solution (driven by the voltages the choke saw) and vs PLECS Mutual Ind. 2 on the
+        same bench; errors in % of the peak current. The PLECS reference vs analytic row checks the method itself."""
+        t, p                            = r['t'], r['par']
+        err                             = lambda x, y: 100 * np.max(np.abs(x - y)) / max(np.max(np.abs(y)), 1e-12)
+        a1, a2                          = ComponentTest.choke_analytic(t, r['v1'], r['v2'], p)
+        b1, b2                          = ComponentTest.choke_analytic(t, r['v1_ref'], r['v2_ref'], p)
+        e_ana                           = max(err(r['i1'], a1), err(r['i2'], a2))
+        return {'i1 vs analytic [%]': err(r['i1'], a1), 'i2 vs analytic [%]': err(r['i2'], a2),
+                'i1 vs PLECS [%]': err(r['i1'], r['i1_ref']), 'i2 vs PLECS [%]': err(r['i2'], r['i2_ref']),
+                'PLECS vs analytic [%]': max(err(r['i1_ref'], b1), err(r['i2_ref'], b2)),
+                'i1(0) [A]': r['i1'][0], 'i2(0) [A]': r['i2'][0], 'k [-]': p['Lm'] / np.sqrt(p['L1'] * p['L2']),
+                'pass [1/0]': float(e_ana <= prm.Bench['Ch_tol'])}
+
+    choke_pfc_figures                   = choke_figures
+    choke_cmc_figures                   = choke_figures
 
     #?------------------------------------------------------------------------------------------------------------------------------------
     #? Report

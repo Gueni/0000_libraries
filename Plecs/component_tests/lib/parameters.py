@@ -27,14 +27,14 @@ KEEP_OPEN      =  True                                               # leave the
 #! The block configurations ('Config') are set by the mode of each run (MODES), the values here are the defaults.
 DEVICES        =  {
                   'C3M0021120K'    : {                                                                                                                # Wolfspeed C3M0021120K, 1200 V / 100 A / 21 mOhm SiC MOSFET 
-                     'Config'         : 1,                                                                                            #? [/]      - FET config: 1 Real SW (+ Coss, body diode), 2 Ideal, 3 Physical equivalent circuit (fields Drv ... Th below)
+                     'Config'         : 1,                                                                                            #? [/]      - FET config: 1 Ideal, 2 Real (physical equivalent circuit, fields Drv ... Th below)
                      'therm_mosfet'   : 'file:C3M0021120K',                                                                                           #? [/]      - Thermal description of the switch (Thermal Lib)
                      'Rgon'           : 2.5,                                                                                                          #? [Ohm]    - External turn-on gate resistance
                      'Rgoff'          : 2.5,                                                                                                          #? [Ohm]    - External turn-off gate resistance
                      'ron_mosfet'     : 21e-3,                                                                                                        #? [Ohm]    - R_DS(on) at 25 °C (C3M0021120K: 21 mOhm typ, 1200 V / 100 A)
                      'Iinit'          : 0,                                                                                                            #? [A]      - Initial current through the switch
                      'Coss'           : {                                                                                                             # output capacitance (Passives/C)
-                        'Config'  : 1,                                                                                             #? [/]     - Coss config: 1 ESR+ESL, 2 Ideal, 3 Pass
+                        'Config'  : 1,                                                                                             #? [/]     - Coss config (Passives/C, not used by the FET configs): 1 Ideal, 2 Real (ESR + ESL)
                         'Cap_s'   : 180e-12,                                                                                                          #? [F]      - Coss at 800 V (C3M0021120K: 180 pF)
                         'Resr_s'  : 0.5,                                                                                                              #? [Ohm]    - Equivalent series resistance (damps the Coss loop)
                         'Lesl_s'  : 2e-9,                                                                                                             #? [H]      - Equivalent series inductance (package / power loop)
@@ -43,9 +43,9 @@ DEVICES        =  {
                         'Vinit'   : 0,                                                                                                                #? [V]      - Initial voltage
                         'Iinit'   : 0                                                                                                                 #? [A]      - Initial current
                      },
-                     'therm_body_diode': {                                                                                                            # body diode (Switches/D), used by FET configs 1 and 3
-                        'Config'        : 1,                                                                                         #? [/]     - Diode config: 1 Diode Thermal, 2 Physical Discrete
-                        #! ---- config 1: Diode Thermal
+                     'therm_body_diode': {                                                                                                            # body diode (Switches/D), used by FET config 2 (Real)
+                        'Config'        : 1,                                                                                         #? [/]     - Diode config: 1 Ideal (vf_diode, ron_diode), 2 Real (charge-control recovery)
+                        #! ---- config 1: Ideal (vf_diode, ron_diode)
                         'therm_diode'   : 'file:C3M0021120K_bodydiode',                                                                               #? [/]      - Thermal description of the body diode (Thermal Lib)
                         'vf_diode'      : 4.5,                                                                                                        #? [V]      - Body diode forward voltage
                         'ron_diode'     : 5e-3,                                                                                                       #? [Ohm]    - Body diode on-state resistance
@@ -54,7 +54,7 @@ DEVICES        =  {
                         'Case_Cth'      : 0,                                                                                                          #? [J/K]    - Thermal capacitance of the diode case node (0: no extra thermal state, ~4x faster)
                         'Case_Tinit'    : 25,                                                                                                         #? [°C]     - Initial temperature of the diode case node
                         'Case_Amb_rth'  : 0.1,                                                                                                        #? [K/W]    - Thermal resistance diode case -> switch thermal port
-                        #! ---- config 2: Physical Discrete (charge-control reverse recovery), used as a die-level body diode
+                        #! ---- config 2: Real (charge-control reverse recovery), used as a die-level body diode
                         'nPara'         : 1,                                                                                                          #? [/]      - Number of parallel diodes (= nPara of the switch)
                         'VI'            : {                                                                                                           # forward curve at Vgs = -4 V (vendor table), I = 0 column = knee voltage
                            'T'          : [-40, 25, 175],                                                                                             #? [°C]     - Temperature axis
@@ -89,7 +89,7 @@ DEVICES        =  {
                      'Rth'            : 0.2,                                                                                                          #? [K/W]    - Total thermal resistance junction -> heatsink
                      'foster_rth'     : [0.0472 ,0.0688],                                                                                             #? [/]      - Foster representation of the thermal resistance
                      'foster_cth'     : [0.95 , 2.4],                                                                                                 #? [/]      - Foster representation of the thermal capacitance
-                     #! ---- FET config 3: physical equivalent circuit (datasheet Rev.4 + vendor Thermal Lib model, see 0000_libraries/Plecs/Device Models/C3M0021120K.m)
+                     #! ---- FET config 2 (Real): physical equivalent circuit (datasheet Rev.4 + vendor Thermal Lib model)
                      'Drv'            : {                                                                                                             # gate driver (totem pole, separate on/off paths)
                         'Von'     : 15,                                                                                                               #? [V]      - Turn-on gate voltage
                         'Voff'    : -4,                                                                                                               #? [V]      - Turn-off gate voltage
@@ -148,12 +148,39 @@ DEVICES        =  {
                }
 #!----------------------------------------------------------------------------------------------------------------------------------------
 #! Model depth of a run: block configurations per mode.
-#!    FET: Switches/FET 1 Real SW, 2 Ideal SW, 3 Physical equivalent circuit | Coss: Passives/C 1 ESR+ESL, 2 Ideal, 3 Pass
-#!    BD : Switches/D 1 Diode Thermal, 2 Physical Discrete
+#!    FET: Switches/FET 1 Ideal, 2 Real (physical equivalent circuit) | Coss: Passives/C 1 Ideal, 2 Real (ESR + ESL)
+#!    BD : Switches/D 1 Ideal, 2 Real (charge-control reverse recovery)
+#!    Choke: Magnatic Components/Choke 1 Ideal (L1, L2, Lm), 2 Real (+ R1, R2, Rm)
 MODES          =  {
-                  'ideal'           : {'FET': 2, 'Coss': 2, 'BD': 1},                                                                                   #? [/]     - Ideal switch, thermal diode (no recovery)
-                  'real'            : {'FET': 1, 'Coss': 1, 'BD': 1},                                                                                   #? [/]     - Thermal-model switch with Coss, thermal diode
-                  'physical'        : {'FET': 3, 'Coss': 1, 'BD': 2}                                                                                    #? [/]     - Physical equivalent circuit, physical diode (charge-control recovery)
+                  'ideal'           : {'FET': 1, 'Coss': 1, 'BD': 1, 'Choke': 1},                                                                       #? [/]     - Ideal switch, ideal diode (no recovery), ideal choke
+                  'real'            : {'FET': 2, 'Coss': 2, 'BD': 2, 'Choke': 2}                                                                        #? [/]     - Physical equivalent circuit, physical diode (charge-control recovery), real choke
+               }
+#!----------------------------------------------------------------------------------------------------------------------------------------
+#! Choke library (Magnatic Components/Choke struct). Coupled 2-winding inductor: v = R*i + L*di/dt with
+#! L = [L1 Lm; Lm L2], R = [R1 Rm; Rm R2] (Ideal: R = 0), currents into the dotted terminals w1a / w2a.
+CHOKES         =  {
+                  'PFC_Choke'      : {                                                                                                                # PFC boost choke of the 1 kW TPB PFC (weak coupling, k = 0.02)
+                     'Config'       : 2,                                                                                                              #? [/]      - Set by the mode (MODES)
+                     'L1'           : 240e-6,                                                                                                         #? [H]      - Self inductance of winding 1
+                     'L2'           : 10e-6,                                                                                                          #? [H]      - Self inductance of winding 2
+                     'R1'           : 0.01,                                                                                                           #? [Ohm]    - Resistance of winding 1
+                     'R2'           : 0.01,                                                                                                           #? [Ohm]    - Resistance of winding 2
+                     'Lm'           : 1e-6,                                                                                                           #? [H]      - Mutual inductance
+                     'Rm'           : 0.001,                                                                                                          #? [Ohm]    - Mutual resistance
+                     'i1'           : 0,                                                                                                              #? [A]      - Initial current of winding 1 (the test sets Bench.Ch_i1)
+                     'i2'           : 0                                                                                                               #? [A]      - Initial current of winding 2 (the test sets Bench.Ch_i2)
+                  },
+                  'CMC'            : {                                                                                                                # EMI common-mode choke of the 1 kW TPB PFC (tight coupling, k = 0.995)
+                     'Config'       : 2,                                                                                                              #? [/]      - Set by the mode (MODES)
+                     'L1'           : 4.7e-3,                                                                                                         #? [H]      - Self inductance of winding 1
+                     'L2'           : 4.7e-3,                                                                                                         #? [H]      - Self inductance of winding 2
+                     'R1'           : 30e-3,                                                                                                          #? [Ohm]    - Resistance of winding 1
+                     'R2'           : 30e-3,                                                                                                          #? [Ohm]    - Resistance of winding 2
+                     'Lm'           : 0.995 * 4.7e-3,                                                                                                 #? [H]      - Mutual inductance
+                     'Rm'           : 0,                                                                                                              #? [Ohm]    - Mutual resistance
+                     'i1'           : 0,                                                                                                              #? [A]      - Initial current of winding 1 (the test sets Bench.Ch_i1)
+                     'i2'           : 0                                                                                                               #? [A]      - Initial current of winding 2 (the test sets Bench.Ch_i2)
+                  }
                }
 #!----------------------------------------------------------------------------------------------------------------------------------------
 #! Test benches: double pulse on an inductive load. Pulse 1 ramps the load current to IF, the DUT then freewheels / is
@@ -164,8 +191,8 @@ Bench          =  {
                   'Lload'           : 100e-6,                                                                                                            #? [H]     - Load inductance
                   'Ls_D'            : 154e-9,                                                                                                            #? [H]     - Diode test loop inductance: Vdc / Ls = 2.6 A/ns, the datasheet recovery di/dt (ideal switch)
                   'Ls_FET'          : 20e-9,                                                                                                             #? [H]     - MOSFET test power loop inductance
-                  'Rs_FET'          : 1,                                                                                                                 #? [Ohm]   - Damping resistor across Ls_FET, ideal / real modes (path for its current when the switch opens instantly)
-                  'Rs_FET_phys'     : 100,                                                                                                               #? [Ohm]   - Same, physical mode (>> loop impedance, does not bypass Ls during the ns transitions)
+                  'Rs_FET'          : 1,                                                                                                                 #? [Ohm]   - Damping resistor across Ls_FET, ideal mode (path for its current when the switch opens instantly)
+                  'Rs_FET_phys'     : 100,                                                                                                               #? [Ohm]   - Same, real mode (>> loop impedance, does not bypass Ls during the ns transitions)
                   'Rsn'             : 3.9,                                                                                                               #? [Ohm]   - Diode test: RC snubber across the ideal switch (takes the Ls_D current when it opens) ...
                   'Csn'             : 10e-9,                                                                                                             #? [F]     - ... snubber capacitance (damping ~0.5 with Ls_D)
                   'Rd'              : 22,                                                                                                                #? [Ohm]   - Diode test: RC damper across the diode (outside its ammeter) ~ sqrt(Ls_D / Coss) ...
@@ -175,14 +202,31 @@ Bench          =  {
                   't_tail'          : 3e-6,                                                                                                              #? [s]     - Simulated time after pulse 2
                   'Tamb'            : 25,                                                                                                                #? [°C]    - Ambient (heat port) temperature
                   'maxStep'         : 1e-7,                                                                                                              #? [s]     - Maximum solver step
-                  'relTol'          : 1e-4                                                                                                               #? [/]     - Solver relative tolerance
+                  'relTol'          : 1e-4,                                                                                                              #? [/]     - Solver relative tolerance
+                  #! Choke test: winding 1 driven by Ch_V0 + Ch_Va*sin(2*pi*Ch_f*t) through Ch_Rs, winding 2 loaded with Ch_Rload,
+                  #! both windings start with a current (Ch_i1, Ch_i2). DUT and the PLECS reference (Mutual Ind. 2) run side by side.
+                  'Ch_V0'           : 10,                                                                                                                #? [V]     - DC part of the winding 1 source
+                  'Ch_Va'           : 20,                                                                                                                #? [V]     - Amplitude of the AC part
+                  'Ch_f'            : 10e3,                                                                                                              #? [Hz]    - Frequency of the AC part
+                  'Ch_Rs'           : 1,                                                                                                                 #? [Ohm]   - Source resistance (bounds the DC current of the ideal choke)
+                  'Ch_Rload'        : 1,                                                                                                                 #? [Ohm]   - Load of winding 2 (L2 / Rload >> solver step: the fast winding-2 transient stays resolved)
+                  'Ch_i1'           : 1,                                                                                                                 #? [A]     - Initial current of winding 1 (into w1a)
+                  'Ch_i2'           : -0.5,                                                                                                              #? [A]     - Initial current of winding 2 (into w2a)
+                  't_choke'         : 2e-3,                                                                                                              #? [s]     - Simulated time (20 periods)
+                  'Ch_maxStep'      : 2e-7,                                                                                                              #? [s]     - Maximum solver step (0.2 % of the period)
+                  'Ch_relTol'       : 1e-6,                                                                                                              #? [/]     - Solver relative tolerance (the analytic comparison resolves < 0.1 %)
+                  'Ch_tol'          : 0.5                                                                                                                #? [%]     - Pass limit of the current error vs the analytic solution
                }
 #!----------------------------------------------------------------------------------------------------------------------------------------
 #! Test registry: test -> model (models/<model>.plecs), ModelVars name of the device struct, signals written by the
 #! model's To File (in order, after time). The evaluation is ComponentTest.<test>_figures in ctest.py.
 TESTS          =  {
                   'diode'           : {'model': 'test_diode',  'struct': 'BD', 'signals': ['Id', 'Vd', 'g']},                                           #? [/]     - Switches/D: forward drop, blocking, reverse recovery
-                  'mosfet'          : {'model': 'test_mosfet', 'struct': 'SW', 'signals': ['Id', 'Vds', 'Ihs', 'g']}                                    #? [/]     - Switches/FET: conduction, Eon / Eoff, peaks, body-diode recovery
+                  'mosfet'          : {'model': 'test_mosfet', 'struct': 'SW', 'signals': ['Id', 'Vds', 'Ihs', 'g']},                                   #? [/]     - Switches/FET: conduction, Eon / Eoff, peaks, body-diode recovery
+                  'choke_pfc'       : {'model': 'test_choke',  'struct': 'CH', 'choke': 'PFC_Choke',                                                    #? [/]     - Magnatic Components/Choke (PFC boost choke) vs analytic solution and PLECS Mutual Ind. 2
+                                       'signals': ['v1', 'i1', 'v2', 'i2', 'v1_ref', 'i1_ref', 'v2_ref', 'i2_ref']},
+                  'choke_cmc'       : {'model': 'test_choke',  'struct': 'CH', 'choke': 'CMC',                                                          #? [/]     - Same, EMI common-mode choke (k = 0.995)
+                                       'signals': ['v1', 'i1', 'v2', 'i2', 'v1_ref', 'i1_ref', 'v2_ref', 'i2_ref']}
                }
 DEVICE         =  'C3M0021120K'                                                                                                                         # default device (python lib/ctest.py ... --device NAME)
 #!----------------------------------------------------------------------------------------------------------------------------------------

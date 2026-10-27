@@ -286,6 +286,36 @@ Plecs {
             Flipped       off
             LabelPosition west
           }
+          Component {
+            Type          HeatSink
+            Name          "Heat Sink"
+            Show          off
+            Position      [200, 205]
+            Direction     left
+            Flipped       off
+            LabelPosition north
+            Frame         [-22, -22; 22, 22]
+            Parameter {
+              Variable      "Cth"
+              Value         "0"
+              Show          off
+            }
+            Parameter {
+              Variable      "T_init"
+              Value         ""
+              Show          off
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "1"
+              Show          off
+            }
+            Terminal {
+              Type          HeatPort
+              Position      [-10, -27]
+              Direction     up
+            }
+          }
           Connection {
             Type          Wire
             SrcComponent  "Am1"
@@ -329,6 +359,13 @@ Plecs {
               DstComponent  "Vds"
               DstTerminal   2
             }
+          }
+          Connection {
+            Type          HeatPipe
+            SrcComponent  "Ambient"
+            SrcTerminal   1
+            DstComponent  "Heat Sink"
+            DstTerminal   1
           }
         }
         Name          "Real"
@@ -4242,4 +4279,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "wP5fKbM3A3uryLWx5mAhhp/rwfD8IDYI9BAVRU7XiAU="
+DemoSignature "Cp1YI263ORFuZKvqkTUWDf8eskzjCQBTMey+5erJ2ps="
