@@ -570,7 +570,7 @@ Plecs {
         Position      [-15, -35]
         Direction     left
       }
-      TerminalNames { "L+", "L-", "S", "L" }
+      TerminalNames { "L+", "L-", "L", "clk" }
       Location      [0, 26; 1536, 760]
       ZoomFactor    1
       SliderPosition [0, 0]
@@ -637,25 +637,6 @@ Plecs {
           }
           Component {
             Type          Input
-            Name          "S"
-            Show          on
-            Position      [105, 275]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "3"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
-            Type          Input
             Name          "L"
             Show          on
             Position      [365, 135]
@@ -664,7 +645,7 @@ Plecs {
             LabelPosition east
             Parameter {
               Variable      "Index"
-              Value         "4"
+              Value         "3"
               Show          on
             }
             Parameter {
@@ -817,6 +798,25 @@ Plecs {
               Show          off
             }
           }
+          Component {
+            Type          Input
+            Name          "clk"
+            Show          on
+            Position      [105, 280]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
           Connection {
             Type          Wire
             SrcComponent  "Am1"
@@ -949,25 +949,6 @@ Plecs {
             LabelPosition south
           }
           Component {
-            Type          Input
-            Name          "S"
-            Show          on
-            Position      [290, 160]
-            Direction     right
-            Flipped       off
-            LabelPosition west
-            Parameter {
-              Variable      "Index"
-              Value         "3"
-              Show          on
-            }
-            Parameter {
-              Variable      "Width"
-              Value         "-1"
-              Show          off
-            }
-          }
-          Component {
             Type          Switch2
             Name          "source plus"
             Show          off
@@ -1044,7 +1025,7 @@ Plecs {
             LabelPosition north
             Parameter {
               Variable      "Index"
-              Value         "4"
+              Value         "3"
               Show          on
             }
             Parameter {
@@ -1197,6 +1178,152 @@ Plecs {
               Show          off
             }
           }
+          Component {
+            Type          Input
+            Name          "clk"
+            Show          on
+            Position      [105, 280]
+            Direction     right
+            Flipped       off
+            LabelPosition west
+            Parameter {
+              Variable      "Index"
+              Value         "4"
+              Show          on
+            }
+            Parameter {
+              Variable      "Width"
+              Value         "-1"
+              Show          off
+            }
+          }
+          Component {
+            Type          Subsystem
+            Name          "ts"
+            Show          on
+            Position      [240, 280]
+            Direction     down
+            Flipped       off
+            LabelPosition none
+            Frame         [-20, -10; 20, 10]
+            TreatAsAtomicUnit on
+            SampleTime    "-1"
+            CodeGenDiscretizationMethod "2"
+            CodeGenTarget "Generic"
+            MaskDisplayLang "2"
+            MaskIconFrame on
+            MaskIconOpaque off
+            MaskIconRotates on
+            Terminal {
+              Type          Input
+              Position      [20, 0]
+              Direction     right
+              Index         "1"
+            }
+            Terminal {
+              Type          Output
+              Position      [-24, 0]
+              Direction     left
+              Index         "1"
+            }
+            Schematic {
+              Location      [744, 55; 1515, 733]
+              ZoomFactor    1.30957
+              SliderPosition [0, 0]
+              ShowBrowser   off
+              BrowserWidth  100
+              Component {
+                Type          Enable
+                Name          "Enable"
+                Show          off
+                Position      [215, 85]
+                Direction     right
+                Flipped       off
+                LabelPosition south
+                Parameter {
+                  Variable      "Index"
+                  Value         "1"
+                  Show          on
+                }
+                Parameter {
+                  Variable      "DataType"
+                  Value         "10"
+                  Show          off
+                }
+                Parameter {
+                  Variable      "DataTypeOverflowMode"
+                  Value         "1"
+                  Show          off
+                }
+                Parameter {
+                  Variable      "Width"
+                  Value         "-1"
+                  Show          off
+                }
+                Parameter {
+                  Variable      "ShowOutput"
+                  Value         "2"
+                  Show          off
+                }
+              }
+              Component {
+                Type          Output
+                Name          "Out1"
+                Show          off
+                Position      [290, 85]
+                Direction     right
+                Flipped       off
+                LabelPosition south
+                Parameter {
+                  Variable      "Index"
+                  Value         "2"
+                  Show          on
+                }
+                Parameter {
+                  Variable      "OutputWhenDisabled"
+                  Value         "1"
+                  Show          off
+                }
+                Parameter {
+                  Variable      "InitialOutput"
+                  Value         "0"
+                  Show          off
+                }
+                Parameter {
+                  Variable      "Width"
+                  Value         "-1"
+                  Show          off
+                }
+              }
+              Connection {
+                Type          Signal
+                SrcComponent  "Enable"
+                SrcTerminal   1
+                DstComponent  "Out1"
+                DstTerminal   1
+              }
+            }
+          }
+          Component {
+            Type          ConstantRelationalOperator
+            Name          "Compare to\nConstant"
+            Show          off
+            Position      [175, 280]
+            Direction     left
+            Flipped       on
+            LabelPosition south
+            Frame         [-25, -10; 25, 10]
+            Parameter {
+              Variable      "Operator"
+              Value         "5"
+              Show          off
+            }
+            Parameter {
+              Variable      "Threshold"
+              Value         "Load.t_switch"
+              Show          on
+            }
+          }
           Connection {
             Type          Wire
             SrcComponent  "Vm1"
@@ -1245,20 +1372,6 @@ Plecs {
             SrcTerminal   1
             DstComponent  "L+"
             DstTerminal   1
-          }
-          Connection {
-            Type          Signal
-            SrcComponent  "S"
-            SrcTerminal   1
-            Points        [345, 160]
-            Branch {
-              DstComponent  "source plus"
-              DstTerminal   4
-            }
-            Branch {
-              DstComponent  "source plus1"
-              DstTerminal   4
-            }
           }
           Connection {
             Type          Wire
@@ -1320,6 +1433,34 @@ Plecs {
             DstComponent  "Product"
             DstTerminal   3
           }
+          Connection {
+            Type          Signal
+            SrcComponent  "Compare to\nConstant"
+            SrcTerminal   2
+            DstComponent  "ts"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Signal
+            SrcComponent  "clk"
+            SrcTerminal   1
+            DstComponent  "Compare to\nConstant"
+            DstTerminal   1
+          }
+          Connection {
+            Type          Signal
+            SrcComponent  "ts"
+            SrcTerminal   2
+            Points        [305, 280; 305, 160; 345, 160]
+            Branch {
+              DstComponent  "source plus"
+              DstTerminal   4
+            }
+            Branch {
+              DstComponent  "source plus1"
+              DstTerminal   4
+            }
+          }
         }
       }
       Parameter {
@@ -1380,4 +1521,4 @@ Plecs {
     } 
   }
 }
-DemoSignature "HHUKgHNzNHa2cE1M1ym/9VJe3J0XwY36AWSNXiKJA68="
+DemoSignature "N2VglfG1U1obW939+60EdGjyzw4+j8octHdpxMggWLk="

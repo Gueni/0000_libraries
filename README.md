@@ -27,7 +27,7 @@ tutorial projects.
 | File | Description |
 | --- | --- |
 | [DATABASE.DbLib](Altium/DATABASE.DbLib) | Database library that maps DB records to symbols and footprints. |
-| [DB.mdb](Altium/DB.mdb) | Parts database. Tables: Capacitors, Connectors, Crystal, Diodes, Ferrit Bead, Integrated Circuits, LED, Light Pipe, PCB, Resistors, Switches, Transformers, Transistors. |
+| [DB.mdb](Altium/DB.mdb) | Parts database. Tables: Capacitors, Connectors, Crystal, Diodes, Ferrit Bead, Fuse, Inductors, Integrated Circuits, LED, Light Pipe, Miscellaneous, PCB, Resistors, Switches, Transformers, Transistors. |
 | [SCH.SchLib](Altium/SCH.SchLib) | Schematic symbol library. |
 | [FTP.PcbLib](Altium/FTP.PcbLib) | PCB footprint library. |
 
